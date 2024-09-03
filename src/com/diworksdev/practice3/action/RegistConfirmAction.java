@@ -62,8 +62,12 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		//if (loginUserId.equals("") == false && loginPassword.equals("") == false && userName.equals("") == false) {
 		if (!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals("")) &&
 				!(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals("")) &&
-				!(userGender.equals("")) && !(userPostalCode.equals("")) && !(userPrefecture.equals("")) &&
-				!(userAddress1.equals("")) && !(userAddress2.equals("")) && !(userAuthority.equals(""))) {
+				!(userPostalCode.equals("")) && !(userPrefecture.equals("")) &&
+				!(userAddress1.equals("")) && !(userAddress2.equals(""))) {
+
+			//一旦外してみる
+			//&& !(userGender.equals(""))
+			//&& !(userAuthority.equals(""))
 
 			//sessionのなかに記憶する保存する
 			session.put("userFamilyName", userFamilyName);
@@ -72,20 +76,67 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			session.put("userLastNameKana", userLastNameKana);
 			session.put("userMail", userMail);
 			session.put("userPassword", userPassword);
-			session.put("userGender", userGender);//原因？
+			//session.put("userGender", userGender);//原因？一旦外してみる
 			session.put("userPostalCode", userPostalCode);//原因？
 			session.put("userPrefecture", userPrefecture);
 			session.put("userAddress1", userAddress1);
 			session.put("userAddress2", userAddress2);
-			session.put("userAuthority", userAuthority);//原因？
+			//session.put("userAuthority", userAuthority);//原因？一旦外してみる
 
 		} else {
 
-			setErrorMessage("未入力の項目があります。");
+		setErrorMessage("未入力の項目があります。");
 
-			result = ERROR;
+		result = ERROR;
 
 		}
+
+		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
+		//もしpayが1と等しい場合
+		if (userGender.equals("0")) {
+
+			//paymentに現金払いを代入
+			userGender = "男性";
+
+			//sessionに記憶
+			session.put("userGender", userGender);
+
+		//そうでない場合
+		} else {
+
+			//paymentにクレジットを代入
+			userGender = "女性";
+
+			//sessionに記憶
+			session.put("userGender", userGender);
+
+			result = SUCCESS;
+
+		}
+
+		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
+		//もしpayが1と等しい場合
+		if (userAuthority.equals("0")) {
+
+			//paymentに現金払いを代入
+			userAuthority = "一般";
+
+			//sessionに記憶
+			session.put("userAuthority", userAuthority);
+
+		//そうでない場合
+		} else {
+
+			//paymentにクレジットを代入
+			userAuthority = "管理者";
+
+			//sessionに記憶
+			session.put("userAuthority", userAuthority);
+
+			result = SUCCESS;
+
+		}
+		//上記追加したやつ
 
 		//戻り値
 		//retに入った値を呼び出し元であるActionクラスに渡す
