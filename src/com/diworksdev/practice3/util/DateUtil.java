@@ -1,4 +1,4 @@
-package om.diworksdev.practice3.util;
+package com.diworksdev.practice3.util;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
