@@ -72,12 +72,12 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			session.put("userLastNameKana", userLastNameKana);
 			session.put("userMail", userMail);
 			session.put("userPassword", userPassword);
-			session.put("userGender", userGender);
-			session.put("userPostalCode", userPostalCode);
+			session.put("userGender", userGender);//原因？
+			session.put("userPostalCode", userPostalCode);//原因？
 			session.put("userPrefecture", userPrefecture);
 			session.put("userAddress1", userAddress1);
 			session.put("userAddress2", userAddress2);
-			session.put("userAuthority", userAuthority);
+			session.put("userAuthority", userAuthority);//原因？
 
 		} else {
 
@@ -92,6 +92,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		return result;
 
 	}
+
 
 	//フィールド変数に対応したgetterとsetterを定義
 	//Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
