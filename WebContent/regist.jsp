@@ -96,68 +96,41 @@ table {
 				<s:property value="errorMessage" escape="false" />
 			</s:if>
 			<table>
-				<s:form action="RegistConfirmAction">
+				<s:form>
 					<tr>
 						<td><label>名前（姓）</label></td>
-						<td><input type="text" name="userFamily_name" maxlength="10"
-							value="" required /></td>
-						<s:if test="errorMessage != ''">
-							<s:property value="errorMessage" escape="false" />
-						</s:if>
+						<td><input type="text" name="userFamilyName" maxlength="10" value="" required /></td>
 					</tr>
 					<tr>
 						<td><label>名前（名）</label></td>
-						<td><input type="text" name="userLast_name" maxlength="10"
-							value="" required /></td>
-						<s:if test="errorMessage != ''">
-							<s:property value="errorMessage" escape="false" />
-						</s:if>
+						<td><input type="text" name="userLastName" maxlength="10" value="" required /></td>
 					</tr>
 					<tr>
 						<td><label>カナ（姓）</label></td>
-						<td><input type="text" name="userFamily_name_kana"
-							maxlength="10" value="" required /></td>
-						<s:if test="errorMessage != ''">
-							<s:property value="errorMessage" escape="false" />
-						</s:if>
+						<td><input type="text" name="userFamilyName_kana" maxlength="10" value="" required /></td>
 					</tr>
 					<tr>
 						<td><label>カナ（名）</label></td>
-						<td><input type="text" name="userLast_name_kana"
-							maxlength="10" value="" required /></td>
-						<s:if test="errorMessage != ''">
-							<s:property value="errorMessage" escape="false" />
-						</s:if>
+						<td><input type="text" name="userLastNameKana" maxlength="10" value="" required /></td>
 					</tr>
 					<tr>
 						<td><label>メールアドレス</label></td>
-						<td><input type="text" name="userMail" maxlength="100"
-							value="" required /></td>
-						<s:if test="errorMessage != ''">
-							<s:property value="errorMessage" escape="false" />
-						</s:if>
+						<td><input type="text" name="userMail" maxlength="100" value="" required /></td>
 					</tr>
 					<tr>
 						<td><label>パスワード</label></td>
-						<td><input type="text" name="userPassword" maxlength="10"
-							value="" required /></td>
-						<s:if test="errorMessage != ''">
-							<s:property value="errorMessage" escape="false" />
-						</s:if>
+						<td><input type="text" name="userPassword" maxlength="10" value="" required /></td>
 					</tr>
 					<tr>
 						<td><label>性別</label></td>
-						<td><input type="radio" name="userGender" value="0"
-							checked="checked">男性 <input type="radio"
-							name="userGender" value="1">女性</td>
+						<td>
+						    <input type="radio" name="userGender" value="0" checked="checked">男性
+						    <input type="radio" name="userGender" value="1">女性
+						</td>
 					</tr>
 					<tr>
 						<td><label>郵便番号</label></td>
-						<td><input type="text" name="userPostal_code" maxlength="7"
-							value="" required /></td>
-						<s:if test="errorMessage != ''">
-							<s:property value="errorMessage" escape="false" />
-						</s:if>
+						<td><input type="text" name="userPostalCode" maxlength="7" value="" required /></td>
 					</tr>
 					<tr>
 						<td><label>住所（都道府県）</label></td>
@@ -211,38 +184,28 @@ table {
 								<option value="鹿児島県">鹿児島県</option>
 								<option value="沖縄県">沖縄県</option>
 						</select></td>
-						<s:if test="errorMessage != ''">
-							<s:property value="errorMessage" escape="false" />
-						</s:if>
 					</tr>
 					<tr>
 						<td><label>住所（市区町村）</label></td>
-						<td><input type="text" name="userAddress_1" maxlength="10"
-							value="" required /></td>
-						<s:if test="errorMessage != ''">
-							<s:property value="errorMessage" escape="false" />
-						</s:if>
+						<td><input type="text" name="userAddress1" maxlength="10" value="" required /></td>
 					</tr>
 					<tr>
 						<td><label>住所（番地）</label></td>
-						<td><input type="text" name="userAddress_2" maxlength="100"
-							value="" required /></td>
-						<s:if test="errorMessage != ''">
-							<s:property value="errorMessage" escape="false" />
-						</s:if>
+						<td><input type="text" name="userAddress2" maxlength="100" value="" required /></td>
 					</tr>
 					<tr>
 						<td><label>アカウント権限</label></td>
-						<td><input type="radio" name="userAuthority" value="0"
-							checked="checked">一般 <input type="radio"
-							name="userAuthority" value="1">管理者</td>
+						<td><input type="radio" name="userAuthority" value="0" checked="checked">一般
+						    <input type="radio" name="userAuthority" value="1">管理者
+						</td>
 					</tr>
 				</s:form>
 			</table>
-			<br> <a href='<s:url action="RegistConfirmAction" />'>確認する</a> <br>
+			<br>
+			    <a href='<s:url action="RegistConfirmAction" />'>確認する</a> <br>
 			<div>
-				<br> <span>前画面に戻る場合は</span> <a
-					href='<s:url action="HomeAction" />'>こちら</a> <br>
+			<br>
+		        <span>前画面に戻る場合は</span> <a href='<s:url action="HomeAction" />'>こちら</a> <br>
 			</div>
 		</div>
 		<p>フッター</p>
