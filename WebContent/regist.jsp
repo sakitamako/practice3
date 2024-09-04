@@ -202,10 +202,14 @@ table {
 				</s:form>
 			</table>
 			<br>
-			    <a href='<s:url action="RegistConfirmAction" />'>確認する</a> <br>
+			    <s:form action="RegistConfirmAction">
+			        <a href='<s:url action="RegistConfirmAction" />'>確認する</a> <br>
+			    </s:form>
 			<div>
 			<br>
-		        <span>前画面に戻る場合は</span> <a href='<s:url action="HomeAction" />'>こちら</a> <br>
+			    <s:form action="HomeAction">
+                    <span>前画面に戻る場合は</span> <a href='<s:url action="HomeAction" />'>こちら</a> <br>
+			    </s:form>
 			</div>
 		</div>
 		<p>フッター</p>
