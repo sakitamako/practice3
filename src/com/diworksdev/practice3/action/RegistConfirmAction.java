@@ -48,22 +48,21 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	//このクラスのみ 変数 変数名
 	private String errorMessage;
 
-	//新規ユーザー登録はボタンを押したらサクセスが返される、userCreate.jsp画面に遷移する
+	//新規ユーザー登録はボタンを押したらサクセスが返される、registConfirm.jsp画面に遷移する
 	//struts.xmlで指定しているから！
 	public String execute() {
 
 		String result = SUCCESS;
 
 		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
-		//loginUserIdと空文字・何も入ってない時の値が等しい場合、かつ、loginPasswordと空文字・何も入ってない時の値が等しい場合、かつ、userNameと空文字・何も入ってない時の値が等しい場合はelse文に行く！
+		//userFamilyNameと空文字・何も入ってない時の値が等しい場合、かつ、userLastNameと空文字・何も入ってない時の値が等しい場合、かつ、userFamilyNameKanaと空文字・何も入ってない時の値が等しい場合はelse文に行く！
 		//! aとbとcがtrueの場合処理は実行しない
 		//&& aとbとcが共にtrueの時に処理を実行する
-		//同じ意味
-		//if (loginUserId.equals("") == false && loginPassword.equals("") == false && userName.equals("") == false) {
+		//同じ意味 if (loginUserId.equals("") == false && loginPassword.equals("") == false && userName.equals("") == false) {
 		if (!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals("")) &&
 				!(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals("")) &&
-				!(userPostalCode.equals("")) && !(userPrefecture.equals("")) &&
-				!(userAddress1.equals("")) && !(userAddress2.equals(""))) {
+				!(userGender.equals("0")) && !(userPostalCode.equals("")) && !(userPrefecture.equals("")) &&
+				!(userAddress1.equals("")) && !(userAddress2.equals("")) && !(userAuthority.equals("0"))) {
 
 			//一旦外してみる
 			//&& !(userGender.equals(""))
@@ -76,12 +75,12 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			session.put("userLastNameKana", userLastNameKana);
 			session.put("userMail", userMail);
 			session.put("userPassword", userPassword);
-			//session.put("userGender", userGender);//原因？一旦外してみる
+			session.put("userGender", userGender); //原因？一旦外してみる
 			session.put("userPostalCode", userPostalCode);//原因？
 			session.put("userPrefecture", userPrefecture);
 			session.put("userAddress1", userAddress1);
 			session.put("userAddress2", userAddress2);
-			//session.put("userAuthority", userAuthority);//原因？一旦外してみる
+			session.put("userAuthority", userAuthority); //原因？一旦外してみる
 
 		} else {
 
@@ -92,10 +91,10 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		}
 
 		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
-		//もしpayが1と等しい場合
+		//もしuserGenderが0と等しい場合
 		if (userGender.equals("0")) {
 
-			//paymentに現金払いを代入
+			//男性代入
 			userGender = "男性";
 
 			//sessionに記憶
@@ -104,21 +103,19 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		//そうでない場合
 		} else {
 
-			//paymentにクレジットを代入
+			//女性代入
 			userGender = "女性";
 
 			//sessionに記憶
 			session.put("userGender", userGender);
 
-			result = SUCCESS;
-
 		}
 
 		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
-		//もしpayが1と等しい場合
+		//もしuserAuthorityが0と等しい場合
 		if (userAuthority.equals("0")) {
 
-			//paymentに現金払いを代入
+			//一般代入
 			userAuthority = "一般";
 
 			//sessionに記憶
@@ -127,15 +124,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		//そうでない場合
 		} else {
 
-			//paymentにクレジットを代入
+			//管理者代入
 			userAuthority = "管理者";
 
 			//sessionに記憶
 			session.put("userAuthority", userAuthority);
 
-			result = SUCCESS;
-
 		}
+
 		//上記追加したやつ
 
 		//戻り値
