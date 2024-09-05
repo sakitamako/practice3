@@ -85,9 +85,11 @@ table {
         <div id="header">
             <div id="pr"></div>
         </div>
+        <h1>アカウント登録画面</h1>
         <div id="main">
             <div id="top">
-                <p>UserCreate</p>
+                <p>ナビゲーションバー</p>
+                <h3>アカウント登録画面</h3>
             </div>
             <div>
                 <s:if test="errorMessage != ''">
@@ -96,25 +98,15 @@ table {
                 <table>
                     <s:form action="RegistConfirmAction">
                         <tr>
-                            <td>
-                                <label>ログインID：</label>
-                            </td>
-                            <td>
-                                <input type="text" name="userFamilyName" value="" />
-                            </td>
+                            <td><label>>名前（姓）</label></td>
+                            <td><input type="text" name="userFamilyName" maxlength="10" value="" required /></td>
                         </tr>
                         <tr>
-                            <td>
-                                <label>ログインPASS：</label>
-                            </td>
-                            <td>
-                                <input type="text" name="userLastName" value="" />
-                            </td>
+                            <td><label>名前（名）</label></td>
+                            <td><input type="text" name="userLastName" maxlength="10" value="" required /></td>
                         </tr>
                         <tr>
-                            <td>
-                                <label>ユーザー名：</label>
-                            </td>
+                            <td><label>カナ（姓）</label>
                             <td>
                                 <input type="text" name="userFamilyNameKana" value="" />
                             </td>
