@@ -98,7 +98,7 @@ table {
                 <table>
                     <s:form action="RegistConfirmAction">
                         <tr>
-                            <td><label>>名前（姓）</label></td>
+                            <td><label>名前（姓）</label></td>
                             <td><input type="text" name="userFamilyName" maxlength="10" value="" required /></td>
                         </tr>
                         <tr>
@@ -106,7 +106,9 @@ table {
                             <td><input type="text" name="userLastName" maxlength="10" value="" required /></td>
                         </tr>
                         <tr>
-                            <td><label>カナ（姓）</label>
+                            <td>
+                                <label>カナ（名）</label>
+                            </td>
                             <td>
                                 <input type="text" name="userFamilyNameKana" value="" />
                             </td>

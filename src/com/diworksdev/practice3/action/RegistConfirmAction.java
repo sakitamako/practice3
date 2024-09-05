@@ -61,7 +61,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		//同じ意味 if (loginUserId.equals("") == false && loginPassword.equals("") == false && userName.equals("") == false) {
 		System.out.println(userGender);
 		System.out.println(userAuthority);
-
+		System.out.println(userFamilyNameKana);
 		if (!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals(""))) {
 //		if (!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals("")) &&
 //				!(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals("")) &&
