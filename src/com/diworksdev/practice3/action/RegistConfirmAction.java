@@ -62,7 +62,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		System.out.println(userGender);
 		System.out.println(userAuthority);
 
-
+		if (!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals(""))) {
 //		if (!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals("")) &&
 //				!(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals("")) &&
 //				!(userGender.equals("0")) && !(userPostalCode.equals("")) && !(userPrefecture.equals("")) &&
@@ -73,9 +73,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //			//&& !(userAuthority.equals(""))
 //
 //			//sessionのなかに記憶する保存する
-//			session.put("userFamilyName", userFamilyName);
-//			session.put("userLastName", userLastName);
-//			session.put("userFamilyNameKana", userFamilyNameKana);
+			session.put("userFamilyName", userFamilyName);
+			session.put("userLastName", userLastName);
+			session.put("userFamilyNameKana", userFamilyNameKana);
 //			session.put("userLastNameKana", userLastNameKana);
 //			session.put("userMail", userMail);
 //			session.put("userPassword", userPassword);
@@ -86,13 +86,13 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //			session.put("userAddress2", userAddress2);
 //			session.put("userAuthority", userAuthority); //原因？一旦外してみる
 //
-//		} else {
+		} else {
 //
-//		setErrorMessage("未入力の項目があります。");
+		setErrorMessage("未入力の項目があります。");
 //
-//		result = ERROR;
+		result = ERROR;
 //
-//		}
+		}
 //
 //		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 //		//もしuserGenderが0と等しい場合
