@@ -110,7 +110,7 @@ table {
                                 <label>カナ（名）</label>
                             </td>
                             <td>
-                                <input type="text" name="userFamilyNameKana" value="" />
+                                <input type="text" name="userFamilyNameKana" maxlength="10" value="" required />
                             </td>
                         </tr>
                         <s:submit value="登録" />
