@@ -185,6 +185,20 @@ table {
                                 <option value="沖縄県">沖縄県</option>
                         </select></td>
                     </tr>
+                    <tr>
+                        <td><label>住所（市区町村）</label></td>
+                        <td><input type="text" name="userAddress1" maxlength="10" value="" required /></td>
+                    </tr>
+                    <tr>
+                        <td><label>住所（番地）</label></td>
+                        <td><input type="text" name="userAddress2" maxlength="100" value="" required /></td>
+                    </tr>
+                    <tr>
+                        <td><label>アカウント権限</label></td>
+                        <td><input type="radio" name="userAuthority" value="0" checked="checked">一般
+                            <input type="radio" name="userAuthority" value="1">管理者
+                        </td>
+                    </tr>
 					<s:submit value="登録" />
 				</s:form>
 			</table>
