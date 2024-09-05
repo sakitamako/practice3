@@ -63,9 +63,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		System.out.println(userAuthority);
 		System.out.println(userFamilyNameKana);
 		if (!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals("")) &&
-				!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals(""))) {
-//				!(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals("")) &&
-//				!(userGender.equals("0")) && !(userPostalCode.equals("")) && !(userPrefecture.equals("")) &&
+				!(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals("")) &&
+				!(userGender.equals("0")) && !(userPostalCode.equals("")) && !(userPrefecture.equals(""))) {
 //				!(userAddress1.equals("")) && !(userAddress2.equals("")) && !(userAuthority.equals("0"))) {
 //
 //			//一旦外してみる
@@ -79,9 +78,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			session.put("userLastNameKana", userLastNameKana);
 			session.put("userMail", userMail);
 			session.put("userPassword", userPassword);
-//			session.put("userGender", userGender); //原因？一旦外してみる
-//			session.put("userPostalCode", userPostalCode);//原因？
-//			session.put("userPrefecture", userPrefecture);
+			session.put("userGender", userGender); //原因？一旦外してみる
+			session.put("userPostalCode", userPostalCode);//原因？
+			session.put("userPrefecture", userPrefecture);
 //			session.put("userAddress1", userAddress1);
 //			session.put("userAddress2", userAddress2);
 //			session.put("userAuthority", userAuthority); //原因？一旦外してみる
