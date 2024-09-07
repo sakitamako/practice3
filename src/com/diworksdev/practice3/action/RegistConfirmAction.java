@@ -102,6 +102,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //
 //			//sessionに記憶
 			session.put("userGender", userGender);
+
+			result = SUCCESS;
 //
 //		//そうでない場合
 		} else {
@@ -111,6 +113,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //
 //			//sessionに記憶
 			session.put("userGender", userGender);
+
+			result = SUCCESS;
 //
 		}
 //
@@ -123,6 +127,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //
 //			//sessionに記憶
 			session.put("userAuthority", userAuthority);
+
+			result = SUCCESS;
 //
 //		//そうでない場合
 		} else {
@@ -132,6 +138,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //
 //			//sessionに記憶
 			session.put("userAuthority", userAuthority);
+
+			result = SUCCESS;
 //
 		}
 //
