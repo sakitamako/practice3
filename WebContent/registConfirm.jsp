@@ -95,7 +95,7 @@ table {
             </div>
             <div>
                 <table>
-                    <s:form>
+                    <s:form action="RegistCompleteAction">
                         <tr id="box">
                             <td>
                                 <label>名前（姓）</label>
@@ -149,7 +149,7 @@ table {
                                 <label>性別</label>
                             </td>
                             <td>
-                                <s:property value="userGender" escape="false" />
+                                <s:property value="userGender" escape="null" />
                             </td>
                         </tr>
                         <tr id="box">
@@ -165,7 +165,7 @@ table {
                                 <label>住所（都道府県）</label>
                             </td>
                             <td>
-                                <s:property value="userPrefecture" escape="false" />
+                                <s:property value="userPrefecture" escape="null" />
                             </td>
                         </tr>
                         <tr id="box">
@@ -189,15 +189,24 @@ table {
                                 <label>アカウント権限</label>
                             </td>
                             <td>
-                                <s:property value="userAuthority" escape="false" />
+                                <s:property value="userAuthority" escape="null" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <s:submit value="登録する" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <input type="button" value="前に戻る" onclick="submitAction('RegistConfirmAction')" />
+                            </td>
+                            <td>
+                                <input type="button" value="登録する" onclick="submitAction('RegistCompleteAction')" />
                             </td>
                         </tr>
                     </s:form>
                 </table>
-                <br>
-                    <a href='<s:url action="RegistAction" />'>前に戻る</a>
-                    <a href='<s:url action="RegistCompleteAction" />'>登録する</a>
-                <br>
             </div>
             <p>フッター</p>
         </div>

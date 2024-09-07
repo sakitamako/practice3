@@ -135,7 +135,6 @@ table {
                     <tr>
                         <td><label>住所（都道府県）</label></td>
                         <td><select name="userPrefecture">
-                                <option value=""></option>
                                 <option value="北海道">北海道</option>
                                 <option value="青森県">青森県</option>
                                 <option value="岩手県">岩手県</option>
