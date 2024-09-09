@@ -4,7 +4,6 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-import com.diworksdev.practice3.dto.RegistDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 //ユーザー登録機能
@@ -53,13 +52,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	//struts.xmlで指定しているから！
 	public String execute() {
 
-		//②LoginDAOとLoginDTOとbuyItemDAOのインスタンス化
-		RegistDTO RegistDTO = new RegistDTO();
-
 		String result = SUCCESS;
-
-		//Map を使った場合には、put()で要素を記憶できる
-		session.put("loginUser", RegistDTO);
 
 		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 		//userFamilyNameと空文字・何も入ってない時の値が等しい場合、かつ、userLastNameと空文字・何も入ってない時の値が等しい場合、かつ、userFamilyNameKanaと空文字・何も入ってない時の値が等しい場合はelse文に行く！
@@ -69,7 +62,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		System.out.println(userGender);
 		System.out.println(userAuthority);
 		System.out.println(userFamilyNameKana);
-
 		if (!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals("")) &&
 				!(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals("")) &&
 				!(userGender.equals("0")) && !(userPostalCode.equals("")) && !(userPrefecture.equals("")) &&
@@ -80,18 +72,18 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //			//&& !(userAuthority.equals(""))
 //
 //			//sessionのなかに記憶する保存する
-			session.put("userFamilyName", RegistDTO.getUserFamilyName());
-			session.put("userLastName", RegistDTO.getUserLastName());
-			session.put("userFamilyNameKana", RegistDTO.getUserFamilyNameKana());
-			session.put("userLastNameKana", RegistDTO.getUserLastNameKana());
-			session.put("userMail", RegistDTO.getUserMail());
-			session.put("userPassword", RegistDTO.getUserPassword());
-			session.put("userGender", RegistDTO.getUserGender()); //原因？一旦外してみる
-			session.put("userPostalCode", RegistDTO.getUserPostalCode());//原因？
-			session.put("userPrefecture", RegistDTO.getUserPrefecture());
-			session.put("userAddress1", RegistDTO.getUserAddress1());
-			session.put("userAddress2", RegistDTO.getUserAddress2());
-			session.put("userAuthority", RegistDTO.getUserAuthority()); //原因？一旦外してみる
+			session.put("userFamilyName", userFamilyName);
+			session.put("userLastName", userLastName);
+			session.put("userFamilyNameKana", userFamilyNameKana);
+			session.put("userLastNameKana", userLastNameKana);
+			session.put("userMail", userMail);
+			session.put("userPassword", userPassword);
+			session.put("userGender", userGender); //原因？一旦外してみる
+			session.put("userPostalCode", userPostalCode);//原因？
+			session.put("userPrefecture", userPrefecture);
+			session.put("userAddress1", userAddress1);
+			session.put("userAddress2", userAddress2);
+			session.put("userAuthority", userAuthority); //原因？一旦外してみる
 
 		} else {
 //
