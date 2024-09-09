@@ -2,8 +2,10 @@ package com.diworksdev.practice3.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import com.diworksdev.practice3.dto.RegistDTO;
 import com.diworksdev.practice3.util.DBConnector;
 import com.diworksdev.practice3.util.DateUtil;
 
@@ -23,6 +25,10 @@ public class RegistCompleteDAO {
 	//このクラスのみ 変数 変数名 インスタンス化（コピーして代入）
 	private DateUtil dateUtil = new DateUtil();
 
+	//LoginDTOインスタンス化
+	//DTOと会話するためのコード
+	RegistDTO RegistDTO = new RegistDTO();
+
 	//このクラスのみ 変数 変数名
 	//④sql文を書く：値は ? を入れておく（どんな値でも使いまわしできるようにするため
 	/*データベースのテーブル上にデータを登録する際に使用されるステートメントの構文=INSERT INTO
@@ -34,7 +40,7 @@ public class RegistCompleteDAO {
 			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	//全てのクラス 変数 変数名の中の引数を throws=例外を意図的に起こすことが出来る処理のこと。
-	public void regist(String userFamilyName, String luserLastName, String userFamilyNameKana,
+	public void regist(String userFamilyName, String userLastName, String userFamilyNameKana,
 			String userLastNameKana, String userMail, String userPassword,
 			String userGender, String userPostalCode, String userPrefecture,
 			String userAddress1, String userAddress2, String userAuthority) throws SQLException {
@@ -50,7 +56,7 @@ public class RegistCompleteDAO {
 
 			//⑥sql文の?に入れる値をsetする
 			preparedStatement.setString(1, userFamilyName);
-			preparedStatement.setString(2, luserLastName);
+			preparedStatement.setString(2, userLastName);
 			preparedStatement.setString(3, userFamilyNameKana);
 			preparedStatement.setString(4, userLastNameKana);
 			preparedStatement.setString(5, userMail);
@@ -63,6 +69,30 @@ public class RegistCompleteDAO {
 			preparedStatement.setString(12, userAuthority);
 			preparedStatement.setString(13, dateUtil.getDate());
 			preparedStatement.execute();
+
+			//⑦executeQuery()/executeUpdate()で実行
+			//sql文の値をセットしたものがresultsetに入ってる
+			ResultSet resultSet = preparedStatement.executeQuery();
+
+			//下に1行ずらすこと
+			//データが存在していれば戻り値を true で返す。存在しなければ falseで返す
+			if (resultSet.next()) {
+
+				//もしresultsetに入っている値が存在していればDTOに格納する
+				RegistDTO.setUserFamilyName(resultSet.getString("family_name"));
+				RegistDTO.setUserLastName(resultSet.getString("last_name"));
+				RegistDTO.setUserFamilyNameKana(resultSet.getString("family_name_kana"));
+				RegistDTO.setUserLastNameKana(resultSet.getString("last_name_kana"));
+				RegistDTO.setUserMail(resultSet.getString("mail"));
+				RegistDTO.setUserPassword(resultSet.getString("password"));
+				RegistDTO.setUserGender(resultSet.getString("gender"));
+				RegistDTO.setUserPostalCode(resultSet.getString("postal_code"));
+				RegistDTO.setUserPrefecture(resultSet.getString("prefecture"));
+				RegistDTO.setUserAddress1(resultSet.getString("address_1"));
+				RegistDTO.setUserAddress2(resultSet.getString("address_2"));
+				RegistDTO.setUserAuthority(resultSet.getString("authority"));
+
+			}
 
 		//処理中にSQL関連のエラーが発生した際に実行する処理
 		//tryの中でエラーが発生した場合、catchが受け取り
