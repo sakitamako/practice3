@@ -1,6 +1,7 @@
 package com.diworksdev.practice3.action;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -18,6 +19,24 @@ import com.opensymphony.xwork2.ActionSupport;
 //LoginAciton（子クラス） extends（継承） ActionSupport（親クラス）
 public class RegistCompleteAction extends ActionSupport implements SessionAware {
 
+	//Map<String, Object>=キーを値にマッピングするオブジェクト。
+	//マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
+    //このインタフェースは、インタフェースというよりむしろ完全に抽象クラスであったDictionaryクラスに代わるものです
+	//全てのクラス 変数 変数名
+	public Map<String, Object> session;
+
+	//②DTOとDAOのインスタンス化（コピーして値を代入）
+	private RegistCompleteDAO RegistCompleteDAO = new RegistCompleteDAO();
+
+	//Listインタフェースのサイズ変更可能な配列の実装です。
+	//リストのオプションの操作をすべて実装し、nullを含むすべての要素を許容します。
+	//このクラスは、Listインタフェースを実装するほか、リストを格納するために内部的に使われる配列のサイズを操作するメソッドを提供します
+	//ArrayList とは、 Listインタフェース を実装した コレクションクラス である。
+	//ArrayList は、 Array という名にあるように配列のような感覚で扱うことができる。
+	//配列 には格納できる 要素数が決まっている が、 ArrayList は 要素数は決まっていない 。
+	//ArrayList は、 プリミティブ型（int, booleanなど） を入れられない。
+	private ArrayList<RegistDTO> RegistList = new ArrayList<RegistDTO>();
+
 	//フィールド変数
 	//JSPから受け取る値
 	//※必ずJSPでの定義と同じ名前にする
@@ -34,45 +53,35 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	private String userAddress2;
 	private String userAuthority;
 
-	//Map<String, Object>=キーを値にマッピングするオブジェクト。
-	//マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
-    //このインタフェースは、インタフェースというよりむしろ完全に抽象クラスであったDictionaryクラスに代わるものです
-	//全てのクラス 変数 変数名
-	public Map<String, Object> session;
 
 	//全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
 	public String execute() throws SQLException {
 
-		String result = ERROR;
-
-		//②userCreateCompleteDAOのインスタンス化（コピーして代入）
-		RegistCompleteDAO RegistCompleteDAO = new RegistCompleteDAO();
-		RegistDTO RegistDTO = new RegistDTO();
-
-
 		//JSPから送られてきた情報を引数として、
 		//LoginDAOクラスのgetLoginUserInfoメソッドを呼び出す
 		//その後、DAOで取得した結果をLoginDTOに代入する
-		RegistDTO = RegistCompleteDAO.getRegist(userFamilyName, userLastName, userFamilyNameKana,
+		RegistCompleteDAO.getRegist(userFamilyName, userLastName, userFamilyNameKana,
 				userLastNameKana, userMail, userPassword, userGender, userPostalCode, userPrefecture,
 				userAddress1, userAddress2, userAuthority);
 
 		//Map を使った場合には、put()で要素を記憶できる
-		session.put("regist", RegistDTO);
+		session.put("regist", RegistList);
 
 		//aとbが共にtrueの時に処理を実行するそうでない場合はエラー
-		if (this.userFamilyName.equals(RegistDTO.getUserFamilyName()) && this.userLastName.equals(RegistDTO.getUserLastName()) &&
-				this.userFamilyNameKana.equals(RegistDTO.getUserFamilyNameKana()) && this.userLastNameKana.equals(RegistDTO.getUserLastNameKana()) &&
-				this.userMail.equals(RegistDTO.getUserMail()) && this.userPassword.equals(RegistDTO.getUserPassword()) &&
-				this.userGender.equals(RegistDTO.getUserGender()) && this.userPostalCode.equals(RegistDTO.getUserPostalCode()) &&
-				this.userPrefecture.equals(RegistDTO.getUserPrefecture()) && this.userAddress1.equals(RegistDTO.getUserAddress1()) &&
-				this.userAddress2.equals(RegistDTO.getUserAddress2()) && this.userAuthority.equals(RegistDTO.getUserAuthority())) {
+//		if (this.userFamilyName.equals(RegistDTO.getUserFamilyName()) && this.userLastName.equals(RegistDTO.getUserLastName()) &&
+//				this.userFamilyNameKana.equals(RegistDTO.getUserFamilyNameKana()) && this.userLastNameKana.equals(RegistDTO.getUserLastNameKana()) &&
+//				this.userMail.equals(RegistDTO.getUserMail()) && this.userPassword.equals(RegistDTO.getUserPassword()) &&
+//				this.userGender.equals(RegistDTO.getUserGender()) && this.userPostalCode.equals(RegistDTO.getUserPostalCode()) &&
+//				this.userPrefecture.equals(RegistDTO.getUserPrefecture()) && this.userAddress1.equals(RegistDTO.getUserAddress1()) &&
+//				this.userAddress2.equals(RegistDTO.getUserAddress2()) && this.userAuthority.equals(RegistDTO.getUserAuthority())) {
 
-			result = SUCCESS;
+			//変数・文字列 result=SUCCESS
+			//userCreateComplete.jspに遷移する
+			String result = SUCCESS;
 
-		} else {
+			return result;
 
-			result = ERROR;
+
 		}
 
 		//DAOを経由して入力された内容をDBに登録します。
@@ -82,11 +91,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 //				session.get("userGender").toString(), session.get("userPostalCode").toString(), session.get("userPrefecture").toString(),
 //				session.get("userAddress1").toString(), session.get("userAddress2").toString(), session.get("userAuthority").toString());
 
-		//戻り値
-		//resultに入った値の処理結果をstrutsが取得してuserCreateComplete.jspに遷移する
-		return result;
 
-	}
 
 	//フィールド変数に対応したgetterとsetterを定義
 	//Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す

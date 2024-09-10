@@ -4,6 +4,8 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
+import com.diworksdev.practice3.dao.RegistCompleteDAO;
+import com.diworksdev.practice3.dto.RegistDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 //ユーザー登録機能
@@ -44,6 +46,11 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
     //このインタフェースは、インタフェースというよりむしろ完全に抽象クラスであったDictionaryクラスに代わるものです
 	//全てのクラス 変数 変数名
 	public Map<String, Object> session;
+
+
+	//②userCreateCompleteDAOのインスタンス化（コピーして代入
+	RegistCompleteDAO RegistCompleteDAO = new RegistCompleteDAO();
+	RegistDTO RegistDTO = new RegistDTO();
 
 	//このクラスのみ 変数 変数名
 	private String errorMessage;
