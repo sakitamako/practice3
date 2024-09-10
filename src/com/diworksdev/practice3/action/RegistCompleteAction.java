@@ -57,12 +57,16 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	//全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
 	public String execute() throws SQLException {
 
+		RegistList = RegistCompleteDAO.getRegist(userFamilyName, userLastName, userFamilyNameKana,
+				userLastNameKana, userMail, userPassword, userGender, userPostalCode, userPrefecture,
+				userAddress1, userAddress2, userAuthority);
+
 		//JSPから送られてきた情報を引数として、
 		//LoginDAOクラスのgetLoginUserInfoメソッドを呼び出す
 		//その後、DAOで取得した結果をLoginDTOに代入する
-		RegistCompleteDAO.getRegist(userFamilyName, userLastName, userFamilyNameKana,
-				userLastNameKana, userMail, userPassword, userGender, userPostalCode, userPrefecture,
-				userAddress1, userAddress2, userAuthority);
+//		 RegistCompleteDAO.getRegist(userFamilyName, userLastName, userFamilyNameKana,
+//				userLastNameKana, userMail, userPassword, userGender, userPostalCode, userPrefecture,
+//				userAddress1, userAddress2, userAuthority);
 
 		//Map を使った場合には、put()で要素を記憶できる
 		session.put("regist", RegistList);
