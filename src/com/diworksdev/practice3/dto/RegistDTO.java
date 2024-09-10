@@ -21,8 +21,14 @@ public class RegistDTO {
 	private String userAddress2;
 	private String userAuthority;
 
+
 	//・getterは「フィールド値を返却する事だけ」
 	//・setterは「値を更新する事だけ」
+
+	//このクラスのみ  trueかfalseのデータが必ず入ることが決まっているデータ型
+	//boolean型を使う主な場面は、if文やfor文などの制御文での条件分岐のとき
+	//値のみを取れる論理データ型 変数名＝false
+	private boolean delete_flag = false;
 
 	//フィールド変数に対応したgetterとsetterを定義
 	//Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
@@ -189,6 +195,19 @@ public class RegistDTO {
 	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
 	public void setUserAuthority(String userAuthority) {
 		this.userAuthority = userAuthority;
+
+	}
+
+	//Actionクラスから呼び出され、loginFlgフィールドの値をActionに渡す
+	public boolean getDelete_flag() {
+		return delete_flag;
+
+	}
+
+	//フィールド変数に対応したgetterとsetterを定義
+	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のDTO loginFlgフィールドに格納
+	public void setDelete_flag(boolean delete_flag) {
+		this.delete_flag = delete_flag;
 
 	}
 

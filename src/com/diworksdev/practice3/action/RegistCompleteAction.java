@@ -1,7 +1,6 @@
 package com.diworksdev.practice3.action;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -35,7 +34,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	//ArrayList は、 Array という名にあるように配列のような感覚で扱うことができる。
 	//配列 には格納できる 要素数が決まっている が、 ArrayList は 要素数は決まっていない 。
 	//ArrayList は、 プリミティブ型（int, booleanなど） を入れられない。
-	private ArrayList<RegistDTO> RegistList = new ArrayList<RegistDTO>();
+	private RegistDTO RegistDTO = new RegistDTO();
 
 	//フィールド変数
 	//JSPから受け取る値
@@ -57,7 +56,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	//全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
 	public String execute() throws SQLException {
 
-		RegistList = RegistCompleteDAO.getRegist(userFamilyName, userLastName, userFamilyNameKana,
+		RegistDTO = RegistCompleteDAO.getRegist(userFamilyName, userLastName, userFamilyNameKana,
 				userLastNameKana, userMail, userPassword, userGender, userPostalCode, userPrefecture,
 				userAddress1, userAddress2, userAuthority);
 
@@ -69,7 +68,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 //				userAddress1, userAddress2, userAuthority);
 
 		//Map を使った場合には、put()で要素を記憶できる
-		session.put("regist", RegistList);
+		session.put("regist", RegistDTO);
 
 		//aとbが共にtrueの時に処理を実行するそうでない場合はエラー
 //		if (this.userFamilyName.equals(RegistDTO.getUserFamilyName()) && this.userLastName.equals(RegistDTO.getUserLastName()) &&

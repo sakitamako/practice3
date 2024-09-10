@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import com.diworksdev.practice3.dto.RegistDTO;
 import com.diworksdev.practice3.util.DBConnector;
@@ -26,18 +25,18 @@ public class RegistCompleteDAO {
 	//このクラスのみ 変数 変数名 インスタンス化（コピーして代入）
 	private DateUtil dateUtil = new DateUtil();
 
+	//DTOインスタンス化
+	//DTOと会話するためのコード
+	private RegistDTO RegistDTO = new RegistDTO();
+
 	//DBから購入履歴を取得するためのメソッド
 	//①クラス、メソッドの定義
 	//DTO型を最後に呼び出し元に渡すので、DTO型を戻り値にしたメソッドを作る
 	//Actionクラスの値を引数として受け取る,throws=例外を意図的に起こすことが出来る処理のこと。
-	public ArrayList<RegistDTO> getRegist(String userFamilyName, String userLastName, String userFamilyNameKana,
+	public RegistDTO getRegist(String userFamilyName, String userLastName, String userFamilyNameKana,
 			String userLastNameKana, String userMail, String userPassword,
 			String userGender, String userPostalCode, String userPrefecture,
 			String userAddress1, String userAddress2, String userAuthority) throws SQLException {
-
-		//DTOインスタンス化
-		//DTOと会話するためのコード
-		ArrayList<RegistDTO> RegistDTO = new ArrayList<RegistDTO>();
 
 		//このクラスのみ 変数 変数名
 		//④sql文を書く：値は ? を入れておく（どんな値でも使いまわしできるようにするため
@@ -82,28 +81,35 @@ public class RegistCompleteDAO {
 			//データが存在していれば戻り値を true で返す。存在しなければ falseで返す
 			while (resultSet.next()) {
 
-				//LoginDTOインスタンス化
-				//DTOと会話するためのコード
-				RegistDTO registDTO = new RegistDTO();
+//				//LoginDTOインスタンス化
+//				//DTOと会話するためのコード
+//				RegistDTO registDTO = new RegistDTO();
 
 				//もしresultsetに入っている値が存在していればDTOに格納する
-				registDTO.setUserFamilyName(resultSet.getString("family_name"));
-				registDTO.setUserLastName(resultSet.getString("last_name"));
-				registDTO.setUserFamilyNameKana(resultSet.getString("family_name_kana"));
-				registDTO.setUserLastNameKana(resultSet.getString("last_name_kana"));
-				registDTO.setUserMail(resultSet.getString("mail"));
-				registDTO.setUserPassword(resultSet.getString("password"));
-				registDTO.setUserGender(resultSet.getString("gender"));
-				registDTO.setUserPostalCode(resultSet.getString("postal_code"));
-				registDTO.setUserPrefecture(resultSet.getString("prefecture"));
-				registDTO.setUserAddress1(resultSet.getString("address_1"));
-				registDTO.setUserAddress2(resultSet.getString("address_2"));
-				registDTO.setUserAuthority(resultSet.getString("authority"));
+				RegistDTO.setUserFamilyName(resultSet.getString("family_name"));
+				RegistDTO.setUserLastName(resultSet.getString("last_name"));
+				RegistDTO.setUserFamilyNameKana(resultSet.getString("family_name_kana"));
+				RegistDTO.setUserLastNameKana(resultSet.getString("last_name_kana"));
+				RegistDTO.setUserMail(resultSet.getString("mail"));
+				RegistDTO.setUserPassword(resultSet.getString("password"));
+				RegistDTO.setUserGender(resultSet.getString("gender"));
+				RegistDTO.setUserPostalCode(resultSet.getString("postal_code"));
+				RegistDTO.setUserPrefecture(resultSet.getString("prefecture"));
+				RegistDTO.setUserAddress1(resultSet.getString("address_1"));
+				RegistDTO.setUserAddress2(resultSet.getString("address_2"));
+				RegistDTO.setUserAuthority(resultSet.getString("authority"));
 
-				//dtoに記憶する
-				RegistDTO.addAll(RegistDTO);
+				//もしresultsetに入っている値(“login_id”) と nullが等しくない場合
+				//DBに保管されているIDとresultsetに入っているIDが等しくない場合はtrue!
+				if (resultSet.getString("Regist") != null) {
+
+					//DTOにtrueを格納する
+					RegistDTO.setDelete_flag(true);
+
+				}
 
 			}
+
 
 		//処理中にSQL関連のエラーが発生した際に実行する処理
 		//tryの中でエラーが発生した場合、catchが受け取り
