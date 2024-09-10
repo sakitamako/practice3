@@ -70,6 +70,13 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		//Map を使った場合には、put()で要素を記憶できる
 		session.put("regist", RegistDTO);
 
+		//DAOを経由して入力された内容をDBに登録します。
+		//DAOのcreateUserに記憶しているid,pass,nameを取得してテキストで表す文字列を返す
+//		RegistCompleteDAO.getRegist(session.get("userFamilyName").toString(), session.get("userLastName").toString(), session.get("userFamilyNameKana").toString(),
+//				session.get("userLastNameKana").toString(), session.get("userMail").toString(), session.get("userPassword").toString(),
+//				session.get("userGender").toString(), session.get("userPostalCode").toString(), session.get("userPrefecture").toString(),
+//				session.get("userAddress1").toString(), session.get("userAddress2").toString(), session.get("userAuthority").toString());
+
 		//aとbが共にtrueの時に処理を実行するそうでない場合はエラー
 //		if (this.userFamilyName.equals(RegistDTO.getUserFamilyName()) && this.userLastName.equals(RegistDTO.getUserLastName()) &&
 //				this.userFamilyNameKana.equals(RegistDTO.getUserFamilyNameKana()) && this.userLastNameKana.equals(RegistDTO.getUserLastNameKana()) &&
@@ -86,15 +93,6 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 
 		}
-
-		//DAOを経由して入力された内容をDBに登録します。
-		//DAOのcreateUserに記憶しているid,pass,nameを取得してテキストで表す文字列を返す
-//		RegistCompleteDAO.getRegist(session.get("userFamilyName").toString(), session.get("userLastName").toString(), session.get("userFamilyNameKana").toString(),
-//				session.get("userLastNameKana").toString(), session.get("userMail").toString(), session.get("userPassword").toString(),
-//				session.get("userGender").toString(), session.get("userPostalCode").toString(), session.get("userPrefecture").toString(),
-//				session.get("userAddress1").toString(), session.get("userAddress2").toString(), session.get("userAuthority").toString());
-
-
 
 	//フィールド変数に対応したgetterとsetterを定義
 	//Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
