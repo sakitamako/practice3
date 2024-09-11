@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.diworksdev.practice3.dto.RegistDTO;
+import com.diworksdev.practice3.dto.HomeDTO;
 import com.diworksdev.practice3.util.DBConnector;
 import com.diworksdev.practice3.util.DateUtil;
 
@@ -27,13 +27,13 @@ public class RegistCompleteDAO {
 
 	//DTOインスタンス化
 	//DTOと会話するためのコード
-	private RegistDTO RegistDTO = new RegistDTO();
+	private HomeDTO HomeDTO = new HomeDTO();
 
 	//DBから購入履歴を取得するためのメソッド
 	//①クラス、メソッドの定義
 	//DTO型を最後に呼び出し元に渡すので、DTO型を戻り値にしたメソッドを作る
 	//Actionクラスの値を引数として受け取る,throws=例外を意図的に起こすことが出来る処理のこと。
-	public RegistDTO getRegist(String userFamilyName, String userLastName, String userFamilyNameKana,
+	public HomeDTO getRegist(String userFamilyName, String userLastName, String userFamilyNameKana,
 			String userLastNameKana, String userMail, String userPassword,
 			String userGender, String userPostalCode, String userPrefecture,
 			String userAddress1, String userAddress2, String userAuthority) throws SQLException {
@@ -86,25 +86,25 @@ public class RegistCompleteDAO {
 //				RegistDTO registDTO = new RegistDTO();
 
 				//もしresultsetに入っている値が存在していればDTOに格納する
-				RegistDTO.setUserFamilyName(resultSet.getString("family_name"));
-				RegistDTO.setUserLastName(resultSet.getString("last_name"));
-				RegistDTO.setUserFamilyNameKana(resultSet.getString("family_name_kana"));
-				RegistDTO.setUserLastNameKana(resultSet.getString("last_name_kana"));
-				RegistDTO.setUserMail(resultSet.getString("mail"));
-				RegistDTO.setUserPassword(resultSet.getString("password"));
-				RegistDTO.setUserGender(resultSet.getString("gender"));
-				RegistDTO.setUserPostalCode(resultSet.getString("postal_code"));
-				RegistDTO.setUserPrefecture(resultSet.getString("prefecture"));
-				RegistDTO.setUserAddress1(resultSet.getString("address_1"));
-				RegistDTO.setUserAddress2(resultSet.getString("address_2"));
-				RegistDTO.setUserAuthority(resultSet.getString("authority"));
+				HomeDTO.setUserFamilyName(resultSet.getString("family_name"));
+				HomeDTO.setUserLastName(resultSet.getString("last_name"));
+				HomeDTO.setUserFamilyNameKana(resultSet.getString("family_name_kana"));
+				HomeDTO.setUserLastNameKana(resultSet.getString("last_name_kana"));
+				HomeDTO.setUserMail(resultSet.getString("mail"));
+				HomeDTO.setUserPassword(resultSet.getString("password"));
+				HomeDTO.setUserGender(resultSet.getString("gender"));
+				HomeDTO.setUserPostalCode(resultSet.getString("postal_code"));
+				HomeDTO.setUserPrefecture(resultSet.getString("prefecture"));
+				HomeDTO.setUserAddress1(resultSet.getString("address_1"));
+				HomeDTO.setUserAddress2(resultSet.getString("address_2"));
+				HomeDTO.setUserAuthority(resultSet.getString("authority"));
 
 				//もしresultsetに入っている値(“login_id”) と nullが等しくない場合
 				//DBに保管されているIDとresultsetに入っているIDが等しくない場合はtrue!
 				if (resultSet.getString("Regist") != null) {
 
 					//DTOにtrueを格納する
-					RegistDTO.setDelete_flag(true);
+					HomeDTO.setDelete_flag(true);
 
 				}
 
@@ -128,7 +128,7 @@ public class RegistCompleteDAO {
 			connection.close();
 
 		}
-		return RegistDTO;
+		return HomeDTO;
 
 	}
 

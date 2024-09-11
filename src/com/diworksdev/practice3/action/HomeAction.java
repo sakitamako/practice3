@@ -2,6 +2,7 @@ package com.diworksdev.practice3.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
+
 //ログイン認証機能
 
 //Actionクラスでは、画面から送られてきたリクエストを取得する

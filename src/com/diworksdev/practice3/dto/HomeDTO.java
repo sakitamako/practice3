@@ -3,7 +3,7 @@ package com.diworksdev.practice3.dto;
 //ログイン認証機能
 
 //DTOクラスは、DAOがDBから取得した値をActionへ戻す時、値を格納するのに利用されるファイル
-public class RegistDTO {
+public class HomeDTO {
 
 	//フィールド変数
 	//JSPから受け取る値
