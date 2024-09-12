@@ -1,4 +1,4 @@
-package com.diworksdev.practice3.dto;
+/*package com.diworksdev.practice3.dto;
 
 //ログイン認証機能
 
@@ -212,3 +212,5 @@ public class HomeDTO {
 	}
 
 }
+
+*/

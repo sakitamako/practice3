@@ -6,7 +6,7 @@ import java.util.Map;
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.diworksdev.practice3.dao.RegistCompleteDAO;
-import com.diworksdev.practice3.dto.HomeDTO;
+//import com.diworksdev.practice3.dto.HomeDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 //ユーザー登録機能
@@ -17,24 +17,6 @@ import com.opensymphony.xwork2.ActionSupport;
 //（Actionクラスは基本的にこのクラスを継承）
 //LoginAciton（子クラス） extends（継承） ActionSupport（親クラス）
 public class RegistCompleteAction extends ActionSupport implements SessionAware {
-
-	//Map<String, Object>=キーを値にマッピングするオブジェクト。
-	//マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
-    //このインタフェースは、インタフェースというよりむしろ完全に抽象クラスであったDictionaryクラスに代わるものです
-	//全てのクラス 変数 変数名
-	public Map<String, Object> session;
-
-	//②DTOとDAOのインスタンス化（コピーして値を代入）
-	private RegistCompleteDAO RegistCompleteDAO = new RegistCompleteDAO();
-
-	//Listインタフェースのサイズ変更可能な配列の実装です。
-	//リストのオプションの操作をすべて実装し、nullを含むすべての要素を許容します。
-	//このクラスは、Listインタフェースを実装するほか、リストを格納するために内部的に使われる配列のサイズを操作するメソッドを提供します
-	//ArrayList とは、 Listインタフェース を実装した コレクションクラス である。
-	//ArrayList は、 Array という名にあるように配列のような感覚で扱うことができる。
-	//配列 には格納できる 要素数が決まっている が、 ArrayList は 要素数は決まっていない 。
-	//ArrayList は、 プリミティブ型（int, booleanなど） を入れられない。
-	private HomeDTO HomeDTO = new HomeDTO();
 
 	//フィールド変数
 	//JSPから受け取る値
@@ -52,26 +34,58 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	private String userAddress2;
 	private String userAuthority;
 
+	//Map<String, Object>=キーを値にマッピングするオブジェクト。
+	//マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
+    //このインタフェースは、インタフェースというよりむしろ完全に抽象クラスであったDictionaryクラスに代わるものです
+	//全てのクラス 変数 変数名
+	private Map<String, Object> session;
+
+	//Listインタフェースのサイズ変更可能な配列の実装です。
+	//リストのオプションの操作をすべて実装し、nullを含むすべての要素を許容します。
+	//このクラスは、Listインタフェースを実装するほか、リストを格納するために内部的に使われる配列のサイズを操作するメソッドを提供します
+	//ArrayList とは、 Listインタフェース を実装した コレクションクラス である。
+	//ArrayList は、 Array という名にあるように配列のような感覚で扱うことができる。
+	//配列 には格納できる 要素数が決まっている が、 ArrayList は 要素数は決まっていない 。
+	//ArrayList は、 プリミティブ型（int, booleanなど） を入れられない。
+//	private HomeDTO HomeDTO = new HomeDTO();
+
 //	private String result;
 
 
 	//全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
 	public String execute() throws SQLException {
 
+		//②DTOとDAOのインスタンス化（コピーして値を代入）
+		RegistCompleteDAO RegistCompleteDAO = new RegistCompleteDAO();
+
+		RegistCompleteDAO.Regist(userFamilyName, userLastName, userFamilyNameKana,
+				userLastNameKana, userMail, userPassword, userGender, userPostalCode, userPrefecture,
+				userAddress1, userAddress2, userAuthority);
+
 		//DAOを経由して入力された内容をDBに登録します。
 		//DAOのcreateUserに記憶しているid,pass,nameを取得してテキストで表す文字列を返す
-//		RegistCompleteDAO.getRegist(session.get("userFamilyName").toString(), session.get("userLastName").toString(), session.get("userFamilyNameKana").toString(),
+//		System.out.println();
+//		RegistCompleteDAO.Regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(), session.get("userFamilyNameKana").toString(),
 //				session.get("userLastNameKana").toString(), session.get("userMail").toString(), session.get("userPassword").toString(),
 //				session.get("userGender").toString(), session.get("userPostalCode").toString(), session.get("userPrefecture").toString(),
 //				session.get("userAddress1").toString(), session.get("userAddress2").toString(), session.get("userAuthority").toString());
 
-		setHomeDTO(RegistCompleteDAO.getRegist(userFamilyName, userLastName, userFamilyNameKana,
-				userLastNameKana, userMail, userPassword, userGender, userPostalCode, userPrefecture,
-				userAddress1, userAddress2, userAuthority));
+		String result = SUCCESS;
 
-		System.out.println(userFamilyNameKana);
-		System.out.println(userGender);
-		System.out.println(userAuthority);
+
+		//戻り値
+		//retに入った値を呼び出し元であるActionクラスに渡す
+		return result;
+
+	}
+
+//		RegistCompleteDAO.Regist(userFamilyName, userLastName, userFamilyNameKana,
+//				userLastNameKana, userMail, userPassword, userGender, userPostalCode, userPrefecture,
+//				userAddress1, userAddress2, userAuthority);
+
+//		System.out.println(userFamilyNameKana);
+//		System.out.println(userGender);
+//		System.out.println(userAuthority);
 
 		//JSPから送られてきた情報を引数として、
 		//LoginDAOクラスのgetLoginUserInfoメソッドを呼び出す
@@ -100,13 +114,13 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 		//変数・文字列 result=SUCCESS
 		//userCreateComplete.jspに遷移する
-		String result = SUCCESS;
+//		String result = SUCCESS;
 
 		//戻り値
 		//resultに入った値の処理結果をstrutsが取得してuserCreateComplete.jspに遷移する
-		return result;
+//		return result;
 
-	}
+//	}
 
 
 	//フィールド変数に対応したgetterとsetterを定義
@@ -277,6 +291,14 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
+
+	//フィールド変数に対応したgetterとsetterを定義
+	//Actionクラスから呼び出され、sessionフィールドの値をActionに渡す
+	public Map<String, Object> getSession() {
+		return session;
+
+	}
+
 	//フィールド変数に対応したgetterとsetterを定義
 	//全てのクラスのsetの値を自身のsessionフィールドに代入して格納
 	@Override
@@ -285,6 +307,9 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
+}
+
+/*
 
 	public HomeDTO getHomeDTO() {
 		return HomeDTO;
@@ -295,7 +320,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		HomeDTO = homeDTO;
 	}
 
-/*
+
 	public String getResult() {
 		return result;
 	}
@@ -304,5 +329,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	public void setResult(String result) {
 		this.result = result;
 	}
-*/
+
 }
+
+*/
