@@ -2,10 +2,11 @@ package com.diworksdev.practice3.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-//import com.diworksdev.practice3.dto.HomeDTO;
+import com.diworksdev.practice3.dto.HomeDTO;
 import com.diworksdev.practice3.util.DBConnector;
 import com.diworksdev.practice3.util.DateUtil;
 
@@ -17,36 +18,35 @@ public class RegistCompleteDAO {
 	//このクラスのみ 変数 変数名 インスタンス化（コピーして代入）
 	private DateUtil dateUtil = new DateUtil();
 
-	//このクラスのみ 変数 変数名
-	//④sql文を書く：値は ? を入れておく（どんな値でも使いまわしできるようにするため
-	/*データベースのテーブル上にデータを登録する際に使用されるステートメントの構文=INSERT INTO
- 	*1 つ以上の行のセットをテーブルとして返す＝VALUES=中身のこと
- 	*作成したテーブルに情報を格納する*/
-	private String sql = "INSERT INTO login_user_transaction("
-		+ "family_name, last_name, family_name_kana, last_name_kana, mail, password, gender, postal_code, "
-		+ "prefecture, address_1, address_2, authority, registered_time) "
-		+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	//②DBConnectorのインスタンス化
+	//DBへの接続準備、DBと会話するためのコード、これでログインできる
+	//Connectionは特定のデータベースとの接続
+	private DBConnector dbConnector = new DBConnector();
 
-	//DTOインスタンス化
-	//DTOと会話するためのコード
-//	private HomeDTO HomeDTO = new HomeDTO();
+	//③getConnectionの呼び出し（DBと接続する）
+	private Connection connection = dbConnector.getConnection();
 
 	//DBから購入履歴を取得するためのメソッド
 	//①クラス、メソッドの定義
 	//DTO型を最後に呼び出し元に渡すので、DTO型を戻り値にしたメソッドを作る
 	//Actionクラスの値を引数として受け取る,throws=例外を意図的に起こすことが出来る処理のこと。
-	public  void Regist(String userFamilyName, String userLastName, String userFamilyNameKana,
+	public ArrayList<HomeDTO> getRegist(String userFamilyName, String userLastName, String userFamilyNameKana,
 			String userLastNameKana, String userMail, String userPassword,
 			String userGender, String userPostalCode, String userPrefecture,
 			String userAddress1, String userAddress2, String userAuthority) throws SQLException {
 
-		//②DBConnectorのインスタンス化
-		//DBへの接続準備、DBと会話するためのコード、これでログインできる
-		//Connectionは特定のデータベースとの接続
-		DBConnector dbConnector = new DBConnector();
+		//DTOと会話するためのコード
+		ArrayList<HomeDTO> homeDTO = new ArrayList<HomeDTO>();
 
-		//③getConnectionの呼び出し（DBと接続する）
-		Connection connection = dbConnector.getConnection();
+		//このクラスのみ 変数 変数名
+		//④sql文を書く：値は ? を入れておく（どんな値でも使いまわしできるようにするため
+		/*データベースのテーブル上にデータを登録する際に使用されるステートメントの構文=INSERT INTO
+	 	*1 つ以上の行のセットをテーブルとして返す＝VALUES=中身のこと
+	 	*作成したテーブルに情報を格納する*/
+		String sql = "INSERT INTO login_user_transaction("
+			+ "family_name, last_name, family_name_kana, last_name_kana, mail, password, gender, postal_code, "
+			+ "prefecture, address_1, address_2, authority, registered_time) "
+			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		//try.catchはjavaの例外処理のための構文
 		try {
@@ -75,15 +75,15 @@ public class RegistCompleteDAO {
 
 			//⑦executeQuery()/executeUpdate()で実行
 			//sql文の値をセットしたものがresultsetに入ってる
-/*			ResultSet resultSet = preparedStatement.executeQuery();
+			ResultSet resultSet = preparedStatement.executeQuery();
 
 			//下に1行ずらすこと
 			//データが存在していれば戻り値を true で返す。存在しなければ falseで返す
 			while (resultSet.next()) {
 
-//				//LoginDTOインスタンス化
-//				//DTOと会話するためのコード
-//				RegistDTO registDTO = new RegistDTO();
+				//DTOインスタンス化
+				//DTOと会話するためのコード
+				HomeDTO HomeDTO = new HomeDTO();
 
 				//もしresultsetに入っている値が存在していればDTOに格納する
 				HomeDTO.setUserFamilyName(resultSet.getString("family_name"));
@@ -99,22 +99,16 @@ public class RegistCompleteDAO {
 				HomeDTO.setUserAddress2(resultSet.getString("address_2"));
 				HomeDTO.setUserAuthority(resultSet.getString("authority"));
 
-				//もしresultsetに入っている値(“login_id”) と nullが等しくない場合
-				//DBに保管されているIDとresultsetに入っているIDが等しくない場合はtrue!
-				if (resultSet.getString("Regist") != null) {
-
-					//DTOにtrueを格納する
-					HomeDTO.setDelete_flag(true);
-
-				}
+				//dtoに記憶する
+				homeDTO.add(HomeDTO);
 
 			}
-*/
+
 
 		//処理中にSQL関連のエラーが発生した際に実行する処理
 		//tryの中でエラーが発生した場合、catchが受け取り
 		//例外がスローされる原因となったエラーまたは動作の説明を返す
-		} catch(Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 
 		//DB接続を終了する際、必ず書くメソッド
@@ -128,7 +122,8 @@ public class RegistCompleteDAO {
 			connection.close();
 
 		}
-//		return HomeDTO;
+
+		return homeDTO;
 
 	}
 
