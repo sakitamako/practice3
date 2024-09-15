@@ -5,9 +5,12 @@ set names utf8;
 set foreign_key_checks = 0;
 /*DROP TABLE IF EXISTS でテーブルが存在すれば削除する*/
 drop database if exists regist3;
-
-create database regist3;
+/*もし存在しなければデータベースecsiteを作成*/
+create database if not exists regist3;
 use regist3;
+
+/*DROP TABLE IF EXISTS でテーブルが存在すれば削除する*/
+drop table if exists login_user_transaction;
 
 create table login_user_transaction(
 id int(100) unique,
