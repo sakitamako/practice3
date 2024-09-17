@@ -19,9 +19,9 @@ import com.opensymphony.xwork2.ActionSupport;
 //LoginAciton（子クラス） extends（継承） ActionSupport（親クラス）
 public class RegistCompleteAction extends ActionSupport implements SessionAware {
 
-	//フィールド変数
-	//JSPから受け取る値
-	//※必ずJSPでの定義と同じ名前にする
+	// フィールド変数
+	// JSPから受け取る値
+	// ※必ずJSPでの定義と同じ名前にする
 	private String userFamilyName;
 	private String userLastName;
 	private String userFamilyNameKana;
@@ -34,321 +34,339 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	private String userAddress1;
 	private String userAddress2;
 	private String userAuthority;
-//	private String delete_flag;
+	// private String delete_flag;
 
-	//Map<String, Object>=キーを値にマッピングするオブジェクト。
-	//マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
-    //このインタフェースは、インタフェースというよりむしろ完全に抽象クラスであったDictionaryクラスに代わるものです
-	//全てのクラス 変数 変数名
-	private Map<String, Object> session;
+	// Map<String, Object>=キーを値にマッピングするオブジェクト。
+	// マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
+	// このインタフェースは、インタフェースというよりむしろ完全に抽象クラスであったDictionaryクラスに代わるものです
+	// 全てのクラス 変数 変数名
+	public Map<String, Object> session;
 
-	//全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
+	// ②DTOとDAOのインスタンス化（コピーして値を代入）
+	private RegistCompleteDAO registCompleteDAO = new RegistCompleteDAO();
+
+	// 全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
 	public String execute() throws SQLException {
 
-	//②DTOとDAOのインスタンス化（コピーして値を代入）
-	RegistCompleteDAO registCompleteDAO = new RegistCompleteDAO();
+		// DAOを経由して入力された内容をDBに登録します。
+		// DAOのregistに記憶している情報を取得してテキストで表す文字列を返す
+		System.out.println(userFamilyName);
+		System.out.println(registCompleteDAO);
+		System.out.println(session);
+		System.out.println(toString());
+		registCompleteDAO.regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(),
+				session.get("userFamilyNameKana").toString(), session.get("userLastNameKana").toString(),
+				session.get("userMail").toString(), session.get("userPassword").toString(),
+				session.get("userGender").toString(), session.get("userPostalCode").toString(),
+				session.get("userPrefecture").toString(), session.get("userAddress1").toString(),
+				session.get("userAddress2").toString(), session.get("userAuthority").toString());
 
-	//DAOを経由して入力された内容をDBに登録します。
-	//DAOのregistに記憶している情報を取得してテキストで表す文字列を返す
-	System.out.println(userFamilyName);
-	System.out.println(registCompleteDAO);
-	System.out.println(session);
-	System.out.println(toString());
-	registCompleteDAO.regist(session.get("userGender").toString());
-//			, session.get("userLastName").toString(), session.get("userFamilyNameKana").toString(),
-//			session.get("userLastNameKana").toString(), session.get("userMail").toString(), session.get("userPassword").toString(),
-//			session.get("userGender").toString(), session.get("userPostalCode").toString(), session.get("userPrefecture").toString(),
-//			session.get("userAddress1").toString(), session.get("userAddress2").toString(), session.get("userAuthority").toString());
+		String result = SUCCESS;
 
-	String result = SUCCESS;
-
-	//戻り値
-	//retに入った値を呼び出し元であるActionクラスに渡す
-	return result;
+		// 戻り値
+		// retに入った値を呼び出し元であるActionクラスに渡す
+		return result;
 
 	}
 
-	//Listインタフェースのサイズ変更可能な配列の実装です。
-	//リストのオプションの操作をすべて実装し、nullを含むすべての要素を許容します。
-	//このクラスは、Listインタフェースを実装するほか、リストを格納するために内部的に使われる配列のサイズを操作するメソッドを提供します
-	//ArrayList とは、 Listインタフェース を実装した コレクションクラス である。
-	//ArrayList は、 Array という名にあるように配列のような感覚で扱うことができる。
-	//配列 には格納できる 要素数が決まっている が、 ArrayList は 要素数は決まっていない 。
-	//ArrayList は、 プリミティブ型（int, booleanなど） を入れられない。
-//	private ArrayList<HomeDTO> homeList = new ArrayList<HomeDTO>();
+	// Listインタフェースのサイズ変更可能な配列の実装です。
+	// リストのオプションの操作をすべて実装し、nullを含むすべての要素を許容します。
+	// このクラスは、Listインタフェースを実装するほか、リストを格納するために内部的に使われる配列のサイズを操作するメソッドを提供します
+	// ArrayList とは、 Listインタフェース を実装した コレクションクラス である。
+	// ArrayList は、 Array という名にあるように配列のような感覚で扱うことができる。
+	// 配列 には格納できる 要素数が決まっている が、 ArrayList は 要素数は決まっていない 。
+	// ArrayList は、 プリミティブ型（int, booleanなど） を入れられない。
+	// private ArrayList<HomeDTO> homeList = new ArrayList<HomeDTO>();
 
+	// Listインタフェースのサイズ変更可能な配列の実装です。
+	// リストのオプションの操作をすべて実装し、nullを含むすべての要素を許容します。
+	// このクラスは、Listインタフェースを実装するほか、リストを格納するために内部的に使われる配列のサイズを操作するメソッドを提供します
+	// ArrayList とは、 Listインタフェース を実装した コレクションクラス である。
+	// ArrayList は、 Array という名にあるように配列のような感覚で扱うことができる。
+	// 配列 には格納できる 要素数が決まっている が、 ArrayList は 要素数は決まっていない 。
+	// ArrayList は、 プリミティブ型（int, booleanなど） を入れられない。
+	// private HomeDTO HomeDTO = new HomeDTO();
 
-	//Listインタフェースのサイズ変更可能な配列の実装です。
-	//リストのオプションの操作をすべて実装し、nullを含むすべての要素を許容します。
-	//このクラスは、Listインタフェースを実装するほか、リストを格納するために内部的に使われる配列のサイズを操作するメソッドを提供します
-	//ArrayList とは、 Listインタフェース を実装した コレクションクラス である。
-	//ArrayList は、 Array という名にあるように配列のような感覚で扱うことができる。
-	//配列 には格納できる 要素数が決まっている が、 ArrayList は 要素数は決まっていない 。
-	//ArrayList は、 プリミティブ型（int, booleanなど） を入れられない。
-//	private HomeDTO HomeDTO = new HomeDTO();
+	// private String result;
 
-//	private String result;
+	// 履歴の削除がされているか否か、チェックをしています。
+	// もしdeleteFlgとnullが等しい場合はDBから取得した履歴情報を、「myPageList」に格納しています
+	// if (delete_flag == null) {
 
-		//履歴の削除がされているか否か、チェックをしています。
-		//もしdeleteFlgとnullが等しい場合はDBから取得した履歴情報を、「myPageList」に格納しています
-//		if (delete_flag == null) {
+	// sessionに記憶しているIDとlogin_user_idを取得してテキストで表す文字列を返す
+	// item_transaction_idとuser_master_idはDBに問い合わせて受け取ったデータ
+	// String family_name = session.get("userFamilyName").toString();
+	// String last_name = session.get("luserLastName").toString();
+	// String family_name_kana = session.get("userFamilyNameKana").toString();
+	// String last_name_kana = session.get("userLastNameKana").toString();
+	// String mail = session.get("userMail").toString();
+	// String password = session.get("userPassword").toString();
+	// String gender = session.get("userGender").toString();
+	// String postal_code = session.get("userPostalCode").toString();
+	// String prefecture = session.get("userPrefecture").toString();
+	// String address_1 = session.get("userAddress1").toString();
+	// String address_2 = session.get("userAddress2").toString();
+	// String authority = session.get("userAuthority").toString();
 
-			//sessionに記憶しているIDとlogin_user_idを取得してテキストで表す文字列を返す
-			//item_transaction_idとuser_master_idはDBに問い合わせて受け取ったデータ
-//			String family_name = session.get("userFamilyName").toString();
-//			String last_name = session.get("luserLastName").toString();
-//			String family_name_kana = session.get("userFamilyNameKana").toString();
-//			String last_name_kana = session.get("userLastNameKana").toString();
-//			String mail = session.get("userMail").toString();
-//			String password = session.get("userPassword").toString();
-//			String gender = session.get("userGender").toString();
-//			String postal_code = session.get("userPostalCode").toString();
-//			String prefecture = session.get("userPrefecture").toString();
-//			String address_1 = session.get("userAddress1").toString();
-//			String address_2 = session.get("userAddress2").toString();
-//			String authority = session.get("userAuthority").toString();
+	// sessionに記憶しているIDとlogin_user_idを取得してテキストで表す文字列を返す
+	// item_transaction_idとuser_master_idはDBに問い合わせて受け取ったデータ
+	// String login_user_transaction = session.get("userFamilyName").toString(),
+	// session.get("userLastName").toString(),
+	// session.get("userFamilyNameKana").toString(),
+	// session.get("userLastNameKana").toString(),
+	// session.get("userMail").toString(),
+	// session.get("userPassword").toString(),
+	// session.get("userGender").toString(),
+	// session.get("userPostalCode").toString(),
+	// session.get("userPrefecture").toString(),
+	// session.get("userAddress1").toString(),
+	// session.get("userAddress2").toString(),
+	// session.get("userAuthority").toString());
 
-			//sessionに記憶しているIDとlogin_user_idを取得してテキストで表す文字列を返す
-			//item_transaction_idとuser_master_idはDBに問い合わせて受け取ったデータ
-//			String login_user_transaction = session.get("userFamilyName").toString(), session.get("userLastName").toString(), session.get("userFamilyNameKana").toString(),
-//					session.get("userLastNameKana").toString(), session.get("userMail").toString(), session.get("userPassword").toString(),
-//					session.get("userGender").toString(), session.get("userPostalCode").toString(), session.get("userPrefecture").toString(),
-//					session.get("userAddress1").toString(), session.get("userAddress2").toString(), session.get("userAuthority").toString());
+	// homeList = RegistCompleteDAO.getRegist(family_name, last_name,
+	// family_name_kana,
+	// last_name_kana, mail, password, gender, postal_code, prefecture,
+	// address_1, address_2, authority);
 
-//			homeList = RegistCompleteDAO.getRegist(family_name, last_name, family_name_kana,
-//					last_name_kana, mail, password, gender, postal_code, prefecture,
-//					address_1, address_2, authority);
+	// result = SUCCESS;
 
-//		result = SUCCESS;
+	// 戻り値
+	// retに入った値を呼び出し元であるActionクラスに渡す
+	// return result;
 
-		//戻り値
-		//retに入った値を呼び出し元であるActionクラスに渡す
-//		return result;
+	// }
 
-//	}
+	// RegistCompleteDAO.Regist(userFamilyName, userLastName,
+	// userFamilyNameKana,
+	// userLastNameKana, userMail, userPassword, userGender, userPostalCode,
+	// userPrefecture,
+	// userAddress1, userAddress2, userAuthority);
 
-//		RegistCompleteDAO.Regist(userFamilyName, userLastName, userFamilyNameKana,
-//				userLastNameKana, userMail, userPassword, userGender, userPostalCode, userPrefecture,
-//				userAddress1, userAddress2, userAuthority);
+	// System.out.println(userFamilyNameKana);
+	// System.out.println(userGender);
+	// System.out.println(userAuthority);
 
-//		System.out.println(userFamilyNameKana);
-//		System.out.println(userGender);
-//		System.out.println(userAuthority);
+	// JSPから送られてきた情報を引数として、
+	// LoginDAOクラスのgetLoginUserInfoメソッドを呼び出す
+	// その後、DAOで取得した結果をLoginDTOに代入する
+	// RegistCompleteDAO.getRegist(userFamilyName, userLastName,
+	// userFamilyNameKana,
+	// userLastNameKana, userMail, userPassword, userGender, userPostalCode,
+	// userPrefecture,
+	// userAddress1, userAddress2, userAuthority);
 
-		//JSPから送られてきた情報を引数として、
-		//LoginDAOクラスのgetLoginUserInfoメソッドを呼び出す
-		//その後、DAOで取得した結果をLoginDTOに代入する
-//		 RegistCompleteDAO.getRegist(userFamilyName, userLastName, userFamilyNameKana,
-//				userLastNameKana, userMail, userPassword, userGender, userPostalCode, userPrefecture,
-//				userAddress1, userAddress2, userAuthority);
+	// Map を使った場合には、put()で要素を記憶できる
+	// session.put("regist", HomeDTO);
 
-		//Map を使った場合には、put()で要素を記憶できる
-//		session.put("regist", HomeDTO);
+	// DAOを経由して入力された内容をDBに登録します。
+	// DAOのcreateUserに記憶しているid,pass,nameを取得してテキストで表す文字列を返す
+	// RegistCompleteDAO.getRegist(session.get("userFamilyName").toString(),
+	// session.get("userLastName").toString(),
+	// session.get("userFamilyNameKana").toString(),
+	// session.get("userLastNameKana").toString(),
+	// session.get("userMail").toString(),
+	// session.get("userPassword").toString(),
+	// session.get("userGender").toString(),
+	// session.get("userPostalCode").toString(),
+	// session.get("userPrefecture").toString(),
+	// session.get("userAddress1").toString(),
+	// session.get("userAddress2").toString(),
+	// session.get("userAuthority").toString());
 
-		//DAOを経由して入力された内容をDBに登録します。
-		//DAOのcreateUserに記憶しているid,pass,nameを取得してテキストで表す文字列を返す
-//		RegistCompleteDAO.getRegist(session.get("userFamilyName").toString(), session.get("userLastName").toString(), session.get("userFamilyNameKana").toString(),
-//				session.get("userLastNameKana").toString(), session.get("userMail").toString(), session.get("userPassword").toString(),
-//				session.get("userGender").toString(), session.get("userPostalCode").toString(), session.get("userPrefecture").toString(),
-//				session.get("userAddress1").toString(), session.get("userAddress2").toString(), session.get("userAuthority").toString());
+	// aとbが共にtrueの時に処理を実行するそうでない場合はエラー
+	// if (this.userFamilyName.equals(HomeDTO.getUserFamilyName()) &&
+	// this.userLastName.equals(HomeDTO.getUserLastName()) &&
+	// this.userFamilyNameKana.equals(HomeDTO.getUserFamilyNameKana()) &&
+	// this.userLastNameKana.equals(HomeDTO.getUserLastNameKana()) &&
+	// this.userMail.equals(HomeDTO.getUserMail()) &&
+	// this.userPassword.equals(HomeDTO.getUserPassword()) &&
+	// this.userGender.equals(HomeDTO.getUserGender()) &&
+	// this.userPostalCode.equals(HomeDTO.getUserPostalCode()) &&
+	// this.userPrefecture.equals(HomeDTO.getUserPrefecture()) &&
+	// this.userAddress1.equals(HomeDTO.getUserAddress1()) &&
+	// this.userAddress2.equals(HomeDTO.getUserAddress2()) &&
+	// this.userAuthority.equals(HomeDTO.getUserAuthority())) {
 
-		//aとbが共にtrueの時に処理を実行するそうでない場合はエラー
-//		if (this.userFamilyName.equals(HomeDTO.getUserFamilyName()) && this.userLastName.equals(HomeDTO.getUserLastName()) &&
-//				this.userFamilyNameKana.equals(HomeDTO.getUserFamilyNameKana()) && this.userLastNameKana.equals(HomeDTO.getUserLastNameKana()) &&
-//				this.userMail.equals(HomeDTO.getUserMail()) && this.userPassword.equals(HomeDTO.getUserPassword()) &&
-//				this.userGender.equals(HomeDTO.getUserGender()) && this.userPostalCode.equals(HomeDTO.getUserPostalCode()) &&
-//				this.userPrefecture.equals(HomeDTO.getUserPrefecture()) && this.userAddress1.equals(HomeDTO.getUserAddress1()) &&
-//				this.userAddress2.equals(HomeDTO.getUserAddress2()) && this.userAuthority.equals(HomeDTO.getUserAuthority())) {
+	// 変数・文字列 result=SUCCESS
+	// userCreateComplete.jspに遷移する
+	// String result = SUCCESS;
 
-		//変数・文字列 result=SUCCESS
-		//userCreateComplete.jspに遷移する
-//		String result = SUCCESS;
+	// 戻り値
+	// resultに入った値の処理結果をstrutsが取得してuserCreateComplete.jspに遷移する
+	// return result;
 
-		//戻り値
-		//resultに入った値の処理結果をstrutsが取得してuserCreateComplete.jspに遷移する
-//		return result;
+	// }
 
-//	}
-
-
-	//フィールド変数に対応したgetterとsetterを定義
-	//Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
+	// フィールド変数に対応したgetterとsetterを定義
+	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
 	public String getUserFamilyName() {
 		return userFamilyName;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
+	// フィールド変数に対応したgetterとsetterを定義
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
 	public void setUserFamilyName(String userFamilyName) {
 		this.userFamilyName = userFamilyName;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
+	// フィールド変数に対応したgetterとsetterを定義
+	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
 	public String getUserLastName() {
 		return userLastName;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
+	// フィールド変数に対応したgetterとsetterを定義
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
 	public void setUserLastName(String userLastName) {
 		this.userLastName = userLastName;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
+	// フィールド変数に対応したgetterとsetterを定義
+	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
 	public String getUserFamilyNameKana() {
 		return userFamilyNameKana;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
+	// フィールド変数に対応したgetterとsetterを定義
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
 	public void setUserFamilyNameKana(String userFamilyNameKana) {
 		this.userFamilyNameKana = userFamilyNameKana;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
+	// フィールド変数に対応したgetterとsetterを定義
+	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
 	public String getUserLastNameKana() {
 		return userLastNameKana;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
+	// フィールド変数に対応したgetterとsetterを定義
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
 	public void setUserLastNameKana(String userLastNameKana) {
 		this.userLastNameKana = userLastNameKana;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
+	// フィールド変数に対応したgetterとsetterを定義
+	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
 	public String getUserMail() {
 		return userMail;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
+	// フィールド変数に対応したgetterとsetterを定義
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
 	public void setUserMail(String userMail) {
 		this.userMail = userMail;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
+	// フィールド変数に対応したgetterとsetterを定義
+	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
 	public String getUserPassword() {
 		return userPassword;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
+	// フィールド変数に対応したgetterとsetterを定義
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
+	// フィールド変数に対応したgetterとsetterを定義
+	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
 	public String getUserGender() {
 		return userGender;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
+	// フィールド変数に対応したgetterとsetterを定義
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
 	public void setUserGender(String userGender) {
 		this.userGender = userGender;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
+	// フィールド変数に対応したgetterとsetterを定義
+	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
 	public String getUserPostalCode() {
 		return userPostalCode;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
+	// フィールド変数に対応したgetterとsetterを定義
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
 	public void setUserPostalCode(String userPostalCode) {
 		this.userPostalCode = userPostalCode;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
+	// フィールド変数に対応したgetterとsetterを定義
+	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
 	public String getUserPrefecture() {
 		return userPrefecture;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
+	// フィールド変数に対応したgetterとsetterを定義
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
 	public void setUserPrefecture(String userPrefecture) {
 		this.userPrefecture = userPrefecture;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
+	// フィールド変数に対応したgetterとsetterを定義
+	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
 	public String getUserAddress1() {
 		return userAddress1;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
+	// フィールド変数に対応したgetterとsetterを定義
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
 	public void setUserAddress1(String userAddress1) {
 		this.userAddress1 = userAddress1;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
+	// フィールド変数に対応したgetterとsetterを定義
+	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
 	public String getUserAddress2() {
 		return userAddress2;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
+	// フィールド変数に対応したgetterとsetterを定義
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
 	public void setUserAddress2(String userAddress2) {
 		this.userAddress2 = userAddress2;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
+	// フィールド変数に対応したgetterとsetterを定義
+	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
 	public String getUserAuthority() {
 		return userAuthority;
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
+	// フィールド変数に対応したgetterとsetterを定義
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
 	public void setUserAuthority(String userAuthority) {
 		this.userAuthority = userAuthority;
 
 	}
 
-
-	//フィールド変数に対応したgetterとsetterを定義
-	//Actionクラスから呼び出され、sessionフィールドの値をActionに渡す
-	public Map<String, Object> getSession() {
-		return session;
-
-	}
-
-	//フィールド変数に対応したgetterとsetterを定義
-	//全てのクラスのsetの値を自身のsessionフィールドに代入して格納
+	// フィールド変数に対応したgetterとsetterを定義
+	// 全てのクラスのsetの値を自身のsessionフィールドに代入して格納
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
@@ -358,37 +376,27 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 }
 
 /*
-	//外部からここにアクセスして、外部にデータを渡している
-	//フィールド変数に対応したgetterとsetterを定義
-	//DTOから戻り値として受け取った、myPageListフィールドの値をmyPage.jspに渡している
-	public ArrayList<HomeDTO> getHomeList() {
-		return this.homeList;
-
-	}
-
-}
-
-
-
-	public HomeDTO getHomeDTO() {
-		return HomeDTO;
-	}
-
-
-	public void setHomeDTO(HomeDTO homeDTO) {
-		HomeDTO = homeDTO;
-	}
-
-
-	public String getResult() {
-		return result;
-	}
-
-
-	public void setResult(String result) {
-		this.result = result;
-	}
-
-}
-
-*/
+ * //外部からここにアクセスして、外部にデータを渡している //フィールド変数に対応したgetterとsetterを定義
+ * //DTOから戻り値として受け取った、myPageListフィールドの値をmyPage.jspに渡している public
+ * ArrayList<HomeDTO> getHomeList() { return this.homeList;
+ *
+ * }
+ *
+ * }
+ *
+ *
+ *
+ * public HomeDTO getHomeDTO() { return HomeDTO; }
+ *
+ *
+ * public void setHomeDTO(HomeDTO homeDTO) { HomeDTO = homeDTO; }
+ *
+ *
+ * public String getResult() { return result; }
+ *
+ *
+ * public void setResult(String result) { this.result = result; }
+ *
+ * }
+ *
+ */
