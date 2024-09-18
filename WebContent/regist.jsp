@@ -79,6 +79,11 @@ table {
 	color: #333;
 	padding: 10px;
 }
+
+#s:if test {
+    color: #ff0000;
+}
+
 </style>
 </head>
 <body>
