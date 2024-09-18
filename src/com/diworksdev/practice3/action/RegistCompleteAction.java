@@ -200,174 +200,174 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	// String result = SUCCESS;
 
 	// 戻り値
-	// resultに入った値の処理結果をstrutsが取得してuserCreateComplete.jspに遷移する
+	// resultに入った値の処理結果をstrutsが取得してregistComplete.jspに遷移する
 	// return result;
 
 	// }
 
-	// フィールド変数に対応したgetterとsetterを定義
-	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
+	//フィールド変数に対応したgetterとsetterを定義
+	//userCreateconfirm.jspの値として受け取った、userFamilyNameフィールドの値をregistComplete.jspに渡している
 	public String getUserFamilyName() {
 		return userFamilyName;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
-	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserFamilyNameフィールドに格納
 	public void setUserFamilyName(String userFamilyName) {
 		this.userFamilyName = userFamilyName;
 
 	}
 
-	// フィールド変数に対応したgetterとsetterを定義
-	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
+	//フィールド変数に対応したgetterとsetterを定義
+	//userCreateconfirm.jspの値として受け取った、userLastNameフィールドの値をregistComplete.jspに渡している
 	public String getUserLastName() {
 		return userLastName;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
-	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserLastNameフィールドに格納
 	public void setUserLastName(String userLastName) {
 		this.userLastName = userLastName;
 
 	}
 
-	// フィールド変数に対応したgetterとsetterを定義
-	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
+	//フィールド変数に対応したgetterとsetterを定義
+	//userCreateconfirm.jspの値として受け取った、userFamilyNameKanaフィールドの値をregistComplete.jspに渡している
 	public String getUserFamilyNameKana() {
 		return userFamilyNameKana;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
-	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserFamilyNameKanaフィールドに格納
 	public void setUserFamilyNameKana(String userFamilyNameKana) {
 		this.userFamilyNameKana = userFamilyNameKana;
 
 	}
 
-	// フィールド変数に対応したgetterとsetterを定義
-	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
+	//フィールド変数に対応したgetterとsetterを定義
+	//userCreateconfirm.jspの値として受け取った、userLastNameKanaフィールドの値をregistComplete.jspに渡している
 	public String getUserLastNameKana() {
 		return userLastNameKana;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
-	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserLastNameKanaフィールドに格納
 	public void setUserLastNameKana(String userLastNameKana) {
 		this.userLastNameKana = userLastNameKana;
 
 	}
 
-	// フィールド変数に対応したgetterとsetterを定義
-	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
+	//フィールド変数に対応したgetterとsetterを定義
+	//userCreateconfirm.jspの値として受け取った、userMailフィールドの値をregistComplete.jspに渡している
 	public String getUserMail() {
 		return userMail;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
-	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserMailフィールドに格納
 	public void setUserMail(String userMail) {
 		this.userMail = userMail;
 
 	}
 
-	// フィールド変数に対応したgetterとsetterを定義
-	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
+	//フィールド変数に対応したgetterとsetterを定義
+	//userCreateconfirm.jspの値として受け取った、userPasswordフィールドの値をregistComplete.jspに渡している
 	public String getUserPassword() {
 		return userPassword;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
-	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserPasswordフィールドに格納
 	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 
 	}
 
-	// フィールド変数に対応したgetterとsetterを定義
-	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
+	//フィールド変数に対応したgetterとsetterを定義
+	//userCreateconfirm.jspの値として受け取った、userGenderフィールドの値をregistComplete.jspに渡している
 	public String getUserGender() {
 		return userGender;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
-	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserGenderフィールドに格納
 	public void setUserGender(String userGender) {
 		this.userGender = userGender;
 
 	}
 
-	// フィールド変数に対応したgetterとsetterを定義
-	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
+	//フィールド変数に対応したgetterとsetterを定義
+	//userCreateconfirm.jspの値として受け取った、userPostalCodeフィールドの値をregistComplete.jspに渡している
 	public String getUserPostalCode() {
 		return userPostalCode;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
-	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserPostalCodeフィールドに格納
 	public void setUserPostalCode(String userPostalCode) {
 		this.userPostalCode = userPostalCode;
 
 	}
 
-	// フィールド変数に対応したgetterとsetterを定義
-	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
+	//フィールド変数に対応したgetterとsetterを定義
+	//userCreateconfirm.jspの値として受け取った、userPrefectureフィールドの値をregistComplete.jspに渡している
 	public String getUserPrefecture() {
 		return userPrefecture;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
-	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserPrefectureフィールドに格納
 	public void setUserPrefecture(String userPrefecture) {
 		this.userPrefecture = userPrefecture;
 
 	}
 
-	// フィールド変数に対応したgetterとsetterを定義
-	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
+	//フィールド変数に対応したgetterとsetterを定義
+	//userCreateconfirm.jspの値として受け取った、userAddress1フィールドの値をregistComplete.jspに渡している
 	public String getUserAddress1() {
 		return userAddress1;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
-	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserAddress1フィールドに格納
 	public void setUserAddress1(String userAddress1) {
 		this.userAddress1 = userAddress1;
 
 	}
 
-	// フィールド変数に対応したgetterとsetterを定義
-	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
+	//フィールド変数に対応したgetterとsetterを定義
+	//userCreateconfirm.jspの値として受け取った、userAddress2フィールドの値をregistComplete.jspに渡している
 	public String getUserAddress2() {
 		return userAddress2;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
-	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserAddress2フィールドに格納
 	public void setUserAddress2(String userAddress2) {
 		this.userAddress2 = userAddress2;
 
 	}
 
-	// フィールド変数に対応したgetterとsetterを定義
-	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
+	//フィールド変数に対応したgetterとsetterを定義
+	//userCreateconfirm.jspの値として受け取った、userAuthorityフィールドの値をregistComplete.jspに渡している
 	public String getUserAuthority() {
 		return userAuthority;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
-	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserAuthorityフィールドに格納
 	public void setUserAuthority(String userAuthority) {
 		this.userAuthority = userAuthority;
 
