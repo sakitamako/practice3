@@ -1,22 +1,30 @@
 package com.diworksdev.practice3.action;
 
 import java.sql.SQLException;
-//import java.util.ArrayList;
 import java.util.Map;
+//import java.util.ArrayList;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.diworksdev.practice3.dao.RegistCompleteDAO;
-//import com.diworksdev.practice3.dto.HomeDTO;
 import com.opensymphony.xwork2.ActionSupport;
+//import com.diworksdev.practice3.dto.HomeDTO;
 
 //ユーザー登録機能
 
 //Actionクラスでは、画面から送られてきたリクエストを取得する
 //内部処理に応じてDAOやDTOクラスを呼び出し、最終的に次のJSPへ値を返すファイル
+
 //struts2が持つActionSupportというクラスを継承
 //（Actionクラスは基本的にこのクラスを継承）
 //LoginAciton（子クラス） extends（継承） ActionSupport（親クラス）
+//すでにあるクラスとにたクラスを作る場合、元のクラスに必要な機能だけを追加する形で、新しいクラスを作ることを継承
+//実際の処理を持たない、ちょっと変わったクラス=implements
+//interfaceを使って型宣言を行うことができますが、メソッドの定義がないとプログラムは実行できないので、そこで使うのがimplements
+/*Actionクラスにて、implements SessionAware を宣言（ActionSupport.SessionAware=インターフェース）
+実装メソッドである setSession(Map session)にて、ActionのフィールドへHttpSessionのオブジェクトを格納する処理を実装する。this.session = session; でほぼ十分。
+上記の手順で実装したフィールドを用意する
+これにより、このActionクラスのsessionフィールドへ、Struts2が自動的にHttpSessionの内容をMapの型で格納します。*/
 public class RegistCompleteAction extends ActionSupport implements SessionAware {
 
 	// フィールド変数
@@ -374,29 +382,3 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	}
 
 }
-
-/*
- * //外部からここにアクセスして、外部にデータを渡している //フィールド変数に対応したgetterとsetterを定義
- * //DTOから戻り値として受け取った、myPageListフィールドの値をmyPage.jspに渡している public
- * ArrayList<HomeDTO> getHomeList() { return this.homeList;
- *
- * }
- *
- * }
- *
- *
- *
- * public HomeDTO getHomeDTO() { return HomeDTO; }
- *
- *
- * public void setHomeDTO(HomeDTO homeDTO) { HomeDTO = homeDTO; }
- *
- *
- * public String getResult() { return result; }
- *
- *
- * public void setResult(String result) { this.result = result; }
- *
- * }
- *
- */

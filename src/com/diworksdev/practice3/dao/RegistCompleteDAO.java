@@ -2,9 +2,9 @@ package com.diworksdev.practice3.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-//import java.sql.ResultSet;
 import java.sql.SQLException;
 //import java.util.ArrayList;
+//import java.sql.ResultSet;
 
 //import com.diworksdev.practice3.dto.HomeDTO;
 import com.diworksdev.practice3.util.DBConnector;
@@ -31,7 +31,10 @@ public class RegistCompleteDAO {
 	/*データベースのテーブル上にデータを登録する際に使用されるステートメントの構文=INSERT INTO
  	*1 つ以上の行のセットをテーブルとして返す＝VALUES=中身のこと
  	*作成したテーブルに情報を格納する*/
-	private String sql = "INSERT INTO login_user_transaction(family_name, last_name, family_name_kana, last_name_kana, mail, password, gender, postal_code, prefecture, address_1, address_2, authority, registered_time) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	private String sql = "INSERT INTO login_user_transaction("
+			+ "family_name, last_name, family_name_kana, last_name_kana, mail, password, "
+			+ "gender, postal_code, prefecture, address_1, address_2, authority, registered_time) "
+			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	//DBから購入履歴を取得するためのメソッド
 	//①クラス、メソッドの定義
