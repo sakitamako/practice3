@@ -103,11 +103,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //
 //			//sessionに記憶
 			session.put("userGender", userGender);
-
-			result = SUCCESS;
 //
 //		//そうでない場合
-		} else {
+		} else if (userGender.equals("1")) {
 //
 //			//女性代入
 			userGender = "女性";
@@ -115,8 +113,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //			//sessionに記憶
 			session.put("userGender", userGender);
 
-			result = SUCCESS;
-//
+		} else {
+
+			result = ERROR;
 		}
 //
 //		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
@@ -128,20 +127,19 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //
 //			//sessionに記憶
 			session.put("userAuthority", userAuthority);
-
-			result = SUCCESS;
 //
 //		//そうでない場合
-		} else {
+		} else if (userAuthority.equals("1")) {
 //
 //			//管理者代入
 			userAuthority = "管理者";
 //
 //			//sessionに記憶
 			session.put("userAuthority", userAuthority);
-
-			result = SUCCESS;
 //
+		} else {
+
+			result = ERROR;
 		}
 //
 //		//上記追加したやつ
