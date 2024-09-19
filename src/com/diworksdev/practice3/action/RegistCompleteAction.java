@@ -56,10 +56,6 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 		// DAOを経由して入力された内容をDBに登録します。
 		// DAOのregistに記憶している情報を取得してテキストで表す文字列を返す
-		System.out.println(userFamilyName);
-		System.out.println(registCompleteDAO);
-		System.out.println(session);
-		System.out.println(toString());
 		registCompleteDAO.regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(),
 				session.get("userFamilyNameKana").toString(), session.get("userLastNameKana").toString(),
 				session.get("userMail").toString(), session.get("userPassword").toString(),
