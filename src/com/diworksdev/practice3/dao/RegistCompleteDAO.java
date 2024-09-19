@@ -41,6 +41,9 @@ public class RegistCompleteDAO {
 	//DTO型を最後に呼び出し元に渡すので、DTO型を戻り値にしたメソッドを作る
 	//Actionクラスの値を引数として受け取る,throws=例外を意図的に起こすことが出来る処理のこと。
 	//②小川講師から教えてもらったこと、下記は変えなくていい！
+	public void regist(String userFamilyName) throws SQLException {
+		regist(userFamilyName, "", "", "", "", "", "", "", "", "", "","");
+	}
 	public void regist(String userFamilyName, String userLastName, String userFamilyNameKana,
 			String userLastNameKana, String userMail, String userPassword,
 			String userGender, String userPostalCode, String userPrefecture,

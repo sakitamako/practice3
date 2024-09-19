@@ -56,12 +56,15 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 		// DAOを経由して入力された内容をDBに登録します。
 		// DAOのregistに記憶している情報を取得してテキストで表す文字列を返す
-		registCompleteDAO.regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(),
-				session.get("userFamilyNameKana").toString(), session.get("userLastNameKana").toString(),
-				session.get("userMail").toString(), session.get("userPassword").toString(),
-				session.get("userGender").toString(), session.get("userPostalCode").toString(),
-				session.get("userPrefecture").toString(), session.get("userAddress1").toString(),
-				session.get("userAddress2").toString(), session.get("userAuthority").toString());
+		System.out.println(session.get("userFamilyName"));
+		System.out.println(session.get("userFamilyName").toString());
+		registCompleteDAO.regist(session.get("userFamilyName").toString());
+//		registCompleteDAO.regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(),
+//				session.get("userFamilyNameKana").toString(), session.get("userLastNameKana").toString(),
+//				session.get("userMail").toString(), session.get("userPassword").toString(),
+//				session.get("userGender").toString(), session.get("userPostalCode").toString(),
+//				session.get("userPrefecture").toString(), session.get("userAddress1").toString(),
+//				session.get("userAddress2").toString(), session.get("userAuthority").toString());
 
 		String result = SUCCESS;
 

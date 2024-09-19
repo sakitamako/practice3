@@ -54,6 +54,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		String result = SUCCESS;
 
+		System.out.println(userFamilyName);
+		System.out.println(userGender);
+		System.out.println(userAuthority);
 		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 		//userFamilyNameと空文字・何も入ってない時の値が等しい場合、かつ、userLastNameと空文字・何も入ってない時の値が等しい場合、かつ、userFamilyNameKanaと空文字・何も入ってない時の値が等しい場合はelse文に行く！
 		//! aとbとcがtrueの場合処理は実行しない
@@ -69,6 +72,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //			//&& !(userAuthority.equals(""))
 //
 //			//sessionのなかに記憶する保存する
+			System.out.println(userFamilyName);
 			session.put("userFamilyName", userFamilyName);
 			session.put("userLastName", userLastName);
 			session.put("userFamilyNameKana", userFamilyNameKana);
