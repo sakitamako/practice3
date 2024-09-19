@@ -2,13 +2,11 @@ package com.diworksdev.practice3.action;
 
 import java.sql.SQLException;
 import java.util.Map;
-//import java.util.ArrayList;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.diworksdev.practice3.dao.RegistCompleteDAO;
 import com.opensymphony.xwork2.ActionSupport;
-//import com.diworksdev.practice3.dto.HomeDTO;
 
 //ユーザー登録機能
 
@@ -76,134 +74,6 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		return result;
 
 	}
-
-	// Listインタフェースのサイズ変更可能な配列の実装です。
-	// リストのオプションの操作をすべて実装し、nullを含むすべての要素を許容します。
-	// このクラスは、Listインタフェースを実装するほか、リストを格納するために内部的に使われる配列のサイズを操作するメソッドを提供します
-	// ArrayList とは、 Listインタフェース を実装した コレクションクラス である。
-	// ArrayList は、 Array という名にあるように配列のような感覚で扱うことができる。
-	// 配列 には格納できる 要素数が決まっている が、 ArrayList は 要素数は決まっていない 。
-	// ArrayList は、 プリミティブ型（int, booleanなど） を入れられない。
-	// private ArrayList<HomeDTO> homeList = new ArrayList<HomeDTO>();
-
-	// Listインタフェースのサイズ変更可能な配列の実装です。
-	// リストのオプションの操作をすべて実装し、nullを含むすべての要素を許容します。
-	// このクラスは、Listインタフェースを実装するほか、リストを格納するために内部的に使われる配列のサイズを操作するメソッドを提供します
-	// ArrayList とは、 Listインタフェース を実装した コレクションクラス である。
-	// ArrayList は、 Array という名にあるように配列のような感覚で扱うことができる。
-	// 配列 には格納できる 要素数が決まっている が、 ArrayList は 要素数は決まっていない 。
-	// ArrayList は、 プリミティブ型（int, booleanなど） を入れられない。
-	// private HomeDTO HomeDTO = new HomeDTO();
-
-	// private String result;
-
-	// 履歴の削除がされているか否か、チェックをしています。
-	// もしdeleteFlgとnullが等しい場合はDBから取得した履歴情報を、「myPageList」に格納しています
-	// if (delete_flag == null) {
-
-	// sessionに記憶しているIDとlogin_user_idを取得してテキストで表す文字列を返す
-	// item_transaction_idとuser_master_idはDBに問い合わせて受け取ったデータ
-	// String family_name = session.get("userFamilyName").toString();
-	// String last_name = session.get("luserLastName").toString();
-	// String family_name_kana = session.get("userFamilyNameKana").toString();
-	// String last_name_kana = session.get("userLastNameKana").toString();
-	// String mail = session.get("userMail").toString();
-	// String password = session.get("userPassword").toString();
-	// String gender = session.get("userGender").toString();
-	// String postal_code = session.get("userPostalCode").toString();
-	// String prefecture = session.get("userPrefecture").toString();
-	// String address_1 = session.get("userAddress1").toString();
-	// String address_2 = session.get("userAddress2").toString();
-	// String authority = session.get("userAuthority").toString();
-
-	// sessionに記憶しているIDとlogin_user_idを取得してテキストで表す文字列を返す
-	// item_transaction_idとuser_master_idはDBに問い合わせて受け取ったデータ
-	// String login_user_transaction = session.get("userFamilyName").toString(),
-	// session.get("userLastName").toString(),
-	// session.get("userFamilyNameKana").toString(),
-	// session.get("userLastNameKana").toString(),
-	// session.get("userMail").toString(),
-	// session.get("userPassword").toString(),
-	// session.get("userGender").toString(),
-	// session.get("userPostalCode").toString(),
-	// session.get("userPrefecture").toString(),
-	// session.get("userAddress1").toString(),
-	// session.get("userAddress2").toString(),
-	// session.get("userAuthority").toString());
-
-	// homeList = RegistCompleteDAO.getRegist(family_name, last_name,
-	// family_name_kana,
-	// last_name_kana, mail, password, gender, postal_code, prefecture,
-	// address_1, address_2, authority);
-
-	// result = SUCCESS;
-
-	// 戻り値
-	// retに入った値を呼び出し元であるActionクラスに渡す
-	// return result;
-
-	// }
-
-	// RegistCompleteDAO.Regist(userFamilyName, userLastName,
-	// userFamilyNameKana,
-	// userLastNameKana, userMail, userPassword, userGender, userPostalCode,
-	// userPrefecture,
-	// userAddress1, userAddress2, userAuthority);
-
-	// System.out.println(userFamilyNameKana);
-	// System.out.println(userGender);
-	// System.out.println(userAuthority);
-
-	// JSPから送られてきた情報を引数として、
-	// LoginDAOクラスのgetLoginUserInfoメソッドを呼び出す
-	// その後、DAOで取得した結果をLoginDTOに代入する
-	// RegistCompleteDAO.getRegist(userFamilyName, userLastName,
-	// userFamilyNameKana,
-	// userLastNameKana, userMail, userPassword, userGender, userPostalCode,
-	// userPrefecture,
-	// userAddress1, userAddress2, userAuthority);
-
-	// Map を使った場合には、put()で要素を記憶できる
-	// session.put("regist", HomeDTO);
-
-	// DAOを経由して入力された内容をDBに登録します。
-	// DAOのcreateUserに記憶しているid,pass,nameを取得してテキストで表す文字列を返す
-	// RegistCompleteDAO.getRegist(session.get("userFamilyName").toString(),
-	// session.get("userLastName").toString(),
-	// session.get("userFamilyNameKana").toString(),
-	// session.get("userLastNameKana").toString(),
-	// session.get("userMail").toString(),
-	// session.get("userPassword").toString(),
-	// session.get("userGender").toString(),
-	// session.get("userPostalCode").toString(),
-	// session.get("userPrefecture").toString(),
-	// session.get("userAddress1").toString(),
-	// session.get("userAddress2").toString(),
-	// session.get("userAuthority").toString());
-
-	// aとbが共にtrueの時に処理を実行するそうでない場合はエラー
-	// if (this.userFamilyName.equals(HomeDTO.getUserFamilyName()) &&
-	// this.userLastName.equals(HomeDTO.getUserLastName()) &&
-	// this.userFamilyNameKana.equals(HomeDTO.getUserFamilyNameKana()) &&
-	// this.userLastNameKana.equals(HomeDTO.getUserLastNameKana()) &&
-	// this.userMail.equals(HomeDTO.getUserMail()) &&
-	// this.userPassword.equals(HomeDTO.getUserPassword()) &&
-	// this.userGender.equals(HomeDTO.getUserGender()) &&
-	// this.userPostalCode.equals(HomeDTO.getUserPostalCode()) &&
-	// this.userPrefecture.equals(HomeDTO.getUserPrefecture()) &&
-	// this.userAddress1.equals(HomeDTO.getUserAddress1()) &&
-	// this.userAddress2.equals(HomeDTO.getUserAddress2()) &&
-	// this.userAuthority.equals(HomeDTO.getUserAuthority())) {
-
-	// 変数・文字列 result=SUCCESS
-	// userCreateComplete.jspに遷移する
-	// String result = SUCCESS;
-
-	// 戻り値
-	// resultに入った値の処理結果をstrutsが取得してregistComplete.jspに遷移する
-	// return result;
-
-	// }
 
 	//フィールド変数に対応したgetterとsetterを定義
 	//userCreateconfirm.jspの値として受け取った、userFamilyNameフィールドの値をregistComplete.jspに渡している

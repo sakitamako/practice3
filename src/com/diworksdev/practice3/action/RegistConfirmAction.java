@@ -4,8 +4,6 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
-//import com.diworksdev.practice3.dao.RegistCompleteDAO;
-//import com.diworksdev.practice3.dto.RegistDTO;
 import com.opensymphony.xwork2.ActionSupport;
 
 //ユーザー登録機能
@@ -55,15 +53,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	public String execute() {
 
 		String result = SUCCESS;
-
-		//JSPから送られてきた情報を引数として、
-		//LoginDAOクラスのgetLoginUserInfoメソッドを呼び出す
-		//その後、DAOで取得した結果をLoginDTOに代入する
-//		RegistDTO = RegistCompleteDAO.getRegist(userFamilyName, userLastName, userFamilyNameKana, userLastNameKana, userMail,
-//				userPassword, userGender, userPostalCode, userPrefecture, userAddress1, userAddress2, userAuthority);
-
-		//Map を使った場合には、put()で要素を記憶できる
-//		session.put("regist", RegistDTO);
 
 		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 		//userFamilyNameと空文字・何も入ってない時の値が等しい場合、かつ、userLastNameと空文字・何も入ってない時の値が等しい場合、かつ、userFamilyNameKanaと空文字・何も入ってない時の値が等しい場合はelse文に行く！

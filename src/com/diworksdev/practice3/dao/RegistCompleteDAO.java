@@ -3,10 +3,7 @@ package com.diworksdev.practice3.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-//import java.util.ArrayList;
-//import java.sql.ResultSet;
 
-//import com.diworksdev.practice3.dto.HomeDTO;
 import com.diworksdev.practice3.util.DBConnector;
 import com.diworksdev.practice3.util.DateUtil;
 
@@ -51,20 +48,6 @@ public class RegistCompleteDAO {
 
 		//③小川講師から教えてもらったこと、上記の確認したい項目を入力！
 		System.out.println(userFamilyName);
-	//DBから購入履歴を取得するためのメソッド
-	//クラス、メソッドの定義
-	//DTO型を最後に呼び出し元に渡すので、DTO型を戻り値にしたメソッドを作る
-	//Actionクラスの値を引数として受け取る,throws=例外を意図的に起こすことが出来る処理のこと。
-//	public ArrayList<HomeDTO> getRegist(String userFamilyName, String userLastName, String userFamilyNameKana,
-//			String userLastNameKana, String userMail, String userPassword,
-//			String userGender, String userPostalCode, String userPrefecture,
-//			String userAddress1, String userAddress2, String userAuthority) throws SQLException {
-
-		//DTOと会話するためのコード
-//		ArrayList<HomeDTO> homeDTO = new ArrayList<HomeDTO>();
-
-
-//		String sql = "INSERT INTO login_user_transaction VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 		//try.catchはjavaの例外処理のための構文
 		try {
@@ -94,38 +77,6 @@ public class RegistCompleteDAO {
 //			preparedStatement.setString(13, dateUtil.getDate());
 			preparedStatement.execute();
 
-			//⑦executeQuery()/executeUpdate()で実行
-			//sql文の値をセットしたものがresultsetに入ってる
-//			ResultSet resultSet = preparedStatement.executeQuery();
-
-			//下に1行ずらすこと
-			//データが存在していれば戻り値を true で返す。存在しなければ falseで返す
-//			while (resultSet.next()) {
-
-				//DTOインスタンス化
-				//DTOと会話するためのコード
-//				HomeDTO HomeDTO = new HomeDTO();
-
-				//もしresultsetに入っている値が存在していればDTOに格納する
-//				HomeDTO.setUserFamilyName(resultSet.getString("family_name"));
-//				HomeDTO.setUserLastName(resultSet.getString("last_name"));
-//				HomeDTO.setUserFamilyNameKana(resultSet.getString("family_name_kana"));
-//				HomeDTO.setUserLastNameKana(resultSet.getString("last_name_kana"));
-//				HomeDTO.setUserMail(resultSet.getString("mail"));
-//				HomeDTO.setUserPassword(resultSet.getString("password"));
-//				HomeDTO.setUserGender(resultSet.getString("gender"));
-//				HomeDTO.setUserPostalCode(resultSet.getString("postal_code"));
-//				HomeDTO.setUserPrefecture(resultSet.getString("prefecture"));
-//				HomeDTO.setUserAddress1(resultSet.getString("address_1"));
-//				HomeDTO.setUserAddress2(resultSet.getString("address_2"));
-//				HomeDTO.setUserAuthority(resultSet.getString("authority"));
-
-				//dtoに記憶する
-//				homeDTO.add(HomeDTO);
-
-//			}
-
-
 		//処理中にSQL関連のエラーが発生した際に実行する処理
 		//tryの中でエラーが発生した場合、catchが受け取り
 		//例外がスローされる原因となったエラーまたは動作の説明を返す
@@ -143,8 +94,6 @@ public class RegistCompleteDAO {
 			connection.close();
 
 		}
-
-//		return homeDTO;
 
 	}
 
