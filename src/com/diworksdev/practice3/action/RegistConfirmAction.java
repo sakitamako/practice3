@@ -32,7 +32,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userLastNameKana;
 	private String userMail;
 	private String userPassword;
-	private String userGender;
+	private int userGender;
 	private String userPostalCode;
 	private String userPrefecture;
 	private String userAddress1;
@@ -94,63 +94,22 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		}
 
-//		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
-//		//もしuserGenderが0と等しい場合
-		if (userGender.equals("0")) {
-//
-//			//男性代入
-			userGender = "男性";
-//
-//			//sessionに記憶
-			session.put("userGender", userGender);
-//
-//		//そうでない場合
-		} else if (userGender.equals("1")) {
-//
-//			//女性代入
-			userGender = "女性";
-//
-//			//sessionに記憶
-			session.put("userGender", userGender);
+		//Integerクラスは、プリミティブ型intの値をオブジェクトにラップします。Integer型のオブジェクトには、型がintの単一フィールドが含まれます。
+		//さらにこのクラスは、intをStringに、Stringをintに変換する各種メソッドや、intの処理時に役立つ定数およびメソッドも提供します。
+		//文字列の引数を解釈し、指定された基数 （数学的記数法の底）の整数値を返します
+		//sessionの中のデータを取得してテキストで表す
+		String sample = Integer.toString(userGender);
+//		String sample2 = Integer.toString(userAuthority);
 
-		} else {
 
-			result =ERROR;
-
-		}
-//
-//		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
-//		//もしuserAuthorityが0と等しい場合
-		if (userAuthority.equals("0")) {
-//
-//			//一般代入
-			userAuthority = "一般";
-//
-//			//sessionに記憶
-			session.put("userAuthority", userAuthority);
-//
-//		//そうでない場合
-		} else if (userAuthority.equals("1")) {
-//
-//			//管理者代入
-			userAuthority = "管理者";
-//
-//			//sessionに記憶
-			session.put("userAuthority", userAuthority);
-
-		} else {
-
-			result =ERROR;
-
-		}
+		session.put("userGender", sample);
+//		session.put("userAuthority", sample2);
 
 //		//戻り値
 //		//retに入った値を呼び出し元であるActionクラスに渡す
 		return result;
 
 	}
-
-
 
 	//フィールド変数に対応したgetterとsetterを定義
 	//Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
@@ -238,14 +197,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	//フィールド変数に対応したgetterとsetterを定義
 	//Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
-	public String getUserGender() {
+	public int getUserGender() {
 		return userGender;
 
 	}
 
 	//フィールド変数に対応したgetterとsetterを定義
 	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
-	public void setUserGender(String userGender) {
+	public void setUserGender(int userGender) {
 		this.userGender = userGender;
 
 	}
