@@ -100,16 +100,15 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		//sessionの中のデータを取得してテキストで表す
 		String userGender1 = Integer.toString(userGender);
 
-			session.put("userGender", userGender1);
-
-			session.put("userGender", userGender1);
-
-
-//		String sample2 = Integer.toString(userAuthority);
+		session.put("userGender", userGender1);
+//		session.put("userGender", userGender1);
 
 
-//		session.put("userGender", sample);
-//		session.put("userAuthority", sample2);
+//		String userAuthority0 = Integer.toString(userAuthority);
+
+//			session.put("userGender", userAuthority0);
+
+
 
 //		//戻り値
 //		//retに入った値を呼び出し元であるActionクラスに渡す
