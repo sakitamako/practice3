@@ -98,11 +98,17 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		//さらにこのクラスは、intをStringに、Stringをintに変換する各種メソッドや、intの処理時に役立つ定数およびメソッドも提供します。
 		//文字列の引数を解釈し、指定された基数 （数学的記数法の底）の整数値を返します
 		//sessionの中のデータを取得してテキストで表す
-		String sample = Integer.toString(userGender);
+		String userGender1 = Integer.toString(userGender);
+
+			session.put("userGender", userGender1);
+
+			session.put("userGender", userGender1);
+
+
 //		String sample2 = Integer.toString(userAuthority);
 
 
-		session.put("userGender", sample);
+//		session.put("userGender", sample);
 //		session.put("userAuthority", sample2);
 
 //		//戻り値
