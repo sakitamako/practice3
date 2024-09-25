@@ -126,7 +126,7 @@ table {
                         <td><label>パスワード</label></td>
                         <td><input type="text" name="userPassword" maxlength="10" value="" required /></td>
                     </tr>
-                                        <tr>
+                    <tr>
                         <td><label>性別</label></td>
                         <td>
                             <input type="radio" name="userGender" value="0" checked="checked">男性
