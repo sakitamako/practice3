@@ -32,7 +32,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userLastNameKana;
 	private String userMail;
 	private String userPassword;
-	private String userGender;
+	private int userGender;
 	private String userPostalCode;
 	private String userPrefecture;
 	private String userAddress1;
@@ -61,7 +61,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		System.out.println(userMail);
 		System.out.println(userPassword);
 //		System.out.println(userGender);
-		System.out.println(userPostalCode);
 //		System.out.println(userAuthority);
 		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 		//userFamilyNameと空文字・何も入ってない時の値が等しい場合、かつ、userLastNameと空文字・何も入ってない時の値が等しい場合、かつ、userFamilyNameKanaと空文字・何も入ってない時の値が等しい場合はelse文に行く！
@@ -74,12 +73,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //
 //			//sessionのなかに記憶する保存する
 			System.out.println(userFamilyName);
-			System.out.println(userLastName);
-			System.out.println(userFamilyNameKana);
-			System.out.println(userLastNameKana);
-			System.out.println(userMail);
-			System.out.println(userPassword);
-			System.out.println(userPostalCode);
 			session.put("userFamilyName", userFamilyName);
 			session.put("userLastName", userLastName);
 			session.put("userFamilyNameKana", userFamilyNameKana);
@@ -100,16 +93,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		result = ERROR;
 
 		}
-
-		//戻り値
-		//retに入った値を呼び出し元であるActionクラスに渡す
-		return result;
-
-	}
-
-//		String userGender1 = Integer.toString(userGender);
-//		session.put("userGender", userGender1);
-
 
 		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 //		//もしuserGenderが0と等しい場合
@@ -135,7 +118,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //			result =ERROR;
 
 //		}
-
 //
 //		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 //		//もしuserAuthorityが0と等しい場合
@@ -162,15 +144,22 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 //		}
 
-
-		//Integerクラスは、プリミティブ型intの値をオブジェクトにラップします。Integer型のオブジェクトには、型がintの単一フィールドが含まれます。
-		//さらにこのクラスは、intをStringに、Stringをintに変換する各種メソッドや、intの処理時に役立つ定数およびメソッドも提供します。
-		//文字列の引数を解釈し、指定された基数 （数学的記数法の底）の整数値を返します
-		//sessionの中のデータを取得してテキストで表す
+//		//Integerクラスは、プリミティブ型intの値をオブジェクトにラップします。Integer型のオブジェクトには、型がintの単一フィールドが含まれます。
+//		//さらにこのクラスは、intをStringに、Stringをintに変換する各種メソッドや、intの処理時に役立つ定数およびメソッドも提供します。
+//		//文字列の引数を解釈し、指定された基数 （数学的記数法の底）の整数値を返します
+//		//sessionの中のデータを取得してテキストで表す
 //		String userGender0 = Integer.toString(userGender);
-
+//
+//		session.put("userGender", userGender0);
+//
 //		System.out.println(userGender0);
 //		System.out.println(userGender);
+
+//		//戻り値
+//		//retに入った値を呼び出し元であるActionクラスに渡す
+		return result;
+
+	}
 
 //		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 //		//もしuserGenderが0と等しい場合
@@ -286,14 +275,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	//フィールド変数に対応したgetterとsetterを定義
 	//Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
-	public String getUserGender() {
+	public int getUserGender() {
 		return userGender;
 
 	}
 
 	//フィールド変数に対応したgetterとsetterを定義
 	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
-	public void setUserGender(String userGender) {
+	public void setUserGender(int userGender) {
 		this.userGender = userGender;
 
 	}
