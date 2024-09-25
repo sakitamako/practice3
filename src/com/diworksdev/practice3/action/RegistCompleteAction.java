@@ -63,19 +63,22 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		System.out.println(session.get("userLastNameKana"));
 		System.out.println(session.get("userMail"));
 		System.out.println(session.get("userPassword"));
-		System.out.println(session.get("userGender"));
+//		System.out.println(session.get("userGender"));
+		System.out.println(session.get("userPostalCode"));
 		System.out.println(session.get("userFamilyName").toString());
 		System.out.println(session.get("userLastName").toString());
 		System.out.println(session.get("userFamilyNameKana").toString());
 		System.out.println(session.get("userLastNameKana").toString());
 		System.out.println(session.get("userMail").toString());
 		System.out.println(session.get("userPassword").toString());
-		System.out.println(session.get("userGender").toString());
+//		System.out.println(session.get("userGender").toString());
+		System.out.println(session.get("userPostalCode").toString());
 
 		//小川講師に追記してもらったとこ！１項目ずつデータが渡っているかチェックする！
 		registCompleteDAO.regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(),
 				session.get("userFamilyNameKana").toString(), session.get("userLastNameKana").toString(),
-				session.get("userMail").toString(), session.get("userPassword").toString(),session.get("userGender").toString());
+				session.get("userMail").toString(), session.get("userPassword").toString(),session.get("userPostalCode").toString());
+
 //		registCompleteDAO.regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(),
 //				session.get("userFamilyNameKana").toString(), session.get("userLastNameKana").toString(),
 //				session.get("userMail").toString(), session.get("userPassword").toString(),
