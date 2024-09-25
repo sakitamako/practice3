@@ -32,7 +32,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userLastNameKana;
 	private String userMail;
 	private String userPassword;
-	private String userGender;
+	private int userGender;
 	private String userPostalCode;
 	private String userPrefecture;
 	private String userAddress1;
@@ -53,6 +53,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	public String execute() {
 
 		String result = SUCCESS;
+
+		String userGender1 = Integer.toString(userGender);
+		session.put("userGender", userGender1);
 
 		System.out.println(userFamilyName);
 		System.out.println(userLastName);
@@ -97,56 +100,56 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 //		//もしuserGenderが0と等しい場合
-		if (userGender.equals("0")) {
+//		if (userGender.equals("0")) {
 //
 //			//男性代入
-			userGender = "男性";
+//			userGender = "男性";
 //
 //			//sessionに記憶
-			session.put("userGender", userGender);
+//			session.put("userGender", userGender);
 //
 //		//そうでない場合
-		} else if (userGender.equals("1")) {
+//		} else if (userGender.equals("1")) {
 //
 //			//女性代入
-			userGender = "女性";
+//			userGender = "女性";
 //
 //			//sessionに記憶
-			session.put("userGender", userGender);
+//			session.put("userGender", userGender);
 
-		} else {
+//		} else {
 
-			result =ERROR;
+//			result =ERROR;
 
-		}
+//		}
 //
 //		//int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 //		//もしuserAuthorityが0と等しい場合
-		if (userAuthority.equals("0")) {
+//		if (userAuthority.equals("0")) {
 //
 //			//一般代入
-			userAuthority = "一般";
+//			userAuthority = "一般";
 //
 //			//sessionに記憶
-			session.put("userAuthority", userAuthority);
+//			session.put("userAuthority", userAuthority);
 //
 //		//そうでない場合
-		} else if (userAuthority.equals("1")) {
+//		} else if (userAuthority.equals("1")) {
 //
 //			//管理者代入
-			userAuthority = "管理者";
+//			userAuthority = "管理者";
 //
 //			//sessionに記憶
-			session.put("userAuthority", userAuthority);
+//			session.put("userAuthority", userAuthority);
 
-		} else {
+//		} else {
 
-			result =ERROR;
+//			result =ERROR;
 
-		}
+//		}
 
-//		//戻り値
-//		//retに入った値を呼び出し元であるActionクラスに渡す
+		//戻り値
+		//retに入った値を呼び出し元であるActionクラスに渡す
 		return result;
 
 	}
@@ -275,14 +278,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	//フィールド変数に対応したgetterとsetterを定義
 	//Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
-	public String getUserGender() {
+	public int getUserGender() {
 		return userGender;
 
 	}
 
 	//フィールド変数に対応したgetterとsetterを定義
 	//DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
-	public void setUserGender(String userGender) {
+	public void setUserGender(int userGender) {
 		this.userGender = userGender;
 
 	}
