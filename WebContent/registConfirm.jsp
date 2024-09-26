@@ -121,7 +121,7 @@ table {
 					</tr>
 					<tr id="box">
 						<td><label>性別</label></td>
-						<td><s:property value="session.userGender" /></td>
+						<td><s:property value="userGender0" /></td>
 					</tr>
 					<tr id="box">
 						<td><label>郵便番号</label></td>

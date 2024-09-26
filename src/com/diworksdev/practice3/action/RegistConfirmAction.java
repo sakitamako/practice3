@@ -34,6 +34,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userPassword;
 //	private String userGender;
 	private int userGender;
+	private String userGender0;// 文字列表示用プロパティ
 	private String userPostalCode;
 //	private int userPostalCode;
 	private String userPrefecture;
@@ -105,32 +106,32 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		}
 
 //		if文消して、下記追加してみる
-		String userGender0 = Integer.toString(userGender);
+		userGender0 = Integer.toString(userGender);//0or1
 
-		session.put("userGender", userGender0);
+		session.put("userGender", userGender0);//0or1
 
-//		if (userGender.equals("0")) {
-//			//
-//			// //男性代入
-//			userGender = "男性";
-//			//
-//			// //sessionに記憶
-//			session.put("userGender", userGender);
-//			//
-//			// //そうでない場合
-//		} else if (userGender.equals("1")) {
-//			//
-//			// //女性代入
-//			userGender = "女性";
-//			//
-//			// //sessionに記憶
-//			session.put("userGender", userGender);
-//
-//		} else {
-//
-//			result = ERROR;
-//
-//		}
+		if (userGender0.equals("0")) {
+			//
+			// //男性代入
+			userGender0 = "男性";
+			//
+			// //sessionに記憶
+//			session.put("userGender", userGender);//0
+			//
+			// //そうでない場合
+		} else if (userGender0.equals("1")) {
+			//
+			// //女性代入
+			userGender0 = "女性";
+			//
+			// //sessionに記憶
+//			session.put("userGender", userGender);//1
+
+		} else {
+
+			result = ERROR;
+
+		}
 
 		// int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 		// //もしuserAuthorityが0と等しい場合
@@ -263,6 +264,15 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		this.userGender = userGender;
 
 	}
+
+	// userGender0
+	public String getUserGender0() {
+		return userGender0;
+	}
+	public void setUserGender0(String userGender0) {
+		this.userGender0 = userGender0;
+	}
+
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
