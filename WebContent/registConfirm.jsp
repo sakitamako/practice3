@@ -141,7 +141,7 @@ table {
 					</tr>
 					<tr id="box">
 						<td><label>アカウント権限</label></td>
-						<td><s:property value="userAuthority" escape="false" /></td>
+						<td><s:property value="userAuthority" /></td>
 					</tr>
 					<tr>
 						<td><s:submit value="完了" /></td>
