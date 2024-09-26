@@ -32,12 +32,15 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userLastNameKana;
 	private String userMail;
 	private String userPassword;
-	private String userGender;
+//	private String userGender;
+	private int userGender;
 	private String userPostalCode;
+//	private int userPostalCode;
 	private String userPrefecture;
 	private String userAddress1;
 	private String userAddress2;
 	private String userAuthority;
+//	private String userAuthority;
 
 	// Map<String, Object>=キーを値にマッピングするオブジェクト。
 	// マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
@@ -62,7 +65,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		System.out.println(userLastNameKana);
 		System.out.println(userMail);
 		System.out.println(userPassword);
-		// System.out.println(userGender);
+		System.out.println(userGender);
+//		System.out.println(userPostalCode);
+//		System.out.println(userAuthority);
 		// System.out.println(userAuthority);
 		// int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 		// userFamilyNameと空文字・何も入ってない時の値が等しい場合、かつ、userLastNameと空文字・何も入ってない時の値が等しい場合、かつ、userFamilyNameKanaと空文字・何も入ってない時の値が等しい場合はelse文に行く！
@@ -72,9 +77,10 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		// == false && userName.equals("") == false) {
 		if (!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals(""))
 				&& !(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals(""))
-				&& !(userPostalCode.equals("")) && !(userPrefecture.equals("")) && !(userAddress1.equals(""))
-				&& !(userAddress2.equals(""))) {
-			//
+				&& !(userPrefecture.equals("")) && !(userAddress1.equals("")) && !(userAddress2.equals(""))) {
+
+			//!(userPostalCode.equals("")) && これも数値、intだったから一旦外す！
+
 			// //sessionのなかに記憶する保存する
 			System.out.println(userFamilyName);
 			session.put("userFamilyName", userFamilyName);
@@ -84,7 +90,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			session.put("userMail", userMail);
 			session.put("userPassword", userPassword);
 //			session.put("userGender", userGender); //原因？一旦外してみる
-			session.put("userPostalCode", userPostalCode);// 原因？
+//			session.put("userPostalCode", userPostalCode);// 原因？
 			session.put("userPrefecture", userPrefecture);
 			session.put("userAddress1", userAddress1);
 			session.put("userAddress2", userAddress2);
@@ -98,28 +104,33 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		}
 
-		if (userGender.equals("0")) {
-			//
-			// //男性代入
-			userGender = "男性";
-			//
-			// //sessionに記憶
-			session.put("userGender", userGender);
-			//
-			// //そうでない場合
-		} else if (userGender.equals("1")) {
-			//
-			// //女性代入
-			userGender = "女性";
-			//
-			// //sessionに記憶
-			session.put("userGender", userGender);
+//		if文消して、下記追加してみる
+		String userGender0 = Integer.toString(userGender);
 
-		} else {
+		session.put("userGender", userGender0);
 
-			result = ERROR;
-
-		}
+//		if (userGender.equals("0")) {
+//			//
+//			// //男性代入
+//			userGender = "男性";
+//			//
+//			// //sessionに記憶
+//			session.put("userGender", userGender);
+//			//
+//			// //そうでない場合
+//		} else if (userGender.equals("1")) {
+//			//
+//			// //女性代入
+//			userGender = "女性";
+//			//
+//			// //sessionに記憶
+//			session.put("userGender", userGender);
+//
+//		} else {
+//
+//			result = ERROR;
+//
+//		}
 
 		// int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 		// //もしuserAuthorityが0と等しい場合
@@ -241,14 +252,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
-	public String getUserGender() {
+	public int getUserGender() {
 		return userGender;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
-	public void setUserGender(String userGender) {
+	public void setUserGender(int userGender) {
 		this.userGender = userGender;
 
 	}
