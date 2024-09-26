@@ -40,7 +40,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userAddress1;
 	private String userAddress2;
 	private String userAuthority;
-//	private String userAuthority;
+//	private int userAuthority;
 
 	// Map<String, Object>=キーを値にマッピングするオブジェクト。
 	// マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
