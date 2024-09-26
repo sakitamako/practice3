@@ -104,8 +104,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			result = ERROR;
 
 		}
-
-//		if文消して、下記追加してみる
+//		小川講師からintバージョンで作った場合の処理方法教えてもらった！
+//		下記は元々自分で作ってたコード！何が表示される想定なのかコメントアウトしている！
 		userGender0 = Integer.toString(userGender);//0or1
 
 		session.put("userGender", userGender0);//0or1
@@ -116,7 +116,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			userGender0 = "男性";
 			//
 			// //sessionに記憶
-//			session.put("userGender", userGender);//0
+//			session.put("userGender", userGender);//0->男性
 			//
 			// //そうでない場合
 		} else if (userGender0.equals("1")) {
@@ -125,7 +125,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			userGender0 = "女性";
 			//
 			// //sessionに記憶
-//			session.put("userGender", userGender);//1
+//			session.put("userGender", userGender);//1->女性
 
 		} else {
 
@@ -135,6 +135,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		// int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 		// //もしuserAuthorityが0と等しい場合
+		//stringで処理してみる！
+
 		if (userAuthority.equals("0")) {
 			//
 			// //一般代入
@@ -265,7 +267,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	}
 
-	// userGender0
+	// userGender0、intバージョンのフィールド変数のgetset追加
 	public String getUserGender0() {
 		return userGender0;
 	}
