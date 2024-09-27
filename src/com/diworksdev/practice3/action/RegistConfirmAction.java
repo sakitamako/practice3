@@ -35,8 +35,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //	private String userGender;
 	private int userGender;
 	private String userGender0;// 文字列表示用プロパティ
-	private String userPostalCode;
-//	private int userPostalCode;
+//	private String userPostalCode;
+	private int userPostalCode;
 	private String userPrefecture;
 	private String userAddress1;
 	private String userAddress2;
@@ -127,9 +127,15 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			// //sessionに記憶
 //			session.put("userGender", userGender);//1->女性
 
-		} else {
+//		} else {
 
-			result = ERROR;
+//			result = ERROR;
+
+		}
+
+		if (userPostalCode > 0) {
+
+			session.put("userPostalCode", userPostalCode);
 
 		}
 
@@ -159,9 +165,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			//
 			// //int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 			//
-		} else {
+//		} else {
 
-			result = ERROR;
+//			result = ERROR;
 		}
 		//
 		// //上記追加したやつ
@@ -281,14 +287,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
-	public String getUserPostalCode() {
+	public int getUserPostalCode() {
 		return userPostalCode;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
-	public void setUserPostalCode(String userPostalCode) {
+	public void setUserPostalCode(int userPostalCode) {
 		this.userPostalCode = userPostalCode;
 
 	}

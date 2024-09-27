@@ -34,7 +34,7 @@ public class RegistCompleteDAO {
 //			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	//①小川講師から教えてもらったこと、下記みたいに１個ずつ試してみる！上記の完成形はコメントアウト！
-	private String sql = "INSERT INTO login_user_transaction(family_name, last_name, family_name_kana, last_name_kana, mail, password, gender, authority) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
+	private String sql = "INSERT INTO login_user_transaction(family_name, last_name, family_name_kana, last_name_kana, mail, password, gender, postal_code) VALUES(?, ?, ?, ?, ?, ?, ?, ?)";
 
 	//DBから購入履歴を取得するためのメソッド
 	//クラス、メソッドの定義
@@ -42,8 +42,8 @@ public class RegistCompleteDAO {
 	//Actionクラスの値を引数として受け取る,throws=例外を意図的に起こすことが出来る処理のこと。
 	//②小川講師から教えてもらったとこ！追加してもらった、一個ずつ確認するため、確認したくない項目は⇨””にする
 	public void regist(String userFamilyName, String userLastName, String userFamilyNameKana,
-			String userLastNameKana, String userMail, String userPassword, String userGender, String userAuthority) throws SQLException {
-		regist(userFamilyName, userLastName, userFamilyNameKana, userLastNameKana, userMail, userPassword, userGender, "", "", "", "", userAuthority);
+			String userLastNameKana, String userMail, String userPassword, String userGender, String userPostalCode) throws SQLException {
+		regist(userFamilyName, userLastName, userFamilyNameKana, userLastNameKana, userMail, userPassword, userGender, userPostalCode, "", "", "", "");
 	}
 
 	//これ元々記述してたやつ、上は小川講師に追加してもらったやつ！
@@ -60,6 +60,7 @@ public class RegistCompleteDAO {
 		System.out.println(userMail);
 		System.out.println(userPassword);
 		System.out.println(userGender);
+		System.out.println(userPostalCode);
 		System.out.println(userAuthority);
 
 		//try.catchはjavaの例外処理のための構文
@@ -82,11 +83,11 @@ public class RegistCompleteDAO {
 			preparedStatement.setString(5, userMail);
 			preparedStatement.setString(6, userPassword);
 			preparedStatement.setString(7, userGender);
-//			preparedStatement.setString(8, userPostalCode);
+			preparedStatement.setString(8, userPostalCode);
 //			preparedStatement.setString(9, userPrefecture);
 //			preparedStatement.setString(10, userAddress1);
 //			preparedStatement.setString(11, userAddress2);
-			preparedStatement.setString(12, userAuthority);
+//			preparedStatement.setString(12, userAuthority);
 //			preparedStatement.setString(13, dateUtil.getDate());
 			preparedStatement.execute();
 
