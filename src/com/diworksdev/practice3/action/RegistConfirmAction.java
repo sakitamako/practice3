@@ -35,8 +35,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //	private String userGender;
 	private int userGender;
 	private String userGender0;// 文字列表示用プロパティ
-//	private String userPostalCode;
 	private int userPostalCode;
+	private String userPostalCode0;// 文字列表示用プロパティ
 	private String userPrefecture;
 	private String userAddress1;
 	private String userAddress2;
@@ -67,7 +67,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		System.out.println(userMail);
 		System.out.println(userPassword);
 		System.out.println(userGender);
-//		System.out.println(userPostalCode);
+		System.out.println(userPostalCode);
 		System.out.println(userAuthority);
 		// System.out.println(userAuthority);
 		// int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
@@ -133,9 +133,17 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		}
 
-		if (userPostalCode > 0) {
+		userPostalCode0 = Integer.toString(userPostalCode);//0or1
+//
+		session.put("userPostalCode", userPostalCode0);//0or1
+
+		if (!(userPostalCode0.equals(""))) {
 
 			session.put("userPostalCode", userPostalCode);
+
+		} else {
+
+			result = ERROR;
 
 		}
 
@@ -285,6 +293,19 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	}
 
 
+	// フィールド変数に対応したgetterとsetterを定義
+	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
+	public String getUserPostalCode0() {
+		return userPostalCode0;
+
+	}
+
+	// フィールド変数に対応したgetterとsetterを定義
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
+	public void setUserPostalCode0(String userPostalCode0) {
+		this.userPostalCode0 = userPostalCode0;
+
+	}
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
 	public int getUserPostalCode() {
