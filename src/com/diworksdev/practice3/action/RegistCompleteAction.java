@@ -80,14 +80,14 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		System.out.println(session.get("userPrefecture").toString());
 		System.out.println(session.get("userAddress1").toString());
 		System.out.println(session.get("userAddress2").toString());
-//		System.out.println(session.get("userAuthority").toString());
+		System.out.println(session.get("userAuthority").toString());
 
 		//小川講師に追記してもらったとこ！１項目ずつデータが渡っているかチェックする！
 		registCompleteDAO.regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(),
 				session.get("userFamilyNameKana").toString(), session.get("userLastNameKana").toString(),
 				session.get("userMail").toString(), session.get("userPassword").toString(), session.get("userGender").toString(),
 				session.get("userPostalCode").toString(), session.get("userPrefecture").toString(),
-				session.get("userAddress1").toString(), session.get("userAddress2").toString());
+				session.get("userAddress1").toString(), session.get("userAddress2").toString(), session.get("userAuthority").toString());
 //		registCompleteDAO.regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(),
 //				session.get("userFamilyNameKana").toString(), session.get("userLastNameKana").toString(),
 //				session.get("userMail").toString(), session.get("userPassword").toString(),

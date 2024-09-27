@@ -40,8 +40,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userPrefecture;
 	private String userAddress1;
 	private String userAddress2;
-	private String userAuthority;
-//	private int userAuthority;
+	private String userAuthority0;// 文字列表示用プロパティ
+	private int userAuthority;
 
 	// Map<String, Object>=キーを値にマッピングするオブジェクト。
 	// マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
@@ -154,22 +154,22 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		// //もしuserAuthorityが0と等しい場合
 		//stringで処理してみる！
 
-//		userAuthority = Integer.toString(userAuthority);//0or1
-//		session.put("userAuthority", userAuthority);//0or1
+		userAuthority0 = Integer.toString(userAuthority);//0or1
+		session.put("userAuthority", userAuthority0);//0or1
 
-		if (userAuthority.equals("0")) {//0or1
+		if (userAuthority0.equals("0")) {//0or1
 			//
 			// //一般代入
-			userAuthority = "一般";
+			userAuthority0 = "一般";
 			//
 			// //sessionに記憶
 //			session.put("userAuthority", userAuthority);//一般
 			//
 			// //そうでない場合
-		} else if (userAuthority.equals("1")) {//0or1
+		} else if (userAuthority0.equals("1")) {//0or1
 			//
 			// //管理者代入
-			userAuthority = "管理者";
+			userAuthority0 = "管理者";
 			//
 			// //sessionに記憶
 //			session.put("userAuthority", userAuthority);//管理者
@@ -367,15 +367,29 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
-	public String getUserAuthority() {
+	public String getUserAuthority0() {
+		return userAuthority0;
+
+	}
+
+	// フィールド変数に対応したgetterとsetterを定義
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
+	public void setUserAuthority(int userAuthority) {
+		this.userAuthority = userAuthority;
+
+	}
+
+	// フィールド変数に対応したgetterとsetterを定義
+	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
+	public int getUserAuthority() {
 		return userAuthority;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
-	public void setUserAuthority(String userAuthority) {
-		this.userAuthority = userAuthority;
+	public void setUserAuthority0(String userAuthority0) {
+		this.userAuthority0 = userAuthority0;
 
 	}
 

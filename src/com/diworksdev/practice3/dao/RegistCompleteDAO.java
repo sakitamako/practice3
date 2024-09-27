@@ -35,19 +35,19 @@ public class RegistCompleteDAO {
 
 	//①小川講師から教えてもらったこと、下記みたいに１個ずつ試してみる！上記の完成形はコメントアウト！
 	private String sql = "INSERT INTO login_user_transaction(family_name, last_name, family_name_kana, "
-			+ "last_name_kana, mail, password, gender, postal_code, prefecture, address_1, address_2) "
-			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			+ "last_name_kana, mail, password, gender, postal_code, prefecture, address_1, address_2, authority, registered_time) "
+			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	//DBから購入履歴を取得するためのメソッド
 	//クラス、メソッドの定義
 	//DTO型を最後に呼び出し元に渡すので、DTO型を戻り値にしたメソッドを作る
 	//Actionクラスの値を引数として受け取る,throws=例外を意図的に起こすことが出来る処理のこと。
 	//②小川講師から教えてもらったとこ！追加してもらった、一個ずつ確認するため、確認したくない項目は⇨””にする
-	public void regist(String userFamilyName, String userLastName, String userFamilyNameKana,
-			String userLastNameKana, String userMail, String userPassword, String userGender,
-			String userPostalCode, String userPrefecture, String userAddress1, String userAddress2) throws SQLException {
-		regist(userFamilyName, userLastName, userFamilyNameKana, userLastNameKana, userMail, userPassword, userGender, userPostalCode, userPrefecture, userAddress1, userAddress2, "");
-	}
+//	public void regist(String userFamilyName, String userLastName, String userFamilyNameKana,
+//			String userLastNameKana, String userMail, String userPassword, String userGender,
+//			String userPostalCode, String userPrefecture, String userAddress1, String userAddress2, String userAuthority) throws SQLException {
+//		regist(userFamilyName, userLastName, userFamilyNameKana, userLastNameKana, userMail, userPassword, userGender, userPostalCode, userPrefecture, userAddress1, userAddress2, userAuthority);
+//	}
 
 	//これ元々記述してたやつ、上は小川講師に追加してもらったやつ！
 	public void regist(String userFamilyName, String userLastName, String userFamilyNameKana,
@@ -93,8 +93,8 @@ public class RegistCompleteDAO {
 			preparedStatement.setString(9, userPrefecture);
 			preparedStatement.setString(10, userAddress1);
 			preparedStatement.setString(11, userAddress2);
-//			preparedStatement.setString(12, userAuthority);
-//			preparedStatement.setString(13, dateUtil.getDate());
+			preparedStatement.setString(12, userAuthority);
+			preparedStatement.setString(13, dateUtil.getDate());
 			preparedStatement.execute();
 
 		//処理中にSQL関連のエラーが発生した際に実行する処理
