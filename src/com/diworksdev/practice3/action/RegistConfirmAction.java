@@ -68,6 +68,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		System.out.println(userPassword);
 		System.out.println(userGender);
 		System.out.println(userPostalCode);
+		System.out.println(userPrefecture);
+		System.out.println(userAddress1);
+		System.out.println(userAddress2);
 		System.out.println(userAuthority);
 		// System.out.println(userAuthority);
 		// int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
