@@ -40,7 +40,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	private String userAddress1;
 	private String userAddress2;
 	private String userAuthority;
-	// private String delete_flag;
+	private int delete_flag;
 
 	// Map<String, Object>=キーを値にマッピングするオブジェクト。
 	// マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
@@ -54,47 +54,71 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	// 全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
 	public String execute() throws SQLException {
 
-		// DAOを経由して入力された内容をDBに登録します。
-		// DAOのregistに記憶している情報を取得してテキストで表す文字列を返す
-		//小川講師に追記してもらったところ、しっかりデータ渡ってきているかチェックできる
-		System.out.println(session.get("userFamilyName"));
-		System.out.println(session.get("userLastName"));
-		System.out.println(session.get("userFamilyNameKana"));
-		System.out.println(session.get("userLastNameKana"));
-		System.out.println(session.get("userMail"));
-		System.out.println(session.get("userPassword"));
-		System.out.println(session.get("userGender"));
-		System.out.println(session.get("userPostalCode"));
-		System.out.println(session.get("userPrefecture"));
-		System.out.println(session.get("userAddress1"));
-		System.out.println(session.get("userAddress2"));
-//		System.out.println(session.get("userAuthority"));
-		System.out.println(session.get("userFamilyName").toString());
-		System.out.println(session.get("userLastName").toString());
-		System.out.println(session.get("userFamilyNameKana").toString());
-		System.out.println(session.get("userLastNameKana").toString());
-		System.out.println(session.get("userMail").toString());
-		System.out.println(session.get("userPassword").toString());
-		System.out.println(session.get("userGender").toString());
-		System.out.println(session.get("userPostalCode").toString());
-		System.out.println(session.get("userPrefecture").toString());
-		System.out.println(session.get("userAddress1").toString());
-		System.out.println(session.get("userAddress2").toString());
-		System.out.println(session.get("userAuthority").toString());
+		if (delete_flag == 0) {
 
-		//小川講師に追記してもらったとこ！１項目ずつデータが渡っているかチェックする！
-		registCompleteDAO.regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(),
-				session.get("userFamilyNameKana").toString(), session.get("userLastNameKana").toString(),
-				session.get("userMail").toString(), session.get("userPassword").toString(), session.get("userGender").toString(),
-				session.get("userPostalCode").toString(), session.get("userPrefecture").toString(),
-				session.get("userAddress1").toString(), session.get("userAddress2").toString(), session.get("userAuthority").toString());
-//		registCompleteDAO.regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(),
-//				session.get("userFamilyNameKana").toString(), session.get("userLastNameKana").toString(),
-//				session.get("userMail").toString(), session.get("userPassword").toString(),
-//				session.get("userGender").toString(), session.get("userPostalCode").toString(),
-//				session.get("userPrefecture").toString(), session.get("userAddress1").toString(),
-//				session.get("userAddress2").toString(), session.get("userAuthority").toString());
+			// delete_flag = Integer.toString(delete_flag);//0or1
+			//
+			// session.put("delete_flag", delete_flag0);//0or1
 
+			// DAOを経由して入力された内容をDBに登録します。
+			// DAOのregistに記憶している情報を取得してテキストで表す文字列を返す
+			// 小川講師に追記してもらったところ、しっかりデータ渡ってきているかチェックできる
+			System.out.println(session.get("userFamilyName"));
+			System.out.println(session.get("userLastName"));
+			System.out.println(session.get("userFamilyNameKana"));
+			System.out.println(session.get("userLastNameKana"));
+			System.out.println(session.get("userMail"));
+			System.out.println(session.get("userPassword"));
+			System.out.println(session.get("userGender"));
+			System.out.println(session.get("userPostalCode"));
+			System.out.println(session.get("userPrefecture"));
+			System.out.println(session.get("userAddress1"));
+			System.out.println(session.get("userAddress2"));
+			// System.out.println(session.get("userAuthority"));
+			System.out.println(session.get("userFamilyName").toString());
+			System.out.println(session.get("userLastName").toString());
+			System.out.println(session.get("userFamilyNameKana").toString());
+			System.out.println(session.get("userLastNameKana").toString());
+			System.out.println(session.get("userMail").toString());
+			System.out.println(session.get("userPassword").toString());
+			System.out.println(session.get("userGender").toString());
+			System.out.println(session.get("userPostalCode").toString());
+			System.out.println(session.get("userPrefecture").toString());
+			System.out.println(session.get("userAddress1").toString());
+			System.out.println(session.get("userAddress2").toString());
+			System.out.println(session.get("userAuthority").toString());
+
+			// 小川講師に追記してもらったとこ！１項目ずつデータが渡っているかチェックする！
+			registCompleteDAO.regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(),
+					session.get("userFamilyNameKana").toString(), session.get("userLastNameKana").toString(),
+					session.get("userMail").toString(), session.get("userPassword").toString(),
+					session.get("userGender").toString(), session.get("userPostalCode").toString(),
+					session.get("userPrefecture").toString(), session.get("userAddress1").toString(),
+					session.get("userAddress2").toString(), session.get("userAuthority").toString());
+			// registCompleteDAO.regist(session.get("userFamilyName").toString(),
+			// session.get("userLastName").toString(),
+			// session.get("userFamilyNameKana").toString(),
+			// session.get("userLastNameKana").toString(),
+			// session.get("userMail").toString(),
+			// session.get("userPassword").toString(),
+			// session.get("userGender").toString(),
+			// session.get("userPostalCode").toString(),
+			// session.get("userPrefecture").toString(),
+			// session.get("userAddress1").toString(),
+			// session.get("userAddress2").toString(),
+			// session.get("userAuthority").toString());
+
+			String result = SUCCESS;
+
+
+		} else {
+
+			// 「delete」メソッドを呼び出して、履歴の削除処理を行います。
+			delete_flag = 1;
+
+		}
+
+		// resultに上記処理結果を代入
 		String result = SUCCESS;
 
 		// 戻り値
@@ -103,8 +127,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//userCreateconfirm.jspの値として受け取った、userFamilyNameフィールドの値をregistComplete.jspに渡している
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userFamilyNameフィールドの値をregistComplete.jspに渡している
 	public String getUserFamilyName() {
 		return userFamilyName;
 
@@ -117,8 +141,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//userCreateconfirm.jspの値として受け取った、userLastNameフィールドの値をregistComplete.jspに渡している
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userLastNameフィールドの値をregistComplete.jspに渡している
 	public String getUserLastName() {
 		return userLastName;
 
@@ -131,8 +155,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//userCreateconfirm.jspの値として受け取った、userFamilyNameKanaフィールドの値をregistComplete.jspに渡している
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userFamilyNameKanaフィールドの値をregistComplete.jspに渡している
 	public String getUserFamilyNameKana() {
 		return userFamilyNameKana;
 
@@ -145,8 +169,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//userCreateconfirm.jspの値として受け取った、userLastNameKanaフィールドの値をregistComplete.jspに渡している
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userLastNameKanaフィールドの値をregistComplete.jspに渡している
 	public String getUserLastNameKana() {
 		return userLastNameKana;
 
@@ -159,8 +183,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//userCreateconfirm.jspの値として受け取った、userMailフィールドの値をregistComplete.jspに渡している
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userMailフィールドの値をregistComplete.jspに渡している
 	public String getUserMail() {
 		return userMail;
 
@@ -173,8 +197,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//userCreateconfirm.jspの値として受け取った、userPasswordフィールドの値をregistComplete.jspに渡している
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userPasswordフィールドの値をregistComplete.jspに渡している
 	public String getUserPassword() {
 		return userPassword;
 
@@ -187,8 +211,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//userCreateconfirm.jspの値として受け取った、userGenderフィールドの値をregistComplete.jspに渡している
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userGenderフィールドの値をregistComplete.jspに渡している
 	public String getUserGender() {
 		return userGender;
 
@@ -201,8 +225,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//userCreateconfirm.jspの値として受け取った、userPostalCodeフィールドの値をregistComplete.jspに渡している
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userPostalCodeフィールドの値をregistComplete.jspに渡している
 	public String getUserPostalCode() {
 		return userPostalCode;
 
@@ -215,8 +239,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//userCreateconfirm.jspの値として受け取った、userPrefectureフィールドの値をregistComplete.jspに渡している
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userPrefectureフィールドの値をregistComplete.jspに渡している
 	public String getUserPrefecture() {
 		return userPrefecture;
 
@@ -229,8 +253,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//userCreateconfirm.jspの値として受け取った、userAddress1フィールドの値をregistComplete.jspに渡している
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userAddress1フィールドの値をregistComplete.jspに渡している
 	public String getUserAddress1() {
 		return userAddress1;
 
@@ -243,8 +267,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//userCreateconfirm.jspの値として受け取った、userAddress2フィールドの値をregistComplete.jspに渡している
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userAddress2フィールドの値をregistComplete.jspに渡している
 	public String getUserAddress2() {
 		return userAddress2;
 
@@ -257,8 +281,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
-	//フィールド変数に対応したgetterとsetterを定義
-	//userCreateconfirm.jspの値として受け取った、userAuthorityフィールドの値をregistComplete.jspに渡している
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userAuthorityフィールドの値をregistComplete.jspに渡している
 	public String getUserAuthority() {
 		return userAuthority;
 
@@ -268,6 +292,14 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserAuthorityフィールドに格納
 	public void setUserAuthority(String userAuthority) {
 		this.userAuthority = userAuthority;
+
+	}
+
+	// 外部のSETをここに代入して元々の値を外部から持ってきた値に変えて格納する
+	// フィールド変数に対応したgetterとsetterを定義
+	// 受け取ったテーブルの値を自身のdeleteFlgフィールドに格納
+	public void setDelete_flag(int delete_flag) {
+		this.delete_flag = delete_flag;
 
 	}
 

@@ -104,6 +104,10 @@ table {
             <div>
                 <h4>登録完了しました</h4>
                 <div>
+                    <s:form action="RegistCompleteAction">
+                        <input type="hidden" name="delete_flag" value="1">
+                        <s:submit value="削除" />
+                    </s:form>
                     <br>
                     <a href='<s:url action="HomeAction" />'>TOPページへ戻る</a>
                     <br>
