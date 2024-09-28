@@ -112,9 +112,6 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 			// session.get("userAddress2").toString(),
 			// session.get("userAuthority").toString());
 
-			String result = SUCCESS;
-
-
 		} else if (delete_flag0.equals("1")) {
 
 			String result = ERROR;
