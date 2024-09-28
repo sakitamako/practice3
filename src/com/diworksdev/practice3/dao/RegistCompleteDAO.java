@@ -6,6 +6,7 @@ import java.sql.SQLException;
 
 import com.diworksdev.practice3.util.DBConnector;
 import com.diworksdev.practice3.util.DateUtil;
+import com.diworksdev.practice3.util.DeleteFlag;
 
 //DAOクラスでは、Actionから送られてきた情報を使ってDBへ問い合わせを行うファイル
 //問い合わせて取得した値をDTOクラスに格納するファイル
@@ -23,6 +24,9 @@ public class RegistCompleteDAO {
 	//このクラスのみ 変数 変数名 インスタンス化（コピーして代入）
 	private DateUtil dateUtil = new DateUtil();
 
+	//このクラスのみ 変数 変数名 インスタンス化（コピーして代入）
+	private DeleteFlag delete_flag = new DeleteFlag();
+
 	//このクラスのみ 変数 変数名
 	//sql文を書く：値は ? を入れておく（どんな値でも使いまわしできるようにするため
 	/*データベースのテーブル上にデータを登録する際に使用されるステートメントの構文=INSERT INTO
@@ -35,8 +39,8 @@ public class RegistCompleteDAO {
 
 	//①小川講師から教えてもらったこと、下記みたいに１個ずつ試してみる！上記の完成形はコメントアウト！
 	private String sql = "INSERT INTO login_user_transaction(family_name, last_name, family_name_kana, "
-			+ "last_name_kana, mail, password, gender, postal_code, prefecture, address_1, address_2, authority, registered_time) "
-			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			+ "last_name_kana, mail, password, gender, postal_code, prefecture, address_1, address_2, authority, delete_flag, registered_time) "
+			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	//DBから購入履歴を取得するためのメソッド
 	//クラス、メソッドの定義
@@ -94,7 +98,8 @@ public class RegistCompleteDAO {
 			preparedStatement.setString(10, userAddress1);
 			preparedStatement.setString(11, userAddress2);
 			preparedStatement.setString(12, userAuthority);
-			preparedStatement.setString(13, dateUtil.getDate());
+			preparedStatement.setString(13, DeleteFlag.getDelete_flag());
+			preparedStatement.setString(14, dateUtil.getDate());
 			preparedStatement.execute();
 
 		//処理中にSQL関連のエラーが発生した際に実行する処理

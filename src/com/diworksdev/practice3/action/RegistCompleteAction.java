@@ -40,8 +40,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	private String userAddress1;
 	private String userAddress2;
 	private String userAuthority;
-	private int delete_flag;
-	private String delete_flag0;// 文字列表示用プロパティ
+//	private int delete_flag;
+//	private String delete_flag0;// 文字列表示用プロパティ
 
 	// Map<String, Object>=キーを値にマッピングするオブジェクト。
 	// マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
@@ -55,10 +55,10 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	// 全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
 	public String execute() throws SQLException {
 
-		delete_flag0 = Integer.toString(delete_flag);//0or1
-		session.put("delete_flag", delete_flag0);//0or1
-
-		if (delete_flag0.equals("0")) {
+//		delete_flag0 = Integer.toString(delete_flag);//0or1
+//		session.put("delete_flag", delete_flag0);//0or1
+//
+//		if (delete_flag0.equals("0")) {
 
 			// delete_flag = Integer.toString(delete_flag);//0or1
 			//
@@ -112,11 +112,11 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 			// session.get("userAddress2").toString(),
 			// session.get("userAuthority").toString());
 
-		} else if (delete_flag0.equals("1")) {
-
-			String result = ERROR;
-
-		}
+//		} else if (delete_flag0.equals("1")) {
+//
+//			String result = ERROR;
+//
+//		}
 
 		// resultに上記処理結果を代入
 		String result = SUCCESS;
@@ -294,7 +294,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		this.userAuthority = userAuthority;
 
 	}
-
+/*
 	// フィールド変数に対応したgetterとsetterを定義
 	// userCreateconfirm.jspの値として受け取った、userAuthorityフィールドの値をregistComplete.jspに渡している
 	public int getDelete_flag() {
@@ -324,7 +324,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		this.delete_flag0 = delete_flag0;
 
 	}
-
+*/
 	// フィールド変数に対応したgetterとsetterを定義
 	// 全てのクラスのsetの値を自身のsessionフィールドに代入して格納
 	@Override
