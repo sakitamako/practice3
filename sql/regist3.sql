@@ -13,7 +13,7 @@ use regist3;
 drop table if exists login_user_transaction;
 
 create table login_user_transaction(
-id int(100) unique,
+id int(100) not null primary key auto_increment,
 family_name varchar(100),
 last_name varchar(100),
 family_name_kana varchar(100),
@@ -31,8 +31,8 @@ registered_time datetime,
 update_time datetime);
 
 INSERT INTO login_user_transaction(
-id, family_name, last_name, family_name_kana,
+family_name, last_name, family_name_kana,
 last_name_kana, mail, password, gender, postal_code,
 prefecture, address_1, address_2, authority)
-VALUES(1, "鈴木", "紗季", "スズキ", "サキ", "a@gmail.com",
+VALUES("鈴木", "紗季", "スズキ", "サキ", "a@gmail.com",
 "0910", 1, 0001111, "東京都", "新宿区", "1-1-1", 1);
