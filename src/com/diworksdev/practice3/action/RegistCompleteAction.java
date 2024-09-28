@@ -41,6 +41,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	private String userAddress2;
 	private String userAuthority;
 	private int delete_flag;
+	private String delete_flag0;// 文字列表示用プロパティ
 
 	// Map<String, Object>=キーを値にマッピングするオブジェクト。
 	// マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
@@ -54,7 +55,10 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	// 全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
 	public String execute() throws SQLException {
 
-		if (delete_flag == 0) {
+		delete_flag0 = Integer.toString(delete_flag);//0or1
+		session.put("delete_flag", delete_flag0);//0or1
+
+		if (delete_flag0.equals("0")) {
 
 			// delete_flag = Integer.toString(delete_flag);//0or1
 			//
@@ -111,10 +115,9 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 			String result = SUCCESS;
 
 
-		} else {
+		} else if (delete_flag0.equals("1")) {
 
-			// 「delete」メソッドを呼び出して、履歴の削除処理を行います。
-			delete_flag = 1;
+			String result = ERROR;
 
 		}
 
@@ -295,11 +298,33 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userAuthorityフィールドの値をregistComplete.jspに渡している
+	public int getDelete_flag() {
+		return delete_flag;
+
+	}
+
 	// 外部のSETをここに代入して元々の値を外部から持ってきた値に変えて格納する
 	// フィールド変数に対応したgetterとsetterを定義
 	// 受け取ったテーブルの値を自身のdeleteFlgフィールドに格納
 	public void setDelete_flag(int delete_flag) {
 		this.delete_flag = delete_flag;
+
+	}
+
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userAuthorityフィールドの値をregistComplete.jspに渡している
+	public String getDelete_flag0() {
+		return delete_flag0;
+
+	}
+
+	// 外部のSETをここに代入して元々の値を外部から持ってきた値に変えて格納する
+	// フィールド変数に対応したgetterとsetterを定義
+	// 受け取ったテーブルの値を自身のdeleteFlgフィールドに格納
+	public void setDelete_flag0(String delete_flag0) {
+		this.delete_flag0 = delete_flag0;
 
 	}
 
