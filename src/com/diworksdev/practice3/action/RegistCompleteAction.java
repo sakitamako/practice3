@@ -55,6 +55,9 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	// 全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
 	public String execute() throws SQLException {
 
+		// resultに上記処理結果を代入
+		String result = SUCCESS;
+
 		delete_flag0 = Integer.toString(delete_flag);//0or1
 		session.put("delete_flag", delete_flag0);//0or1
 
@@ -117,12 +120,9 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 		} else if (delete_flag0.equals("1")) {
 
-			String result = ERROR;
+			result = ERROR;
 
 		}
-
-		// resultに上記処理結果を代入
-		String result = SUCCESS;
 
 		// 戻り値
 		// retに入った値を呼び出し元であるActionクラスに渡す
