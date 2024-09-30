@@ -146,15 +146,9 @@ table {
 					<tr>
 						<td>
 						    <s:submit value="完了" />
-						    <input type="hidden" name="delete_flag0" value="0">
+						    <input type="hidden" name="delete_flag0" value="1">
 						</td>
 					</tr>
-					<tr>
-                        <td>
-                            <input type="hidden" name="delete_flag0" value="1">
-                            <s:submit value="削除" />
-                        </td>
-                    </tr>
 				</s:form>
 			</table>
 		</div>
