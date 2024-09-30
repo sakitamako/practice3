@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 import com.diworksdev.practice3.util.DBConnector;
 import com.diworksdev.practice3.util.DateUtil;
-import com.diworksdev.practice3.util.DeleteFlag;
+//import com.diworksdev.practice3.util.DeleteFlag;
 
 //DAOクラスでは、Actionから送られてきた情報を使ってDBへ問い合わせを行うファイル
 //問い合わせて取得した値をDTOクラスに格納するファイル
@@ -24,8 +24,8 @@ public class RegistCompleteDAO {
 	//このクラスのみ 変数 変数名 インスタンス化（コピーして代入）
 	private DateUtil dateUtil = new DateUtil();
 
-	//このクラスのみ 変数 変数名 インスタンス化（コピーして代入）
-	private DeleteFlag delete_flag = new DeleteFlag();
+//	//このクラスのみ 変数 変数名 インスタンス化（コピーして代入）
+//	private DeleteFlag delete_flag = new DeleteFlag();
 
 	//このクラスのみ 変数 変数名
 	//sql文を書く：値は ? を入れておく（どんな値でも使いまわしできるようにするため
@@ -57,7 +57,7 @@ public class RegistCompleteDAO {
 	public void regist(String userFamilyName, String userLastName, String userFamilyNameKana,
 			String userLastNameKana, String userMail, String userPassword,
 			String userGender, String userPostalCode, String userPrefecture,
-			String userAddress1, String userAddress2, String userAuthority) throws SQLException {
+			String userAddress1, String userAddress2, String userAuthority, String delete_flag) throws SQLException {
 
 		//③小川講師から教えてもらったこと、上記の確認したい項目を入力！
 		System.out.println(userFamilyName);
@@ -72,6 +72,7 @@ public class RegistCompleteDAO {
 		System.out.println(userAddress1);
 		System.out.println(userAddress2);
 		System.out.println(userAuthority);
+		System.out.println(delete_flag);
 
 		//try.catchはjavaの例外処理のための構文
 		try {
@@ -98,7 +99,7 @@ public class RegistCompleteDAO {
 			preparedStatement.setString(10, userAddress1);
 			preparedStatement.setString(11, userAddress2);
 			preparedStatement.setString(12, userAuthority);
-			preparedStatement.setString(13, DeleteFlag.getDelete_flag());
+			preparedStatement.setString(13, delete_flag);
 			preparedStatement.setString(14, dateUtil.getDate());
 			preparedStatement.execute();
 

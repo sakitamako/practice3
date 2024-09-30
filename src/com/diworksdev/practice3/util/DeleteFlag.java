@@ -1,4 +1,4 @@
-package com.diworksdev.practice3.util;
+/*package com.diworksdev.practice3.util;
 
 import java.util.Map;
 
@@ -39,14 +39,14 @@ public class DeleteFlag  {
 		return result;
 
 	}
-/*
+
 	// フィールド変数に対応したgetterとsetterを定義
 	// userCreateconfirm.jspの値として受け取った、userAuthorityフィールドの値をregistComplete.jspに渡している
 	public int getDelete_flag() {
 		return delete_flag;
 
 	}
-*/
+
 
 	// 外部のSETをここに代入して元々の値を外部から持ってきた値に変えて格納する
 	// フィールド変数に対応したgetterとsetterを定義
@@ -71,3 +71,4 @@ public class DeleteFlag  {
 	}
 
 }
+*/
