@@ -8,6 +8,8 @@ import com.diworksdev.practice3.util.DBConnector;
 import com.diworksdev.practice3.util.DateUtil;
 //import com.diworksdev.practice3.util.DeleteFlag;
 
+//org.springframework.dao.DataAccessResourceFailureException; //(DBサーバがダウンしている場合に発生する例外)。
+
 //DAOクラスでは、Actionから送られてきた情報を使ってDBへ問い合わせを行うファイル
 //問い合わせて取得した値をDTOクラスに格納するファイル
 

@@ -58,7 +58,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		// resultに処理結果を代入、初期値
 //		String result = ERROR;
 		//元々SUCCESSだったけどERRORに変えた
-//		String result = SUCCESS;
+		String result = SUCCESS;
 
 		//error画面表示させてもサーバー上で１の表示にならない
 
@@ -128,13 +128,11 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 		} else if (delete_flag0.equals("1")) {
 
-			//ERROR返す
-			//registError.jsp画面に遷移するようにするのが正解？
-			String result = ERROR;
+			result = ERROR;
 
 		}
 
-		String result = SUCCESS;
+
 
 		// 戻り値
 		// retに入った値を呼び出し元であるActionクラスに渡す
