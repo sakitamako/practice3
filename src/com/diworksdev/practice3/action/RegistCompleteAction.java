@@ -56,9 +56,9 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	public String execute() throws SQLException {
 
 		// resultに処理結果を代入、初期値
-		String result = ERROR;
+//		String result = ERROR;
 		//元々SUCCESSだったけどERRORに変えた
-//		String result = SUCCESS;
+		String result = SUCCESS;
 
 		//error画面表示させてもサーバー上で１の表示にならない
 
