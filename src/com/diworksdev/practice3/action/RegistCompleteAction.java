@@ -58,6 +58,11 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		// resultに上記処理結果を代入
 		String result = SUCCESS;
 
+		delete_flag0 = Integer.toString(delete_flag);//0or1
+		session.put("delete_flag", delete_flag0);//0or1
+
+		if (delete_flag0.equals("0")) {
+
 			// delete_flag = Integer.toString(delete_flag);//0or1
 			//
 			// session.put("delete_flag", delete_flag0);//0or1
@@ -113,16 +118,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 			// session.get("userAddress2").toString(),
 			// session.get("userAuthority").toString());
 
-			delete_flag0 = Integer.toString(delete_flag);//0or1
-			session.put("delete_flag", delete_flag0);//0or1
-
-			if (delete_flag0.equals("0")) {
-
-				result = SUCCESS;
-
-
-//		} else if (delete_flag0.equals("1")) {
-			} else {
+		} else if (delete_flag0.equals("1")) {
 
 			result = ERROR;
 
