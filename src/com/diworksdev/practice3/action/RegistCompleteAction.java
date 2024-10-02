@@ -55,8 +55,12 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	// 全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
 	public String execute() throws SQLException {
 
-		// resultに上記処理結果を代入
+		// resultに処理結果を代入、初期値
 		String result = ERROR;
+		//元々SUCCESSだったけどERRORに変えた
+//		String result = SUCCESS;
+
+		//error画面表示させてもサーバー上で１の表示にならない
 
 		delete_flag0 = Integer.toString(delete_flag);//0or1
 		session.put("delete_flag", delete_flag0);//0or1
@@ -105,6 +109,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 					session.get("userPrefecture").toString(), session.get("userAddress1").toString(),
 					session.get("userAddress2").toString(), session.get("userAuthority").toString(), session.get("delete_flag").toString());
 
+			//SUCCESS返す
+			//これコメントアウトして実行するとregistError.jsp画面に遷移する
 			result = SUCCESS;
 
 			// registCompleteDAO.regist(session.get("userFamilyName").toString(),
@@ -122,6 +128,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 		} else if (delete_flag0.equals("1")) {
 
+			//ERROR返す
+			//registError.jsp画面に遷移するようにするのが正解？
 			result = ERROR;
 
 		}
