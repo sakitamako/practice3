@@ -56,7 +56,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	public String execute() throws SQLException {
 
 		// resultに上記処理結果を代入
-		String result = SUCCESS;
+		String result = ERROR;
 
 		delete_flag0 = Integer.toString(delete_flag);//0or1
 		session.put("delete_flag", delete_flag0);//0or1
@@ -104,6 +104,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 					session.get("userGender").toString(), session.get("userPostalCode").toString(),
 					session.get("userPrefecture").toString(), session.get("userAddress1").toString(),
 					session.get("userAddress2").toString(), session.get("userAuthority").toString(), session.get("delete_flag").toString());
+
+			result = SUCCESS;
 
 			// registCompleteDAO.regist(session.get("userFamilyName").toString(),
 			// session.get("userLastName").toString(),
