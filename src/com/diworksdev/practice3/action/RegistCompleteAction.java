@@ -58,7 +58,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		// resultに処理結果を代入、初期値
 //		String result = ERROR;
 		//元々SUCCESSだったけどERRORに変えた
-		String result = SUCCESS;
+//		String result = SUCCESS;
 
 		//error画面表示させてもサーバー上で１の表示にならない
 
@@ -111,7 +111,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 			//SUCCESS返す
 			//これコメントアウトして実行するとregistError.jsp画面に遷移する
-			result = SUCCESS;
+//			result = SUCCESS;
 
 			// registCompleteDAO.regist(session.get("userFamilyName").toString(),
 			// session.get("userLastName").toString(),
@@ -130,9 +130,11 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 			//ERROR返す
 			//registError.jsp画面に遷移するようにするのが正解？
-			result = ERROR;
+			String result = ERROR;
 
 		}
+
+		String result = SUCCESS;
 
 		// 戻り値
 		// retに入った値を呼び出し元であるActionクラスに渡す
