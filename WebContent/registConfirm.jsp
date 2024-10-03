@@ -146,7 +146,6 @@ table {
 					<tr>
 						<td>
 						    <s:submit value="完了" />
-						    <input type="hidden" name="delete_flag0" value="1">
 						</td>
 					</tr>
 				</s:form>

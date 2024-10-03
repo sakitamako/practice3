@@ -124,7 +124,7 @@ table {
                     </tr>
                     <tr>
                         <td><label>パスワード</label></td>
-                        <td><input type="text" name="userPassword" maxlength="10" value="" required /></td>
+                        <td><input type="password" id="password" name="userPassword" maxlength="10" value="" required= /></td>
                     </tr>
                     <tr>
                         <td><label>性別</label></td>

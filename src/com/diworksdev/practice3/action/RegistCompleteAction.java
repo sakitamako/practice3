@@ -139,15 +139,6 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	}
 
-	// myPage.jsp画面の削除ボタンを押した後のアクション
-	// 全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
-	@SuppressWarnings("unused")
-	public void getConnection() throws SQLException {
-
-		String result = ERROR;
-
-	}
-
 	// フィールド変数に対応したgetterとsetterを定義
 	// userCreateconfirm.jspの値として受け取った、userFamilyNameフィールドの値をregistComplete.jspに渡している
 	public String getUserFamilyName() {
