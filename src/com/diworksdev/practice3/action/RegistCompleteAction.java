@@ -56,14 +56,14 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	public String execute() throws SQLException {
 
 		// resultに処理結果を代入、初期値
-//		String result = ERROR;
-		//元々SUCCESSだったけどERRORに変えた
+		// String result = ERROR;
+		// 元々SUCCESSだったけどERRORに変えた
 		String result = SUCCESS;
 
-		//error画面表示させてもサーバー上で１の表示にならない
+		// error画面表示させてもサーバー上で１の表示にならない
 
-		delete_flag0 = Integer.toString(delete_flag);//0or1
-		session.put("delete_flag", delete_flag0);//0or1
+		delete_flag0 = Integer.toString(delete_flag);// 0or1
+		session.put("delete_flag", delete_flag0);// 0or1
 
 		if (delete_flag0.equals("0")) {
 
@@ -107,11 +107,12 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 					session.get("userMail").toString(), session.get("userPassword").toString(),
 					session.get("userGender").toString(), session.get("userPostalCode").toString(),
 					session.get("userPrefecture").toString(), session.get("userAddress1").toString(),
-					session.get("userAddress2").toString(), session.get("userAuthority").toString(), session.get("delete_flag").toString());
+					session.get("userAddress2").toString(), session.get("userAuthority").toString(),
+					session.get("delete_flag").toString());
 
-			//SUCCESS返す
-			//これコメントアウトして実行するとregistError.jsp画面に遷移する
-//			result = SUCCESS;
+			// SUCCESS返す
+			// これコメントアウトして実行するとregistError.jsp画面に遷移する
+			// result = SUCCESS;
 
 			// registCompleteDAO.regist(session.get("userFamilyName").toString(),
 			// session.get("userLastName").toString(),
@@ -132,11 +133,18 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 		}
 
-
-
 		// 戻り値
 		// retに入った値を呼び出し元であるActionクラスに渡す
 		return result;
+
+	}
+
+	// myPage.jsp画面の削除ボタンを押した後のアクション
+	// 全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
+	@SuppressWarnings("unused")
+	public void getConnection() throws SQLException {
+
+		String result = ERROR;
 
 	}
 
