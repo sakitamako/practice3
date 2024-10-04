@@ -205,10 +205,13 @@ table {
                         </td>
                     </tr>
                     <tr>
-                        <td><s:submit value="確認する" /></td>
+                        <td><s:submit value="登録" /></td>
                     </tr>
 				</s:form>
 			</table>
+			<div>
+				<span>前画面に戻る場合は</span> <a href='<s:url action="HomeAction" />'>こちら</a>
+			</div>
 		</div>
 	</div>
 	<div id="footer">
