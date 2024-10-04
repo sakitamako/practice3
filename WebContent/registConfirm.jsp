@@ -145,10 +145,17 @@ table {
 					</tr>
 					<tr>
 						<td>
-						    <s:submit value="完了" />
+						    <s:submit value="登録する" />
 						</td>
 					</tr>
 				</s:form>
+				<form action="RegistAction">
+				    <tr>
+                        <td>
+                            <s:submit value="前に戻る" />
+                        </td>
+                    </tr>
+				</form>
 			</table>
 		</div>
 	</div>
