@@ -100,6 +100,12 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			session.put("userAddress2", userAddress2);
 //			session.put("userAuthority", userAuthority); //原因？一旦外してみる
 
+		} else if (userFamilyName.equals("")) {
+
+			setErrorMessage("名前（姓）が未入力です。");
+
+			result = ERROR;
+
 		} else {
 
 			setErrorMessage("未入力の項目があります。");

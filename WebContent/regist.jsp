@@ -97,14 +97,15 @@ table {
 			<h3>アカウント登録画面</h3>
 		</div>
 		<div>
-			<s:if test="errorMessage != ''">
-				<s:property value="errorMessage" escape="false" />
-			</s:if>
 			<table>
 				<s:form action="RegistConfirmAction">
 					<tr>
 						<td><label>名前（姓）</label></td>
-						<td><input type="text" name="userFamilyName" maxlength="10" value="" required /></td>
+						<td><s:if test="errorMessage != ''">
+                                <s:property value="errorMessage" escape="false" />
+						        <input type="text" name="userFamilyName" maxlength="10" value="" required />
+						    </s:if>
+						</td>
 					</tr>
 					<tr>
 						<td><label>名前（名）</label></td>
