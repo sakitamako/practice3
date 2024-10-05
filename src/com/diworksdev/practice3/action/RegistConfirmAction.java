@@ -191,12 +191,17 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	}
 
-	    // バリデーションメソッド（検証用）
+	    // エラーチェック（検証用）
 	    public void validate() {
-	        if (userFamilyName == null || userFamilyName.trim().isEmpty()) {
+	        if (userFamilyName.equals("") || userFamilyName.trim().isEmpty()) {
 	        	addFieldError("userFamilyName", "名前（姓）が未入力です。");
 
+	        	System.out.println(userFamilyName);
+	        	System.out.println(userFamilyName.equals(""));
+	        	System.out.println(userFamilyName.trim().isEmpty());
 	        }
+
+	    }
 
 //	        if (password == null || password.trim().isEmpty()) {
 //	            addFieldError("password", "パスワードを入力してください");
@@ -205,7 +210,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //	            addFieldError("email", "メールアドレスを入力してください");
 //	        }
 //
-	    }
+
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
