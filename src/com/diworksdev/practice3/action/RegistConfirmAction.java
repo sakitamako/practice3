@@ -100,12 +100,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			session.put("userAddress2", userAddress2);
 //			session.put("userAuthority", userAuthority); //原因？一旦外してみる
 
-		} else if (userFamilyName.equals("")) {
-
-			setErrorMessage("名前（姓）が未入力です。");
-
-			result = ERROR;
-
 		} else {
 
 			setErrorMessage("未入力の項目があります。");
@@ -113,6 +107,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			result = ERROR;
 
 		}
+
 //		小川講師からintバージョンで作った場合の処理方法教えてもらった！
 //		下記は元々自分で作ってたコード！何が表示される想定なのかコメントアウトしている！
 		userGender0 = Integer.toString(userGender);//0or1
@@ -186,6 +181,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 //			result = ERROR;
 		}
+
 		//
 		// //上記追加したやつ
 		//
@@ -194,6 +190,22 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		return result;
 
 	}
+
+	    // バリデーションメソッド（検証用）
+	    public void validate() {
+	        if (userFamilyName == null || userFamilyName.trim().isEmpty()) {
+	        	addFieldError("userFamilyName", "名前（姓）が未入力です。");
+
+	        }
+
+//	        if (password == null || password.trim().isEmpty()) {
+//	            addFieldError("password", "パスワードを入力してください");
+//	        }
+//	        if (email == null || email.trim().isEmpty()) {
+//	            addFieldError("email", "メールアドレスを入力してください");
+//	        }
+//
+	    }
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
