@@ -52,11 +52,33 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// このクラスのみ 変数 変数名
 //	private String errorMessage;
 
+	// エラーチェック（検証用）
+	//入力値が正しい形式や範囲に合致しているかどうかを検証すること=validate()
+    // バリデーション用のメソッド
+    @Override
+	public void validate() {
+
+		System.out.println(userFamilyName);
+		System.out.println(userFamilyName.equals(""));
+		System.out.println(userFamilyName.trim().isEmpty());
+
+		//isEmptyメソッドを利用することで、文字列が空であるかどうかを判定できる || userFamilyName.isEmpty()
+		//userFamilyNameと空文字が等しいかつ,userFamilyNameの文字列が空の時
+		if (userFamilyName == null || userFamilyName.isEmpty()) {
+			addFieldError("userFamilyName", "名前（姓）が未入力です。");
+
+//			System.out.println(userFamilyName);
+//			System.out.println(userFamilyName.equals(""));
+//			System.out.println(userFamilyName.trim().isEmpty());
+		}
+
+	}
+
 	// 新規ユーザー登録はボタンを押したらサクセスが返される、registConfirm.jsp画面に遷移する
 	// struts.xmlで指定しているから！
 	public String execute() {
 
-		String result = SUCCESS;
+//		String result = SUCCESS;
 
 		System.out.println(userFamilyName);
 		System.out.println(userGender);
@@ -184,30 +206,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			// result = ERROR;
 		}
 
+
+		String result = SUCCESS;
 		//
 		// //上記追加したやつ
 		//
 		// //戻り値
 		// //retに入った値を呼び出し元であるActionクラスに渡す
 		return result;
-
-	}
-
-	// エラーチェック（検証用）
-	//入力値が正しい形式や範囲に合致しているかどうかを検証すること=validate()
-    // バリデーション用のメソッド
-    @Override
-	public void validate() {
-
-		//isEmptyメソッドを利用することで、文字列が空であるかどうかを判定できる || userFamilyName.isEmpty()
-		//userFamilyNameと空文字が等しいかつ,userFamilyNameの文字列が空の時
-		if (userFamilyName == null || userFamilyName.isEmpty()) {
-			addFieldError("userFamilyName", "名前（姓）が未入力です。");
-
-			System.out.println(userFamilyName);
-			System.out.println(userFamilyName.equals(""));
-			System.out.println(userFamilyName.trim().isEmpty());
-		}
 
 	}
 

@@ -100,11 +100,9 @@ table {
 			<table>
 				<s:form action="RegistConfirmAction" method="post">
 					<tr>
+					    <s:fielderror fieldName="userFamilyName" />
 						<td><label>名前（姓）</label></td>
-						<td>
-						    <s:fielderror fieldName="userFamilyName" />
-						    <input type="text" name="userFamilyName" maxlength="10" value="" required />
-						</td>
+						<td><input type="text" name="userFamilyName" maxlength="10" value="" /></td>
 					</tr>
 					<tr>
 						<td><label>名前（名）</label></td>
