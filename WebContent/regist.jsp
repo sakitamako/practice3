@@ -102,7 +102,7 @@ table {
 					<tr>
 						<td><label>名前（姓）</label></td>
 						<td>
-						    <s:fielderror fieldName="userFamilyName"/>
+						    <s:fielderror fieldName="userFamilyName" />
 						    <input type="text" name="userFamilyName" maxlength="10" value="" required />
 						</td>
 					</tr>

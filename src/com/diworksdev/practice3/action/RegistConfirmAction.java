@@ -201,7 +201,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		//isEmptyメソッドを利用することで、文字列が空であるかどうかを判定できる || userFamilyName.isEmpty()
 		//userFamilyNameと空文字が等しいかつ,userFamilyNameの文字列が空の時
-		if (userFamilyName == null || userFamilyName.length() == 0 ) {
+		if (userFamilyName == null || userFamilyName.isEmpty()) {
 			addFieldError("userFamilyName", "名前（姓）が未入力です。");
 
 			System.out.println(userFamilyName);
