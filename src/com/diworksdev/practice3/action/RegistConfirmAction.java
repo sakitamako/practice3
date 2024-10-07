@@ -50,7 +50,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	public Map<String, Object> session;
 
 	// このクラスのみ 変数 変数名
-	private String errorMessage;
+	private String addFieldError;
 
 	// 新規ユーザー登録はボタンを押したらサクセスが返される、registConfirm.jsp画面に遷移する
 	// struts.xmlで指定しているから！
@@ -100,9 +100,11 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			session.put("userAddress2", userAddress2);
 			// session.put("userAuthority", userAuthority); //原因？一旦外してみる
 
-		} else {
+		} else if (userFamilyName == null || userFamilyName.length() == 0 ) {
 
-			setErrorMessage("未入力の項目があります。");
+			addFieldError("userFamilyName", "名前（姓）が未入力です。");
+
+//			setErrorMessage("未入力の項目があります。");
 
 			result = ERROR;
 
@@ -193,19 +195,19 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	// エラーチェック（検証用）
 	//入力値が正しい形式や範囲に合致しているかどうかを検証すること=validate()
-	public void validate() {
-
-		//isEmptyメソッドを利用することで、文字列が空であるかどうかを判定できる || userFamilyName.isEmpty()
-		//userFamilyNameと空文字が等しいかつ,userFamilyNameの文字列が空の時
-		if (userFamilyName == null || userFamilyName.length() == 0 ) {
-			addFieldError("userFamilyName", "名前（姓）が未入力です。");
-
-			System.out.println(userFamilyName);
-			System.out.println(userFamilyName.equals(""));
-			System.out.println(userFamilyName.trim().isEmpty());
-		}
-
-	}
+//	public void validate() {
+//
+//		//isEmptyメソッドを利用することで、文字列が空であるかどうかを判定できる || userFamilyName.isEmpty()
+//		//userFamilyNameと空文字が等しいかつ,userFamilyNameの文字列が空の時
+//		if (userFamilyName == null || userFamilyName.length() == 0 ) {
+//			addFieldError("userFamilyName", "名前（姓）が未入力です。");
+//
+//			System.out.println(userFamilyName);
+//			System.out.println(userFamilyName.equals(""));
+//			System.out.println(userFamilyName.trim().isEmpty());
+//		}
+//
+//	}
 
 	// if (password == null || password.trim().isEmpty()) {
 	// addFieldError("password", "パスワードを入力してください");
@@ -430,15 +432,15 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、errorMessageフィールドの値をActionに渡す
-	public String getErrorMessage() {
-		return errorMessage;
+	public String getAddFieldError() {
+		return addFieldError;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のerrorMessageフィールドに格納
-	public void setErrorMessage(String errorMessage) {
-		this.errorMessage = errorMessage;
+	public void setAddFieldError(String addFieldError) {
+		this.addFieldError = addFieldError;
 
 	}
 

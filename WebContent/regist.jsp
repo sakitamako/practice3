@@ -97,9 +97,6 @@ table {
 			<h3>アカウント登録画面</h3>
 		</div>
 		<div>
-			<s:if test="errorMessage != ''">
-				<s:property value="errorMessage" escape="false" />
-			</s:if>
 			<table>
 				<s:form action="RegistConfirmAction" method="post">
 					<tr>
@@ -107,6 +104,9 @@ table {
 						<td>
 						<s:actionerror />
 						    <s:fielderror fieldName="userFamilyName" />
+						    <s:if test="addFieldError != ''">
+                                <s:fielderror value="addFieldError" escape="false" />
+                            </s:if>
 						    <input type="text" name="userFamilyName" maxlength="10" value="" required />
 						</td>
 					</tr>
