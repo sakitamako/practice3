@@ -50,7 +50,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	public Map<String, Object> session;
 
 	// このクラスのみ 変数 変数名
-	private String errorMessage;
+//	private String errorMessage;
 
 	// 新規ユーザー登録はボタンを押したらサクセスが返される、registConfirm.jsp画面に遷移する
 	// struts.xmlで指定しているから！
@@ -106,6 +106,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 //			result = ERROR;
 
+//			result = SUCCESS;
+
 		}
 
 		// 小川講師からintバージョンで作った場合の処理方法教えてもらった！
@@ -145,9 +147,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 			session.put("userPostalCode", userPostalCode);
 
-		} else {
+//		} else {
 
-			result = ERROR;
+//			result = ERROR;
 
 		}
 
@@ -429,7 +431,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		this.session = session;
 
 	}
-
+/*
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、errorMessageフィールドの値をActionに渡す
 	public String getErrorMessage() {
@@ -443,5 +445,5 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		this.errorMessage = errorMessage;
 
 	}
-
+*/
 }
