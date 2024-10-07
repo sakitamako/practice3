@@ -191,7 +191,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	}
 
-	    // エラーチェック（検証用）
+//	    // エラーチェック（検証用）
 	    public void validate() {
 	        if (userFamilyName.equals("") || userFamilyName.trim().isEmpty()) {
 	        	addFieldError("userFamilyName", "名前（姓）が未入力です。");
