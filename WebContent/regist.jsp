@@ -102,11 +102,7 @@ table {
 					<tr>
 						<td><label>名前（姓）</label></td>
 						<td>
-						<s:actionerror />
-						    <s:fielderror fieldName="userFamilyName" />
-						    <s:if test="addFieldError != ''">
-                                <s:fielderror value="addFieldError" escape="false" />
-                            </s:if>
+						    <s:fielderror fieldName="userFamilyName"/>
 						    <input type="text" name="userFamilyName" maxlength="10" value="" required />
 						</td>
 					</tr>
