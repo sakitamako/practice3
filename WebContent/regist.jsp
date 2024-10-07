@@ -105,6 +105,8 @@ table {
 					<tr>
 						<td><label>名前（姓）</label></td>
 						<td>
+						<s:actionerror />
+						    <s:fielderror fieldName="userFamilyName" />
 						    <input type="text" name="userFamilyName" maxlength="10" value="" required />
 						</td>
 					</tr>
@@ -210,8 +212,6 @@ table {
                         <td><s:submit value="登録" /></td>
                     </tr>
 				</s:form>
-				<s:actionerror />
-                    <s:fielderror fieldName="userFamilyName" />
 			</table>
 			<div>
 				<span>前画面に戻る場合は</span> <a href='<s:url action="HomeAction" />'>こちら</a>

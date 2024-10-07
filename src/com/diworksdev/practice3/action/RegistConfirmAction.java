@@ -32,7 +32,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userLastNameKana;
 	private String userMail;
 	private String userPassword;
-//	private String userGender;
+	// private String userGender;
 	private int userGender;
 	private String userGender0;// 文字列表示用プロパティ
 	private int userPostalCode;
@@ -83,7 +83,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 				&& !(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals(""))
 				&& !(userPrefecture.equals("")) && !(userAddress1.equals("")) && !(userAddress2.equals(""))) {
 
-			//!(userPostalCode.equals("")) && これも数値、intだったから一旦外す！
+			// !(userPostalCode.equals("")) && これも数値、intだったから一旦外す！
 
 			// //sessionのなかに記憶する保存する
 			System.out.println(userFamilyName);
@@ -93,12 +93,12 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			session.put("userLastNameKana", userLastNameKana);
 			session.put("userMail", userMail);
 			session.put("userPassword", userPassword);
-//			session.put("userGender", userGender); //原因？一旦外してみる
-//			session.put("userPostalCode", userPostalCode);// 原因？
+			// session.put("userGender", userGender); //原因？一旦外してみる
+			// session.put("userPostalCode", userPostalCode);// 原因？
 			session.put("userPrefecture", userPrefecture);
 			session.put("userAddress1", userAddress1);
 			session.put("userAddress2", userAddress2);
-//			session.put("userAuthority", userAuthority); //原因？一旦外してみる
+			// session.put("userAuthority", userAuthority); //原因？一旦外してみる
 
 		} else {
 
@@ -108,11 +108,11 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		}
 
-//		小川講師からintバージョンで作った場合の処理方法教えてもらった！
-//		下記は元々自分で作ってたコード！何が表示される想定なのかコメントアウトしている！
-		userGender0 = Integer.toString(userGender);//0or1
+		// 小川講師からintバージョンで作った場合の処理方法教えてもらった！
+		// 下記は元々自分で作ってたコード！何が表示される想定なのかコメントアウトしている！
+		userGender0 = Integer.toString(userGender);// 0or1
 
-		session.put("userGender", userGender0);//0or1
+		session.put("userGender", userGender0);// 0or1
 
 		if (userGender0.equals("0")) {
 			//
@@ -120,7 +120,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			userGender0 = "男性";
 			//
 			// //sessionに記憶
-//			session.put("userGender", userGender);//0->男性
+			// session.put("userGender", userGender);//0->男性
 			//
 			// //そうでない場合
 		} else if (userGender0.equals("1")) {
@@ -129,17 +129,17 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			userGender0 = "女性";
 			//
 			// //sessionに記憶
-//			session.put("userGender", userGender);//1->女性
+			// session.put("userGender", userGender);//1->女性
 
-//		} else {
+			// } else {
 
-//			result = ERROR;
+			// result = ERROR;
 
 		}
 
-		userPostalCode0 = Integer.toString(userPostalCode);//0or1
-//
-		session.put("userPostalCode", userPostalCode0);//0or1
+		userPostalCode0 = Integer.toString(userPostalCode);// 0or1
+		//
+		session.put("userPostalCode", userPostalCode0);// 0or1
 
 		if (!(userPostalCode0.equals(""))) {
 
@@ -153,33 +153,33 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		// int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 		// //もしuserAuthorityが0と等しい場合
-		//stringで処理してみる！
+		// stringで処理してみる！
 
-		userAuthority0 = Integer.toString(userAuthority);//0or1
-		session.put("userAuthority", userAuthority0);//0or1
+		userAuthority0 = Integer.toString(userAuthority);// 0or1
+		session.put("userAuthority", userAuthority0);// 0or1
 
-		if (userAuthority0.equals("0")) {//0or1
+		if (userAuthority0.equals("0")) {// 0or1
 			//
 			// //一般代入
 			userAuthority0 = "一般";
 			//
 			// //sessionに記憶
-//			session.put("userAuthority", userAuthority);//一般
+			// session.put("userAuthority", userAuthority);//一般
 			//
 			// //そうでない場合
-		} else if (userAuthority0.equals("1")) {//0or1
+		} else if (userAuthority0.equals("1")) {// 0or1
 			//
 			// //管理者代入
 			userAuthority0 = "管理者";
 			//
 			// //sessionに記憶
-//			session.put("userAuthority", userAuthority);//管理者
+			// session.put("userAuthority", userAuthority);//管理者
 			//
 			// //int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 			//
-//		} else {
+			// } else {
 
-//			result = ERROR;
+			// result = ERROR;
 		}
 
 		//
@@ -191,26 +191,29 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	}
 
-//	    // エラーチェック（検証用）
-	    public void validate() {
-	        if (userFamilyName.equals("") || userFamilyName.trim().isEmpty()) {
-	        	addFieldError("userFamilyName", "名前（姓）が未入力です。");
+	// エラーチェック（検証用）
+	//入力値が正しい形式や範囲に合致しているかどうかを検証すること=validate()
+	public void validate() {
 
-	        	System.out.println(userFamilyName);
-	        	System.out.println(userFamilyName.equals(""));
-	        	System.out.println(userFamilyName.trim().isEmpty());
-	        }
+		//isEmptyメソッドを利用することで、文字列が空であるかどうかを判定できる || userFamilyName.isEmpty()
+		//userFamilyNameと空文字が等しいかつ,userFamilyNameの文字列が空の時
+		if (userFamilyName == null || userFamilyName.length() == 0 ) {
+			addFieldError("userFamilyName", "名前（姓）が未入力です。");
 
-	    }
+			System.out.println(userFamilyName);
+			System.out.println(userFamilyName.equals(""));
+			System.out.println(userFamilyName.trim().isEmpty());
+		}
 
-//	        if (password == null || password.trim().isEmpty()) {
-//	            addFieldError("password", "パスワードを入力してください");
-//	        }
-//	        if (email == null || email.trim().isEmpty()) {
-//	            addFieldError("email", "メールアドレスを入力してください");
-//	        }
-//
+	}
 
+	// if (password == null || password.trim().isEmpty()) {
+	// addFieldError("password", "パスワードを入力してください");
+	// }
+	// if (email == null || email.trim().isEmpty()) {
+	// addFieldError("email", "メールアドレスを入力してください");
+	// }
+	//
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
@@ -314,10 +317,10 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	public String getUserGender0() {
 		return userGender0;
 	}
+
 	public void setUserGender0(String userGender0) {
 		this.userGender0 = userGender0;
 	}
-
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
@@ -332,6 +335,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		this.userPostalCode0 = userPostalCode0;
 
 	}
+
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
 	public int getUserPostalCode() {
