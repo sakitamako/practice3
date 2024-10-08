@@ -80,8 +80,8 @@ table {
 	padding: 10px;
 }
 
-#s:if test {
-    color: #ff0000;
+body .fielderror {
+    color: #ff0000; /* ここで希望の色コードに変更 */
 }
 
 </style>
@@ -100,34 +100,34 @@ table {
 			<table>
 				<s:form action="RegistConfirmAction" method="post">
 					<tr>
-					    <s:fielderror fieldName="userFamilyName" />
 						<td><label>名前（姓）</label></td>
-						<td><input type="text" name="userFamilyName" maxlength="10" value="" /></td>
+						<td><input type="text" name="userFamilyName" maxlength="10" value="" />
+						<br><s:fielderror fieldName="userFamilyName" style="color: red; font-weight: bold;" /></td>
 					</tr>
 					<tr>
-					    <s:fielderror fieldName="userLastName" />
 						<td><label>名前（名）</label></td>
-						<td><input type="text" name="userLastName" maxlength="10" value="" /></td>
+						<td><input type="text" name="userLastName" maxlength="10" value="" />
+						<br><s:fielderror fieldName="userLastName" style="color: red; font-weight: bold;" /></td>
 					</tr>
 					<tr>
-					    <s:fielderror fieldName="userFamilyNameKana" />
 						<td><label>カナ（姓）</label></td>
-						<td><input type="text" name="userFamilyNameKana" maxlength="10" value="" /></td>
+						<td><input type="text" name="userFamilyNameKana" maxlength="10" value="" />
+						<br><s:fielderror fieldName="userFamilyNameKana" style="color: red; font-weight: bold;" /></td>
 					</tr>
 					<tr>
-					    <s:fielderror fieldName="userLastNameKana" />
                         <td><label>カナ（名）</label></td>
-                        <td><input type="text" name="userLastNameKana" maxlength="10" value="" /></td>
+                        <td><input type="text" name="userLastNameKana" maxlength="10" value="" />
+                        <br><s:fielderror fieldName="userLastNameKana" style="color: red; font-weight: bold;" /></td>
                     </tr>
 					<tr>
-					    <s:fielderror fieldName="userMail" />
                         <td><label>メールアドレス</label></td>
-                        <td><input type="text" name="userMail" maxlength="100" value="" /></td>
+                        <td><input type="text" name="userMail" maxlength="100" value="" />
+                        <br><s:fielderror fieldName="userMail" style="color: red; font-weight: bold;" /></td>
                     </tr>
                     <tr>
-                        <s:fielderror fieldName="userPassword" />
                         <td><label>パスワード</label></td>
-                        <td><input type="text" name="userPassword" maxlength="10" value="" /></td>
+                        <td><input type="text" name="userPassword" maxlength="10" value="" />
+                        <br><s:fielderror fieldName="userPassword" style="color: red; font-weight: bold;" /></td>
                     </tr>
                     <tr>
                         <td><label>性別</label></td>
@@ -137,12 +137,11 @@ table {
                         </td>
                     </tr>
                     <tr>
-                        <s:fielderror fieldName="userPostalCode0" />
                         <td><label>郵便番号</label></td>
-                        <td><input type="text" name="userPostalCode0" maxlength="7" value="" /></td>
+                        <td><input type="text" name="userPostalCode0" maxlength="7" value="" />
+                        <br><s:fielderror fieldName="userPostalCode0" style="color: red; font-weight: bold;" /></td>
                     </tr>
                     <tr>
-                        <s:fielderror fieldName="userPrefecture" />
                         <td><label>住所（都道府県）</label></td>
                         <td><select name="userPrefecture">
                                 <option value=""></option>
@@ -193,17 +192,18 @@ table {
                                 <option value="宮崎県">宮崎県</option>
                                 <option value="鹿児島県">鹿児島県</option>
                                 <option value="沖縄県">沖縄県</option>
-                        </select></td>
+                        </select>
+                        <br><s:fielderror fieldName="userPrefecture" style="color: red; font-weight: bold;" /></td>
                     </tr>
                     <tr>
-                        <s:fielderror fieldName="userAddress1" />
                         <td><label>住所（市区町村）</label></td>
-                        <td><input type="text" name="userAddress1" maxlength="10" value="" /></td>
+                        <td><input type="text" name="userAddress1" maxlength="10" value="" />
+                        <br><s:fielderror fieldName="userAddress1" style="color: red; font-weight: bold;" /></td>
                     </tr>
                     <tr>
-                        <s:fielderror fieldName="userAddress2" />
                         <td><label>住所（番地）</label></td>
-                        <td><input type="text" name="userAddress2" maxlength="100" value="" /></td>
+                        <td><input type="text" name="userAddress2" maxlength="100" value="" />
+                        <br><s:fielderror fieldName="userAddress2" style="color: red; font-weight: bold;" /></td>
                     </tr>
                     <tr>
                         <td><label>アカウント権限</label></td>
