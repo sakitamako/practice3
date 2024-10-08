@@ -215,6 +215,11 @@ body .fielderror {
                         <td><s:submit value="登録" /></td>
                     </tr>
 				</s:form>
+				<s:if test="hasActionErrors()">
+                    <div style="color:red;">
+                        <s:actionerror />
+                    </div>
+                </s:if>
 			</table>
 			<div>
 				<span>前画面に戻る場合は</span> <a href='<s:url action="HomeAction" />'>こちら</a>

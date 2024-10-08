@@ -67,7 +67,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		if (userFamilyName == null || userFamilyName.isEmpty()) {
 			addFieldError("userFamilyName", "名前（姓）が未入力です。");
 
-		}
+        } else if (!(userFamilyName.matches("^[\\p{IsHan}\\p{IsHiragana}]+$"))){
+            addFieldError("userFamilyName", "名前（姓）は平仮名と漢字のみ使用できます。");
+        }
 
 		if (userLastName == null || userLastName.isEmpty()) {
 			addFieldError("userLastName", "名前（名）が未入力です。");
