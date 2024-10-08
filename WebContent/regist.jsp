@@ -105,24 +105,29 @@ table {
 						<td><input type="text" name="userFamilyName" maxlength="10" value="" /></td>
 					</tr>
 					<tr>
+					    <s:fielderror fieldName="userLastName" />
 						<td><label>名前（名）</label></td>
-						<td><input type="text" name="userLastName" maxlength="10" value="" required /></td>
+						<td><input type="text" name="userLastName" maxlength="10" value="" /></td>
 					</tr>
 					<tr>
+					    <s:fielderror fieldName="userFamilyNameKana" />
 						<td><label>カナ（姓）</label></td>
-						<td><input type="text" name="userFamilyNameKana" maxlength="10" value="" required /></td>
+						<td><input type="text" name="userFamilyNameKana" maxlength="10" value="" /></td>
 					</tr>
 					<tr>
+					    <s:fielderror fieldName="userLastNameKana" />
                         <td><label>カナ（名）</label></td>
-                        <td><input type="text" name="userLastNameKana" maxlength="10" value="" required /></td>
+                        <td><input type="text" name="userLastNameKana" maxlength="10" value="" /></td>
                     </tr>
 					<tr>
+					    <s:fielderror fieldName="userMail" />
                         <td><label>メールアドレス</label></td>
-                        <td><input type="text" name="userMail" maxlength="100" value="" required /></td>
+                        <td><input type="text" name="userMail" maxlength="100" value="" /></td>
                     </tr>
                     <tr>
+                        <s:fielderror fieldName="userPassword" />
                         <td><label>パスワード</label></td>
-                        <td><input type="password" id="password" name="userPassword" maxlength="10" value="" required= /></td>
+                        <td><input type="text" name="userPassword" maxlength="10" value="" /></td>
                     </tr>
                     <tr>
                         <td><label>性別</label></td>
@@ -132,10 +137,12 @@ table {
                         </td>
                     </tr>
                     <tr>
+                        <s:fielderror fieldName="userPostalCode0" />
                         <td><label>郵便番号</label></td>
-                        <td><input type="text" name="userPostalCode" maxlength="7" value="" required /></td>
+                        <td><input type="text" name="userPostalCode0" maxlength="7" value="" /></td>
                     </tr>
                     <tr>
+                        <s:fielderror fieldName="userPrefecture" />
                         <td><label>住所（都道府県）</label></td>
                         <td><select name="userPrefecture">
                                 <option value=""></option>
@@ -189,12 +196,14 @@ table {
                         </select></td>
                     </tr>
                     <tr>
+                        <s:fielderror fieldName="userAddress1" />
                         <td><label>住所（市区町村）</label></td>
-                        <td><input type="text" name="userAddress1" maxlength="10" value="" required /></td>
+                        <td><input type="text" name="userAddress1" maxlength="10" value="" /></td>
                     </tr>
                     <tr>
+                        <s:fielderror fieldName="userAddress2" />
                         <td><label>住所（番地）</label></td>
-                        <td><input type="text" name="userAddress2" maxlength="100" value="" required /></td>
+                        <td><input type="text" name="userAddress2" maxlength="100" value="" /></td>
                     </tr>
                     <tr>
                         <td><label>アカウント権限</label></td>

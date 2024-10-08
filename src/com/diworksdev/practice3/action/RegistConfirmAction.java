@@ -67,9 +67,51 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		if (userFamilyName == null || userFamilyName.isEmpty()) {
 			addFieldError("userFamilyName", "名前（姓）が未入力です。");
 
-//			System.out.println(userFamilyName);
-//			System.out.println(userFamilyName.equals(""));
-//			System.out.println(userFamilyName.trim().isEmpty());
+		}
+
+		if (userLastName == null || userLastName.isEmpty()) {
+			addFieldError("userLastName", "名前（名）が未入力です。");
+
+		}
+
+		if (userFamilyNameKana == null || userFamilyNameKana.isEmpty()) {
+			addFieldError("userFamilyNameKana", "カナ（姓）が未入力です。");
+
+		}
+
+		if (userLastNameKana == null || userLastNameKana.isEmpty()) {
+			addFieldError("userLastNameKana", "カナ（名）が未入力です。");
+
+		}
+
+		if (userMail == null || userMail.isEmpty()) {
+			addFieldError("userMail", "メールアドレスが未入力です。");
+
+		}
+
+		if (userPassword == null || userPassword.isEmpty()) {
+			addFieldError("userPassword", "パスワードが未入力です。");
+
+		}
+
+		if (userPostalCode0 == null || userPostalCode0.isEmpty()) {
+			addFieldError("userPostalCode0", "郵便番号が未入力です。");
+
+		}
+
+		if (userPrefecture == null || userPrefecture.isEmpty()) {
+			addFieldError("userPrefecture", "住所（都道府県）が未入力です。");
+
+		}
+
+		if (userAddress1 == null || userAddress1.isEmpty()) {
+			addFieldError("userAddress1", "住所（市区町村）が未入力です。");
+
+		}
+
+		if (userAddress2 == null || userAddress2.isEmpty()) {
+			addFieldError("userAddress2", "住所（番地）が未入力です。");
+
 		}
 
 	}
