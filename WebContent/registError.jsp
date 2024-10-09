@@ -103,6 +103,7 @@ table {
                 <h3>アカウント登録エラー画面</h3>
             </div>
             <div>
+                <s:actionerror cssClass="error-message" />
                 <h4>エラーが発生したためアカウント登録できません。</h4>
                 <div>
                     <br>
