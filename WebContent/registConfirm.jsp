@@ -147,7 +147,7 @@ table {
 					<tr>
 						<td>
 						    <s:submit value="完了" />
-						    <a href="<s:url registConfirmAction='input' />">修正</a>
+						    <a href="<s:url action='RegistAction' />">修正</a>
 						</td>
 					</tr>
 				</s:form>
