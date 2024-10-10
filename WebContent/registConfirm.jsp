@@ -97,6 +97,7 @@ table {
 					<tr id="box">
 						<td><label>名前（姓）</label></td>
 						<td><s:property value="userFamilyName" escape="false" /></td>
+						<s:hidden name="userFamilyName" />
 					</tr>
 					<tr id="box">
 						<td><label>名前（名）</label></td>
@@ -146,6 +147,7 @@ table {
 					<tr>
 						<td>
 						    <s:submit value="完了" />
+						    <a href="<s:url registConfirmAction='input' />">修正</a>
 						</td>
 					</tr>
 				</s:form>
