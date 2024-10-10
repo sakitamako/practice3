@@ -93,11 +93,10 @@ table {
 		</div>
 		<div>
 			<table>
-				<s:form action="RegistCompleteAction">
+				<s:form action="RegistCompleteAction" method="post">
 					<tr id="box">
 						<td><label>名前（姓）</label></td>
 						<td><s:property value="userFamilyName" escape="false" /></td>
-						<s:hidden name="userFamilyName" />
 					</tr>
 					<tr id="box">
 						<td><label>名前（名）</label></td>
@@ -148,6 +147,7 @@ table {
 						<td>
 						    <s:submit value="完了" />
 						    <a href="<s:url action='RegistAction' />">修正</a>
+						    <s:hidden name="userFamilyName" />
 						</td>
 					</tr>
 				</s:form>
