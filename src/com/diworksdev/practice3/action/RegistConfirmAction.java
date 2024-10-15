@@ -1,5 +1,6 @@
 package com.diworksdev.practice3.action;
 
+import java.sql.SQLException;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -136,7 +137,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	// 新規ユーザー登録はボタンを押したらサクセスが返される、registConfirm.jsp画面に遷移する
 	// struts.xmlで指定しているから！
-	public String execute() throws Exception {
+    @Override
+	public String execute() throws SQLException {
 
 //		String result = SUCCESS;
 
@@ -269,11 +271,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		String result = SUCCESS;
 
-		//
-		// //上記追加したやつ
-		//
-		// //戻り値
-		// //retに入った値を呼び出し元であるActionクラスに渡す
 		return result;
 
 	}
@@ -282,7 +279,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
     public String backToInput() {
         return INPUT; // 入力画面に戻る
     }
-
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す

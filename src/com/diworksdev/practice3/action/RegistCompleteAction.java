@@ -53,6 +53,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	private RegistCompleteDAO registCompleteDAO = new RegistCompleteDAO();
 
 	// 全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
+	@Override
 	public String execute() throws SQLException {
 
 		// resultに処理結果を代入、初期値
