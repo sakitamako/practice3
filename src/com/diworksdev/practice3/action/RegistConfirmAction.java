@@ -275,11 +275,11 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	}
 
-    // 修正ボタンが押されたときに入力画面に戻る
-    public String backToInput() {
-
-        return INPUT; // 入力画面に戻る
-    }
+//    // 修正ボタンが押されたときに入力画面に戻る
+//    public String backToInput() {
+//
+//        return INPUT; // 入力画面に戻る
+//    }
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
