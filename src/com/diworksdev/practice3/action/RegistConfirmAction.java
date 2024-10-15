@@ -136,7 +136,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	// 新規ユーザー登録はボタンを押したらサクセスが返される、registConfirm.jsp画面に遷移する
 	// struts.xmlで指定しているから！
-	public String execute() {
+	public String execute() throws Exception {
 
 //		String result = SUCCESS;
 
@@ -268,6 +268,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 
 		String result = SUCCESS;
+
 		//
 		// //上記追加したやつ
 		//
@@ -277,13 +278,11 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	}
 
-	// if (password == null || password.trim().isEmpty()) {
-	// addFieldError("password", "パスワードを入力してください");
-	// }
-	// if (email == null || email.trim().isEmpty()) {
-	// addFieldError("email", "メールアドレスを入力してください");
-	// }
-	//
+    // 修正ボタンが押されたときに入力画面に戻る
+    public String backToInput() {
+        return INPUT; // 入力画面に戻る
+    }
+
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
