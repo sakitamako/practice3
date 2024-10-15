@@ -277,6 +277,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
     // 修正ボタンが押されたときに入力画面に戻る
     public String backToInput() {
+
         return INPUT; // 入力画面に戻る
     }
 

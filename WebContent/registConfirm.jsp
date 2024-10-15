@@ -146,8 +146,8 @@ table {
 					<tr>
 						<td>
 						    <s:submit value="完了" />
-						    <a href="<s:url action='RegistAction' method = "post" />">修正</a>
-						    <input type = "hidden" value ="userFamilyName" />
+						    <a href="<s:url action="registConfirm_backToInput" />">修正</a>
+						    <s:hidden name="userFamilyName" />
 						</td>
 					</tr>
 				</s:form>
