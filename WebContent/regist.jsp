@@ -99,13 +99,14 @@ body .fielderror {
 		<div>
 			<table>
 				<s:form action="RegistConfirmAction" method="post">
-					<s:textfield name="userFamilyName" label="名前（姓）" />
-<%-- 					<tr>
+					<label for="userFamilyName">名前:</label>
+                    <input type="text" name="userFamilyName" value="${userFamilyName}" />
+<%-- 			    <tr>
 						<td><label>名前（姓）</label></td>
 						<td><input type="text" name="userFamilyName" maxlength="10" value="" />
 						<br><s:fielderror fieldName="userFamilyName" style="color: red; font-weight: bold;" /></td>
 					</tr>
-					<tr>
+ --%>					<tr>
 						<td><label>名前（名）</label></td>
 						<td><input type="text" name="userLastName" maxlength="10" value="" />
 						<br><s:fielderror fieldName="userLastName" style="color: red; font-weight: bold;" /></td>
@@ -212,7 +213,7 @@ body .fielderror {
                             <input type="radio" name="userAuthority" value="1">管理者
                         </td>
                     </tr>
- --%>                    <tr>
+                    <tr>
                         <td><s:submit value="登録" /></td>
                     </tr>
 				</s:form>
