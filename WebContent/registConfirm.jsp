@@ -94,22 +94,21 @@ table {
 		<div>
 			<table>
 				<s:form action="RegistCompleteAction" method="post">
-					<div>
+<%-- 				<div>
                         <label>名前（姓）</label>
                         <s:property value="userFamilyName"/>
                     </div>
-
+ --%>
                         <!-- 修正用に入力フィールドも表示 -->
                         <s:textfield name="userFamilyName" label="名前（姓）" value="%{userFamilyName}" />
 
                         <s:submit value="登録" />
                         <s:submit value="戻る" action="RegistAction" />
-<%-- 			    </tr>
-					<tr id="box">
+<%--				<tr id="box">
 						<td><label>名前（名）</label></td>
 						<td><s:property value="userLastName" escape="false" /></td>
 					</tr>
-					<tr id="box">
+ --%>					<tr id="box">
 						<td><label>カナ（姓）</label></td>
 						<td><s:property value="userFamilyNameKana" escape="false" />
 						</td>
@@ -157,7 +156,7 @@ table {
 						    <s:hidden name="userFamilyName" />
 						</td>
 					</tr>
- --%>				</s:form>
+				</s:form>
 			</table>
 		</div>
 	</div>
