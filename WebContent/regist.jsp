@@ -99,9 +99,10 @@ body .fielderror {
 		<div>
 			<table>
 				<s:form action="RegistConfirmAction" method="post">
-					<label for="userFamilyName">名前:</label>
+				<s:textfield name="userFamilyName" label="名前（姓）" />
+<%--  					<label for="userFamilyName">名前:</label>
                     <input type="text" name="userFamilyName" value="${userFamilyName}" />
-<%-- 			    <tr>
+ 	      		    <tr>
 						<td><label>名前（姓）</label></td>
 						<td><input type="text" name="userFamilyName" maxlength="10" value="" />
 						<br><s:fielderror fieldName="userFamilyName" style="color: red; font-weight: bold;" /></td>

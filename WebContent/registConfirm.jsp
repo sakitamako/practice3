@@ -103,8 +103,8 @@ table {
                         <s:textfield name="userFamilyName" label="名前（姓）" value="%{userFamilyName}" />
 
                         <s:submit value="登録" />
-                        <s:submit value="戻る" action="RegistConfirmAction" />
-<%-- 					</tr>
+                        <s:submit value="戻る" action="RegistAction" />
+<%-- 			    </tr>
 					<tr id="box">
 						<td><label>名前（名）</label></td>
 						<td><s:property value="userLastName" escape="false" /></td>
