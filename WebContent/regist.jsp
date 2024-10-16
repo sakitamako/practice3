@@ -99,15 +99,12 @@ body .fielderror {
 		<div>
 			<table>
 				<s:form action="RegistConfirmAction" method="post">
-				<s:textfield name="userFamilyName" label="名前（姓）" />
-<%--  					<label for="userFamilyName">名前:</label>
-                    <input type="text" name="userFamilyName" value="${userFamilyName}" />
- 	      		    <tr>
+					<tr>
 						<td><label>名前（姓）</label></td>
 						<td><input type="text" name="userFamilyName" maxlength="10" value="" />
 						<br><s:fielderror fieldName="userFamilyName" style="color: red; font-weight: bold;" /></td>
 					</tr>
- --%>					<tr>
+					<tr>
 						<td><label>名前（名）</label></td>
 						<td><input type="text" name="userLastName" maxlength="10" value="" />
 						<br><s:fielderror fieldName="userLastName" style="color: red; font-weight: bold;" /></td>
@@ -218,12 +215,12 @@ body .fielderror {
                         <td><s:submit value="登録" /></td>
                     </tr>
 				</s:form>
-<%-- 				<s:if test="hasActionErrors()">
+				<s:if test="hasActionErrors()">
                     <div style="color:red;">
                         <s:actionerror />
                     </div>
                 </s:if>
- --%>			</table>
+			</table>
 			<div>
 				<span>前画面に戻る場合は</span> <a href='<s:url action="HomeAction" />'>こちら</a>
 			</div>

@@ -164,10 +164,11 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		// 同じ意味 if (loginUserId.equals("") == false && loginPassword.equals("")
 		// == false && userName.equals("") == false) {
 		if (!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals(""))
-				&& !(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals(""))
+				&& !(userLastNameKana.equals("")) && !(userMail.equals(""))
 				&& !(userPrefecture.equals("")) && !(userAddress1.equals("")) && !(userAddress2.equals(""))) {
 
 			// !(userPostalCode.equals("")) && これも数値、intだったから一旦外す！
+			//&& !(userPassword.equals(""))外す
 
 			// //sessionのなかに記憶する保存する
 			System.out.println(userFamilyName);
@@ -176,7 +177,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			session.put("userFamilyNameKana", userFamilyNameKana);
 			session.put("userLastNameKana", userLastNameKana);
 			session.put("userMail", userMail);
-			session.put("userPassword", userPassword);
+//			session.put("userPassword", userPassword);
 			// session.put("userGender", userGender); //原因？一旦外してみる
 			// session.put("userPostalCode", userPostalCode);// 原因？
 			session.put("userPrefecture", userPrefecture);
@@ -191,6 +192,16 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 //			result = ERROR;
 
 //			result = SUCCESS;
+
+		}
+
+		if (!(userPassword.equals(""))) {
+
+			session.put("userPassword", userPassword);
+
+		} else {
+
+			userPassword = "⚫︎";
 
 		}
 
