@@ -93,7 +93,7 @@ table {
 		</div>
 		<div>
 			<table>
-				<s:form action="RegistCompleteAction" method="post">
+				<s:form>
 					<tr id="box">
 						<td><label>名前（姓）</label></td>
 						<td><s:property value="userFamilyName" escape="false" /></td>
@@ -144,10 +144,20 @@ table {
 						<td><s:property value="userAuthority0" /></td>
 					</tr>
 					<tr>
+                        <td>
+                        <form action = "RegistAction" method = "post">
+                            <input type = "hidden" value = "userFamilyName" name = "userFamilyName">
+                            <input type = "submit" value = "戻って修正する">
+                        </form>
+                        <form action = "RegistCompleteAction" method = "post">
+                            <input type = "submit" value = "登録する">
+                            <input type = "hidden" value = "userFamilyName" name = "userFamilyName">
+                        </form>
+                        </td>
+                    </tr>
+					<tr>
 						<td>
 						    <s:submit value="完了" />
-						    <a href="<s:url action='RegistAction' />">修正</a>
-						    <s:hidden name="userFamilyName" />
 						</td>
 					</tr>
 				</s:form>
