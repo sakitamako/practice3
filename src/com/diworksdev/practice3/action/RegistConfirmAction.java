@@ -199,8 +199,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 			session.put("userPassword", userPassword);
 
-		} else {
-
 			userPassword = "⚫︎";
 
 		}

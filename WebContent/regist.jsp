@@ -101,7 +101,7 @@ body .fielderror {
 				<s:form action="RegistConfirmAction" method="post">
 					<tr>
 						<td><label>名前（姓）</label></td>
-						<td><input type="text" name="${userFamilyName}" maxlength="10" value="" />
+						<td><input type="text" min="0" max="10" name="userFamilyName" value='${userFamilyName}' />
 						<br><s:fielderror fieldName="userFamilyName" style="color: red; font-weight: bold;" /></td>
 					</tr>
 					<tr>
