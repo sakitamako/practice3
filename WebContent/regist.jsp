@@ -98,7 +98,7 @@ body .fielderror {
 		</div>
 		<div>
 			<table>
-				<s:form action="RegistConfirmAction" method="post">
+				<s:form action="RegistConfirmAction" method="post" >
 					<tr>
 						<td><label>名前（姓）</label></td>
 						<td><input type="text" maxlength="10" name="userFamilyName" value="$_POST{userFamilyName}" />

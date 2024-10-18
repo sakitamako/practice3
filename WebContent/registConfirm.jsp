@@ -96,7 +96,7 @@ table {
 				<s:form>
 					<tr id="box">
 						<td><label>名前（姓）</label></td>
-						<td><s:property value="$_POST{userFamilyName}" /></td>
+						<td><s:property value="$_POST{userFamilyName}" escape="false" /></td>
 					</tr>
 					<tr id="box">
 						<td><label>名前（名）</label></td>
