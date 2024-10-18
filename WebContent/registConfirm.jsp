@@ -96,7 +96,7 @@ table {
 				<s:form>
 					<tr id="box">
 						<td><label>名前（姓）</label></td>
-						<td><s:property value="userFamilyName" escape="false" /></td>
+						<td><s:property value="${userFamilyName}" escape="false" /></td>
 					</tr>
 					<tr id="box">
 						<td><label>名前（名）</label></td>
@@ -146,7 +146,7 @@ table {
 					<tr>
                         <td>
                         <form action = "RegistAction" method = "get">
-                            <input type = "hidden" value =userFamilyName name = "userFamilyName">
+                            <input type = "hidden" value ="${userFamilyName}" name = "userFamilyName">
                             <input type = "submit" value = "戻って修正する">
                         </form>
                         <form action = "RegistCompleteAction" method = "post">
