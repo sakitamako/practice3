@@ -33,6 +33,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userLastNameKana;
 	private String userMail;
 	private String userPassword;
+	private String maskedPassword;
 	// private String userGender;
 	private int userGender;
 	private String userGender0;// 文字列表示用プロパティ
@@ -164,7 +165,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		// 同じ意味 if (loginUserId.equals("") == false && loginPassword.equals("")
 		// == false && userName.equals("") == false) {
 		if (!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals(""))
-				&& !(userLastNameKana.equals("")) && !(userMail.equals(""))
+				&& !(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals(""))
 				&& !(userPrefecture.equals("")) && !(userAddress1.equals("")) && !(userAddress2.equals(""))) {
 
 			// !(userPostalCode.equals("")) && これも数値、intだったから一旦外す！
@@ -177,7 +178,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			session.put("userFamilyNameKana", userFamilyNameKana);
 			session.put("userLastNameKana", userLastNameKana);
 			session.put("userMail", userMail);
-//			session.put("userPassword", userPassword);
+			session.put("userPassword", userPassword);
 			// session.put("userGender", userGender); //原因？一旦外してみる
 			// session.put("userPostalCode", userPostalCode);// 原因？
 			session.put("userPrefecture", userPrefecture);
@@ -195,13 +196,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		}
 
-		if (!(userPassword.equals(""))) {
 
-			session.put("userPassword", userPassword);
-
-			userPassword = "⚫︎";
-
-		}
+//		if (!(userPassword.equals(""))) {
+//
+//			session.put("userPassword", userPassword);
+//
+//			userPassword = "⚫︎";
+//
+//		}
 
 		// 小川講師からintバージョンで作った場合の処理方法教えてもらった！
 		// 下記は元々自分で作ってたコード！何が表示される想定なのかコメントアウトしている！
@@ -233,12 +235,13 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		}
 
 		userPostalCode0 = Integer.toString(userPostalCode);// 0or1
-		//
 		session.put("userPostalCode", userPostalCode0);// 0or1
 
 		if (!(userPostalCode0.equals(""))) {
 
-			session.put("userPostalCode", userPostalCode);
+			session.put("userPostalCode", userPostalCode0);
+
+			userPostalCode0 = "userPostalCode".toString();
 
 //		} else {
 
@@ -277,8 +280,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			// result = ERROR;
 		}
 
+        // パスワードを黒丸でマスクする
+        StringBuilder masked = new StringBuilder();
+        for (int i = 0; i < userPassword.length(); i++) {
+            masked.append('●');
+        }
+        maskedPassword = masked.toString();
 
-		String result = SUCCESS;
+        String result = SUCCESS;
 
 		return result;
 
@@ -502,6 +511,10 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		this.session = session;
 
 	}
+
+    public String getMaskedPassword() {
+        return maskedPassword;
+    }
 /*
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、errorMessageフィールドの値をActionに渡す

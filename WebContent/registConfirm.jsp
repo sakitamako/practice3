@@ -96,7 +96,7 @@ table {
 				<s:form>
 					<tr id="box">
 						<td><label>名前（姓）</label></td>
-						<td><s:property value="$_POST{userFamilyName}"  escape="false" /></td>
+						<td><s:property value="userFamilyName"  escape="false" /></td>
 					</tr>
 					<tr id="box">
 						<td><label>名前（名）</label></td>
@@ -117,7 +117,10 @@ table {
 					</tr>
 					<tr id="box">
 						<td><label>パスワード</label></td>
-						<td><s:property value="userPassword" escape="false" /></td>
+						<td><s:if test="maskedPassword != null">
+                                <s:property value="maskedPassword" />
+                            </s:if>
+                        </td>
 					</tr>
 					<tr id="box">
 						<td><label>性別</label></td>
@@ -125,7 +128,10 @@ table {
 					</tr>
 					<tr id="box">
 						<td><label>郵便番号</label></td>
-						<td><s:property value="userPostalCode0" escape="false" /></td>
+						<td><s:if test="userPostalCode0 != null">
+                                <s:property value="userPostalCode0" />
+                            </s:if>
+                        </td>
 					</tr>
 					<tr id="box">
 						<td><label>住所（都道府県）</label></td>
@@ -146,7 +152,7 @@ table {
 					<tr>
                         <td>
                         <form action = "RegistAction" method = "get">
-                            <input type = "hidden" value ="$_POST{userFamilyName}" name="userFamilyName">
+                            <input type = "hidden" value ="%= userFamilyName %" name="userFamilyName">
                             <input type = "submit" value = "戻って修正する">
                         </form>
                         <form action = "RegistCompleteAction" method = "post">
