@@ -234,20 +234,21 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		}
 
+
+
 		userPostalCode0 = Integer.toString(userPostalCode);// 0or1
 		session.put("userPostalCode", userPostalCode0);// 0or1
 
 		if (!(userPostalCode0.equals(""))) {
 
-			session.put("userPostalCode", userPostalCode0);
-
-			userPostalCode0 = "userPostalCode".toString();
+			// int型の郵便番号をString型に変換
+			userPostalCode0 = String.valueOf(userPostalCode);
 
 //		} else {
 
 //			result = ERROR;
 
-		}
+        }
 
 		// int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 		// //もしuserAuthorityが0と等しい場合
