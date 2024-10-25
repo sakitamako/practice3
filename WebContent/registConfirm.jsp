@@ -128,10 +128,7 @@ table {
 					</tr>
 					<tr id="box">
 						<td><label>郵便番号</label></td>
-						<td><s:if test="userPostalCode0 != null">
-                                <s:property value="userPostalCode0" />
-                            </s:if>
-                        </td>
+						<td><s:property value="userPostalCode0" escape="false" /></td>
 					</tr>
 					<tr id="box">
 						<td><label>住所（都道府県）</label></td>
