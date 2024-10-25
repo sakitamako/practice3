@@ -410,7 +410,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
 	public String getUserPostalCode0() {
-		return String.format("%07d", userPostalCode0);
+		return userPostalCode0;
 
 	}
 
