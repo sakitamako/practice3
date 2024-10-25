@@ -164,11 +164,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		// && aとbとcが共にtrueの時に処理を実行する
 		// 同じ意味 if (loginUserId.equals("") == false && loginPassword.equals("")
 		// == false && userName.equals("") == false) {
-
-		userPostalCode0 = Integer.toString(userPostalCode);
-
 		if (!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals(""))
-				&& !(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals("")) && !(userPostalCode0.equals(""))
+				&& !(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals(""))
 				&& !(userPrefecture.equals("")) && !(userAddress1.equals("")) && !(userAddress2.equals(""))) {
 
 			// !(userPostalCode.equals("")) && これも数値、intだったから一旦外す！
@@ -183,7 +180,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			session.put("userMail", userMail);
 			session.put("userPassword", userPassword);
 			// session.put("userGender", userGender); //原因？一旦外してみる
-			session.put("userPostalCode", userPostalCode0);// 原因？
+			// session.put("userPostalCode", userPostalCode);// 原因？
 			session.put("userPrefecture", userPrefecture);
 			session.put("userAddress1", userAddress1);
 			session.put("userAddress2", userAddress2);
@@ -237,18 +234,17 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		}
 
-//		userPostalCode0 = Integer.toString(userPostalCode);// 0or1
-//		//
-//		session.put("userPostalCode", userPostalCode0);// 0or1
-//
-//		if (!(userPostalCode0.equals(""))) {
+		userPostalCode0 = Integer.toString(userPostalCode);// 0or1
+		//
+		session.put("userPostalCode", userPostalCode0);// 0or1
 
+		if (!(userPostalCode0.equals(""))) {
 
 //		} else {
 
 //			result = ERROR;
 
-//		}
+        }
 
 		// int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 		// //もしuserAuthorityが0と等しい場合
