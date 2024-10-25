@@ -138,8 +138,8 @@ body .fielderror {
                     </tr>
                     <tr>
                         <td><label>郵便番号</label></td>
-                        <td><input type="text" name="userPostalCode0" maxlength="7" value="" />
-                        <br><s:fielderror fieldName="userPostalCode0" style="color: red; font-weight: bold;" /></td>
+                        <td><input type="text" name="userPostalCode" maxlength="7" value="" />
+                        <br><s:fielderror fieldName="userPostalCode" style="color: red; font-weight: bold;" /></td>
                     </tr>
                     <tr>
                         <td><label>住所（都道府県）</label></td>
