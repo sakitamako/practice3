@@ -234,9 +234,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		}
 
-		userPostalCode0 = Integer.toString(userPostalCode);// 0or1
+		userPostalCode0 = Integer.toString(userPostalCode);//
 		//
-//		session.put("userPostalCode", userPostalCode0);// 0or1
+//		session.put("userPostalCode", userPostalCode0);//
 
 		if (!(userPostalCode0.equals(""))) {
 
@@ -415,7 +415,10 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
 	public void setUserPostalCode0(String userPostalCode0) {
+		System.out.println("start: setUserPostalCode0()");
+		System.out.println(userPostalCode0);
 		this.userPostalCode0 = userPostalCode0;
+		System.out.println("end: setUserPostalCode0()");
 
 	}
 
@@ -429,7 +432,10 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
 	public void setUserPostalCode(int userPostalCode) {
+		System.out.println("start: setUserPostalCode()");
+		System.out.println(userPostalCode);
 		this.userPostalCode = userPostalCode;
+		System.out.println("end: setUserPostalCode()");
 
 	}
 
