@@ -236,9 +236,11 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		userPostalCode0 = Integer.toString(userPostalCode);// 0or1
 		//
-		session.put("userPostalCode", userPostalCode0);// 0or1
+//		session.put("userPostalCode", userPostalCode0);// 0or1
 
 		if (!(userPostalCode0.equals(""))) {
+
+			session.put("userPostalCode", userPostalCode0);// 0or1
 
 //		} else {
 
