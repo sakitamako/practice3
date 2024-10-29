@@ -35,7 +35,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	private String userMail;
 	private String userPassword;
 	private String userGender;
-	private String userPostalCode;
+//	private String userPostalCode;
 	private String userPrefecture;
 	private String userAddress1;
 	private String userAddress2;
@@ -82,7 +82,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 			System.out.println(session.get("userMail"));
 			System.out.println(session.get("userPassword"));
 			System.out.println(session.get("userGender"));
-			System.out.println(session.get("userPostalCode"));
+//			System.out.println(session.get("userPostalCode"));
 			System.out.println(session.get("userPrefecture"));
 			System.out.println(session.get("userAddress1"));
 			System.out.println(session.get("userAddress2"));
@@ -95,7 +95,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 			System.out.println(session.get("userMail").toString());
 			System.out.println(session.get("userPassword").toString());
 			System.out.println(session.get("userGender").toString());
-			System.out.println(session.get("userPostalCode").toString());
+//			System.out.println(session.get("userPostalCode").toString());
 			System.out.println(session.get("userPrefecture").toString());
 			System.out.println(session.get("userAddress1").toString());
 			System.out.println(session.get("userAddress2").toString());
@@ -106,10 +106,12 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 			registCompleteDAO.regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(),
 					session.get("userFamilyNameKana").toString(), session.get("userLastNameKana").toString(),
 					session.get("userMail").toString(), session.get("userPassword").toString(),
-					session.get("userGender").toString(), session.get("userPostalCode").toString(),
+					session.get("userGender").toString(),
 					session.get("userPrefecture").toString(), session.get("userAddress1").toString(),
 					session.get("userAddress2").toString(), session.get("userAuthority").toString(),
 					session.get("delete_flag").toString());
+
+			//session.get("userPostalCode").toString(),
 
 			// SUCCESS返す
 			// これコメントアウトして実行するとregistError.jsp画面に遷移する
@@ -237,7 +239,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		this.userGender = userGender;
 
 	}
-
+/*
 	// フィールド変数に対応したgetterとsetterを定義
 	// userCreateconfirm.jspの値として受け取った、userPostalCodeフィールドの値をregistComplete.jspに渡している
 	public String getUserPostalCode() {
@@ -251,7 +253,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		this.userPostalCode = userPostalCode;
 
 	}
-
+*/
 	// フィールド変数に対応したgetterとsetterを定義
 	// userCreateconfirm.jspの値として受け取った、userPrefectureフィールドの値をregistComplete.jspに渡している
 	public String getUserPrefecture() {

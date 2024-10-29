@@ -37,8 +37,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// private String userGender;
 	private int userGender;
 	private String userGender0;// 文字列表示用プロパティ
-	private int userPostalCode;
-	private String userPostalCode0;// 文字列表示用プロパティ
+//	private String userPostalCode;
 	private String userPrefecture;
 	private String userAddress1;
 	private String userAddress2;
@@ -57,84 +56,84 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// エラーチェック（検証用）
 	//入力値が正しい形式や範囲に合致しているかどうかを検証すること=validate()
     // バリデーション用のメソッド
-    @Override
-	public void validate() {
-
-		System.out.println(userFamilyName);
-		System.out.println(userFamilyName.equals(""));
-		System.out.println(userFamilyName.trim().isEmpty());
-
-		//isEmptyメソッドを利用することで、文字列が空であるかどうかを判定できる || userFamilyName.isEmpty()
-		//userFamilyNameと空文字が等しいかつ,userFamilyNameの文字列が空の時
-		if (userFamilyName == null || userFamilyName.isEmpty()) {
-			addFieldError("userFamilyName", "名前（姓）が未入力です。");
-
-        } else if (!(userFamilyName.matches("^[\\p{IsHan}\\p{IsHiragana}]+$"))){
-            addFieldError("userFamilyName", "名前（姓）は平仮名と漢字のみ使用できます。");
-        }
-
-		if (userLastName == null || userLastName.isEmpty()) {
-			addFieldError("userLastName", "名前（名）が未入力です。");
-
-		} else if (!(userLastName.matches("^[\\p{IsHan}\\p{IsHiragana}]+$"))){
-            addFieldError("userLastName", "名前（名）は平仮名と漢字のみ使用できます。");
-        }
-
-		if (userFamilyNameKana == null || userFamilyNameKana.isEmpty()) {
-			addFieldError("userFamilyNameKana", "カナ（姓）が未入力です。");
-
-		} else if (!(userFamilyNameKana.matches("^[\\p{IsKatakana}ー]+$"))){
-            addFieldError("userFamilyNameKana", "カナ（姓）はカタカナのみ使用できます。");
-        }
-
-		if (userLastNameKana == null || userLastNameKana.isEmpty()) {
-			addFieldError("userLastNameKana", "カナ（名）が未入力です。");
-
-		} else if (!(userLastNameKana.matches("^[\\p{IsKatakana}ー]+$"))){
-            addFieldError("userLastNameKana", "カナ（名）はカタカナのみ使用できます。");
-        }
-
-		if (userMail == null || userMail.isEmpty()) {
-			addFieldError("userMail", "メールアドレスが未入力です。");
-
-		} else if (!(userMail.matches("^[a-zA-Z0-9-@.]+$"))){
-            addFieldError("userMail", "メールアドレスは半角英数字、半角ハイフン、半角記号（ハイフンとアットマークとドット）のみ使用できます。");
-        }
-
-		if (userPassword == null || userPassword.isEmpty()) {
-			addFieldError("userPassword", "パスワードが未入力です。");
-
-		} else if (!(userPassword.matches("^[a-zA-Z0-9]+$"))){
-            addFieldError("userPassword", "パスワードは半角英数字のみ使用できます。");
-        }
-
-		if (userPostalCode0 == null || userPostalCode0.isEmpty()) {
-			addFieldError("userPostalCode0", "郵便番号が未入力です。");
-
-		} else if (!(userPostalCode0.matches("^[0-9]+$"))){
-            addFieldError("userPostalCode0", "郵便番号は半角数字のみ使用できます。");
-        }
-
-		if (userPrefecture == null || userPrefecture.isEmpty()) {
-			addFieldError("userPrefecture", "住所（都道府県）が未入力です。");
-
-        }
-
-		if (userAddress1 == null || userAddress1.isEmpty()) {
-			addFieldError("userAddress1", "住所（市区町村）が未入力です。");
-
-		} else if (!(userAddress1.matches("^[\\p{IsHiragana}\\p{IsHan}\\p{IsKatakana}0-9\\s-]+$"))){
-            addFieldError("userAddress1", "住所（市区町村）はひらがな、漢字、カタカナ、半角数字、ハイフン、スペースのみ使用できます。");
-        }
-
-		if (userAddress2 == null || userAddress2.isEmpty()) {
-			addFieldError("userAddress2", "住所（番地）が未入力です。");
-
-		} else if (!(userAddress2.matches("^[\\p{IsHiragana}\\p{IsHan}\\p{IsKatakana}0-9\\s-]+$"))){
-            addFieldError("userAddress2", "住所（番地）はひらがな、漢字、カタカナ、半角数字、ハイフン、スペースのみ使用できます。");
-        }
-
-	}
+//  @Override
+//	public void validate() {
+//
+//		System.out.println(userFamilyName);
+//		System.out.println(userFamilyName.equals(""));
+//		System.out.println(userFamilyName.trim().isEmpty());
+//
+//		//isEmptyメソッドを利用することで、文字列が空であるかどうかを判定できる || userFamilyName.isEmpty()
+//		//userFamilyNameと空文字が等しいかつ,userFamilyNameの文字列が空の時
+//		if (userFamilyName == null || userFamilyName.isEmpty()) {
+//			addFieldError("userFamilyName", "名前（姓）が未入力です。");
+//
+//        } else if (!(userFamilyName.matches("^[\\p{IsHan}\\p{IsHiragana}]+$"))){
+//            addFieldError("userFamilyName", "名前（姓）は平仮名と漢字のみ使用できます。");
+//        }
+//
+//		if (userLastName == null || userLastName.isEmpty()) {
+//			addFieldError("userLastName", "名前（名）が未入力です。");
+//
+//		} else if (!(userLastName.matches("^[\\p{IsHan}\\p{IsHiragana}]+$"))){
+//            addFieldError("userLastName", "名前（名）は平仮名と漢字のみ使用できます。");
+//        }
+//
+//		if (userFamilyNameKana == null || userFamilyNameKana.isEmpty()) {
+//			addFieldError("userFamilyNameKana", "カナ（姓）が未入力です。");
+//
+//		} else if (!(userFamilyNameKana.matches("^[\\p{IsKatakana}ー]+$"))){
+//            addFieldError("userFamilyNameKana", "カナ（姓）はカタカナのみ使用できます。");
+//        }
+//
+//		if (userLastNameKana == null || userLastNameKana.isEmpty()) {
+//			addFieldError("userLastNameKana", "カナ（名）が未入力です。");
+//
+//		} else if (!(userLastNameKana.matches("^[\\p{IsKatakana}ー]+$"))){
+//            addFieldError("userLastNameKana", "カナ（名）はカタカナのみ使用できます。");
+//        }
+//
+//		if (userMail == null || userMail.isEmpty()) {
+//			addFieldError("userMail", "メールアドレスが未入力です。");
+//
+//		} else if (!(userMail.matches("^[a-zA-Z0-9-@.]+$"))){
+//            addFieldError("userMail", "メールアドレスは半角英数字、半角ハイフン、半角記号（ハイフンとアットマークとドット）のみ使用できます。");
+//        }
+//
+//		if (userPassword == null || userPassword.isEmpty()) {
+//			addFieldError("userPassword", "パスワードが未入力です。");
+//
+//		} else if (!(userPassword.matches("^[a-zA-Z0-9]+$"))){
+//            addFieldError("userPassword", "パスワードは半角英数字のみ使用できます。");
+//        }
+//
+//		if (userPostalCode0 == null || userPostalCode0.isEmpty()) {
+//			addFieldError("userPostalCode0", "郵便番号が未入力です。");
+//
+//		} else if (!(userPostalCode0.matches("^[0-9]+$"))){
+//            addFieldError("userPostalCode0", "郵便番号は半角数字のみ使用できます。");
+//        }
+//
+//		if (userPrefecture == null || userPrefecture.isEmpty()) {
+//			addFieldError("userPrefecture", "住所（都道府県）が未入力です。");
+//
+//        }
+//
+//		if (userAddress1 == null || userAddress1.isEmpty()) {
+//			addFieldError("userAddress1", "住所（市区町村）が未入力です。");
+//
+//		} else if (!(userAddress1.matches("^[\\p{IsHiragana}\\p{IsHan}\\p{IsKatakana}0-9\\s-]+$"))){
+//            addFieldError("userAddress1", "住所（市区町村）はひらがな、漢字、カタカナ、半角数字、ハイフン、スペースのみ使用できます。");
+//        }
+//
+//		if (userAddress2 == null || userAddress2.isEmpty()) {
+//			addFieldError("userAddress2", "住所（番地）が未入力です。");
+//
+//		} else if (!(userAddress2.matches("^[\\p{IsHiragana}\\p{IsHan}\\p{IsKatakana}0-9\\s-]+$"))){
+//            addFieldError("userAddress2", "住所（番地）はひらがな、漢字、カタカナ、半角数字、ハイフン、スペースのみ使用できます。");
+//        }
+//
+//	}
 
 	// 新規ユーザー登録はボタンを押したらサクセスが返される、registConfirm.jsp画面に遷移する
 	// struts.xmlで指定しているから！
@@ -152,7 +151,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		System.out.println(userMail);
 		System.out.println(userPassword);
 		System.out.println(userGender);
-		System.out.println(userPostalCode);
+//		System.out.println(userPostalCode);
 		System.out.println(userPrefecture);
 		System.out.println(userAddress1);
 		System.out.println(userAddress2);
@@ -233,20 +232,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			// result = ERROR;
 
 		}
-
-		userPostalCode0 = Integer.toString(userPostalCode);//
-		//
-//		session.put("userPostalCode", userPostalCode0);//
-
-		if (!(userPostalCode0.equals(""))) {
-
-			session.put("userPostalCode", userPostalCode0);// 0or1
-
-//		} else {
-
-//			result = ERROR;
-
-        }
 
 		// int型などのプリミティブ型で２つの値が等しいか比較する場合は”==”演算子で比較しますがString型などの参照型の場合はequalsメソッドで比較する
 		// //もしuserAuthorityが0と等しい場合
@@ -399,46 +384,31 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// userGender0、intバージョンのフィールド変数のgetset追加
 	public String getUserGender0() {
 		return userGender0;
+
 	}
 
 	public void setUserGender0(String userGender0) {
 		this.userGender0 = userGender0;
-	}
 
+	}
+/*
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
-	public String getUserPostalCode0() {
-		return userPostalCode0;
-
-	}
-
-	// フィールド変数に対応したgetterとsetterを定義
-	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
-	public void setUserPostalCode0(String userPostalCode0) {
-		System.out.println("start: setUserPostalCode0()");
-		System.out.println(userPostalCode0);
-		this.userPostalCode0 = userPostalCode0;
-		System.out.println("end: setUserPostalCode0()");
-
-	}
-
-	// フィールド変数に対応したgetterとsetterを定義
-	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
-	public int getUserPostalCode() {
+	public String getUserPostalCode() {
 		return userPostalCode;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
-	public void setUserPostalCode(int userPostalCode) {
+	public void setUserPostalCode(String userPostalCode) {
 		System.out.println("start: setUserPostalCode()");
 		System.out.println(userPostalCode);
 		this.userPostalCode = userPostalCode;
 		System.out.println("end: setUserPostalCode()");
 
 	}
-
+*/
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
 	public String getUserPrefecture() {

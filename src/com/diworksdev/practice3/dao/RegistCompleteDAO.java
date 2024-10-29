@@ -41,8 +41,8 @@ public class RegistCompleteDAO {
 
 	//①小川講師から教えてもらったこと、下記みたいに１個ずつ試してみる！上記の完成形はコメントアウト！
 	private String sql = "INSERT INTO login_user_transaction(family_name, last_name, family_name_kana, "
-			+ "last_name_kana, mail, password, gender, postal_code, prefecture, address_1, address_2, authority, delete_flag, registered_time) "
-			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			+ "last_name_kana, mail, password, gender, prefecture, address_1, address_2, authority, delete_flag, registered_time) "
+			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	//DBから購入履歴を取得するためのメソッド
 	//クラス、メソッドの定義
@@ -58,7 +58,7 @@ public class RegistCompleteDAO {
 	//これ元々記述してたやつ、上は小川講師に追加してもらったやつ！
 	public void regist(String userFamilyName, String userLastName, String userFamilyNameKana,
 			String userLastNameKana, String userMail, String userPassword,
-			String userGender, String userPostalCode, String userPrefecture,
+			String userGender, String userPrefecture,
 			String userAddress1, String userAddress2, String userAuthority, String delete_flag) throws SQLException {
 
 		//③小川講師から教えてもらったこと、上記の確認したい項目を入力！
@@ -69,7 +69,7 @@ public class RegistCompleteDAO {
 		System.out.println(userMail);
 		System.out.println(userPassword);
 		System.out.println(userGender);
-		System.out.println(userPostalCode);
+//		System.out.println(userPostalCode);
 		System.out.println(userPrefecture);
 		System.out.println(userAddress1);
 		System.out.println(userAddress2);
@@ -96,13 +96,13 @@ public class RegistCompleteDAO {
 			preparedStatement.setString(5, userMail);
 			preparedStatement.setString(6, userPassword);
 			preparedStatement.setString(7, userGender);
-			preparedStatement.setString(8, userPostalCode);
-			preparedStatement.setString(9, userPrefecture);
-			preparedStatement.setString(10, userAddress1);
-			preparedStatement.setString(11, userAddress2);
-			preparedStatement.setString(12, userAuthority);
-			preparedStatement.setString(13, delete_flag);
-			preparedStatement.setString(14, dateUtil.getDate());
+//			preparedStatement.setString(8, userPostalCode);
+			preparedStatement.setString(8, userPrefecture);
+			preparedStatement.setString(9, userAddress1);
+			preparedStatement.setString(10, userAddress2);
+			preparedStatement.setString(11, userAuthority);
+			preparedStatement.setString(12, delete_flag);
+			preparedStatement.setString(13, dateUtil.getDate());
 			preparedStatement.execute();
 
 		//処理中にSQL関連のエラーが発生した際に実行する処理
