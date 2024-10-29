@@ -1,6 +1,6 @@
 package com.diworksdev.practice3.action;
 
-import java.sql.SQLException;
+//import java.sql.SQLException;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
@@ -37,7 +37,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// private String userGender;
 	private int userGender;
 	private String userGender0;// 文字列表示用プロパティ
-//	private String userPostalCode;
+	private String userPostalCode;
 	private String userPrefecture;
 	private String userAddress1;
 	private String userAddress2;
@@ -138,7 +138,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// 新規ユーザー登録はボタンを押したらサクセスが返される、registConfirm.jsp画面に遷移する
 	// struts.xmlで指定しているから！
     @Override
-	public String execute() throws SQLException {
+	public String execute() {
 
 //		String result = SUCCESS;
 
@@ -151,7 +151,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		System.out.println(userMail);
 		System.out.println(userPassword);
 		System.out.println(userGender);
-//		System.out.println(userPostalCode);
+		System.out.println(userPostalCode);
 		System.out.println(userPrefecture);
 		System.out.println(userAddress1);
 		System.out.println(userAddress2);
@@ -164,7 +164,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		// 同じ意味 if (loginUserId.equals("") == false && loginPassword.equals("")
 		// == false && userName.equals("") == false) {
 		if (!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals(""))
-				&& !(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals(""))
+				&& !(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals("")) && !(userPostalCode.equals(""))
 				&& !(userPrefecture.equals("")) && !(userAddress1.equals("")) && !(userAddress2.equals(""))) {
 
 			// !(userPostalCode.equals("")) && これも数値、intだったから一旦外す！
@@ -179,7 +179,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			session.put("userMail", userMail);
 			session.put("userPassword", userPassword);
 			// session.put("userGender", userGender); //原因？一旦外してみる
-			// session.put("userPostalCode", userPostalCode);// 原因？
+			session.put("userPostalCode", userPostalCode);// 原因？
 			session.put("userPrefecture", userPrefecture);
 			session.put("userAddress1", userAddress1);
 			session.put("userAddress2", userAddress2);
@@ -391,7 +391,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		this.userGender0 = userGender0;
 
 	}
-/*
+
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
 	public String getUserPostalCode() {
@@ -408,7 +408,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		System.out.println("end: setUserPostalCode()");
 
 	}
-*/
+
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
 	public String getUserPrefecture() {
