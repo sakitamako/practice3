@@ -40,8 +40,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	private String userAddress1;
 	private String userAddress2;
 	private String userAuthority;
-	private int delete_flag;
-	private String delete_flag0;// 文字列表示用プロパティ
+//	private int delete_flag;
+//	private String delete_flag0;// 文字列表示用プロパティ
 
 	// Map<String, Object>=キーを値にマッピングするオブジェクト。
 	// マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
@@ -59,15 +59,15 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		// resultに処理結果を代入、初期値
 		// String result = ERROR;
 		// 元々SUCCESSだったけどERRORに変えた
-		String result = SUCCESS;
-
-		// error画面表示させてもサーバー上で１の表示にならない
-
-		delete_flag0 = Integer.toString(delete_flag);// 0or1
-		session.put("delete_flag", delete_flag0);// 0or1
-
-		if (delete_flag0.equals("0")) {
-
+//		String result = SUCCESS;
+//
+//		// error画面表示させてもサーバー上で１の表示にならない
+//
+//		delete_flag0 = Integer.toString(delete_flag);// 0or1
+//		session.put("delete_flag", delete_flag0);// 0or1
+//
+//		if (delete_flag0.equals("0")) {
+//
 			// delete_flag = Integer.toString(delete_flag);//0or1
 			//
 			// session.put("delete_flag", delete_flag0);//0or1
@@ -100,7 +100,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 			System.out.println(session.get("userAddress1").toString());
 			System.out.println(session.get("userAddress2").toString());
 			System.out.println(session.get("userAuthority").toString());
-			System.out.println(session.get("delete_flag").toString());
+//			System.out.println(session.get("delete_flag").toString());
 
 			// 小川講師に追記してもらったとこ！１項目ずつデータが渡っているかチェックする！
 			registCompleteDAO.regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(),
@@ -108,9 +108,9 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 					session.get("userMail").toString(), session.get("userPassword").toString(),
 					session.get("userGender").toString(), session.get("userPostalCode").toString(),
 					session.get("userPrefecture").toString(), session.get("userAddress1").toString(),
-					session.get("userAddress2").toString(), session.get("userAuthority").toString(),
-					session.get("delete_flag").toString());
+					session.get("userAddress2").toString(), session.get("userAuthority").toString());
 
+			//session.get("delete_flag").toString()
 			//session.get("userPostalCode").toString(),
 
 			// SUCCESS返す
@@ -130,11 +130,13 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 			// session.get("userAddress2").toString(),
 			// session.get("userAuthority").toString());
 
-		} else if (delete_flag0.equals("1")) {
+//		} else if (delete_flag0.equals("1")) {
+//
+//			result = ERROR;
+//
+//		}
 
-			result = ERROR;
-
-		}
+			String result = SUCCESS;
 
 		// 戻り値
 		// retに入った値を呼び出し元であるActionクラスに渡す
@@ -309,7 +311,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		this.userAuthority = userAuthority;
 
 	}
-
+/*
 	// フィールド変数に対応したgetterとsetterを定義
 	// userCreateconfirm.jspの値として受け取った、userAuthorityフィールドの値をregistComplete.jspに渡している
 	public int getDelete_flag() {
@@ -339,7 +341,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		this.delete_flag0 = delete_flag0;
 
 	}
-
+*/
 	// フィールド変数に対応したgetterとsetterを定義
 	// 全てのクラスのsetの値を自身のsessionフィールドに代入して格納
 	@Override

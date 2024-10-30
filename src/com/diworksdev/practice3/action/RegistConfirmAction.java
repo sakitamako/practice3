@@ -37,7 +37,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// private String userGender;
 	private int userGender;
 	private String userGender0;// 文字列表示用プロパティ
-	private int userPostalCode;
+	private String userPostalCode;
+	//private String userPostalCode;// 文字列表示用プロパティ
 	private String userPrefecture;
 	private String userAddress1;
 	private String userAddress2;
@@ -140,7 +141,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
     @Override
 	public String execute() {
 
-//		String result = SUCCESS;
+		String result = SUCCESS;
 
 		System.out.println(userFamilyName);
 		System.out.println(userGender);
@@ -164,7 +165,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		// 同じ意味 if (loginUserId.equals("") == false && loginPassword.equals("")
 		// == false && userName.equals("") == false) {
 		if (!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals(""))
-				&& !(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals(""))
+				&& !(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals("")) && !(userPostalCode.equals(""))
 				&& !(userPrefecture.equals("")) && !(userAddress1.equals("")) && !(userAddress2.equals(""))) {
 
 			// !(userPostalCode.equals("")) && これも数値、intだったから一旦外す！
@@ -179,7 +180,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			session.put("userMail", userMail);
 			session.put("userPassword", userPassword);
 			//session.put("userGender", userGender); //原因？一旦外してみる
-			//session.put("userPostalCode", userPostalCode);// 原因？
+			session.put("userPostalCode", userPostalCode);// 原因？
 			session.put("userPrefecture", userPrefecture);
 			session.put("userAddress1", userAddress1);
 			session.put("userAddress2", userAddress2);
@@ -187,15 +188,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		}
 
-		if (userPostalCode > 0) {
-
-			session.put("userPostalCode", userPostalCode);
-		}
-
 		// 小川講師からintバージョンで作った場合の処理方法教えてもらった！
 		// 下記は元々自分で作ってたコード！何が表示される想定なのかコメントアウトしている！
 		userGender0 = Integer.toString(userGender);// 0or1
-
 		session.put("userGender", userGender0);// 0or1
 
 		if (userGender0.equals("0")) {
@@ -259,7 +254,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
         }
         maskedPassword = masked.toString();
 
-        String result = SUCCESS;
+//        String result = SUCCESS;
 
 		return result;
 
@@ -382,14 +377,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginPasswordフィールドの値をActionに渡す
-	public int getUserPostalCode() {
+	public String getUserPostalCode() {
 		return userPostalCode;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginPasswordフィールドに格納
-	public void setUserPostalCode(int userPostalCode) {
+	public void setUserPostalCode(String userPostalCode) {
 		System.out.println("start: setUserPostalCode()");
 		System.out.println(userPostalCode);
 		this.userPostalCode = userPostalCode;
