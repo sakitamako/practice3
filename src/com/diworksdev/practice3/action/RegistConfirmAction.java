@@ -265,10 +265,12 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
     // Getter and Setter for registAction
     public RegistAction getRegistAction() {
         return registAction;
+
     }
 
     public void setRegistAction(RegistAction registAction) {
         this.registAction = registAction;
+
     }
 
 //    // 修正ボタンが押されたときに入力画面に戻る

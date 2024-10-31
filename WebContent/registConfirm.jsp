@@ -148,7 +148,7 @@ table {
 					</tr>
 					<tr>
                         <td>
-                        <form action = "RegistAction" method = "get">
+                        <form action = "RegistAction" method = "post">
                             <input type = "hidden" value ="userFamilyName" name="userFamilyName">
                             <input type = "submit" value = "戻って修正する">
                         </form>
