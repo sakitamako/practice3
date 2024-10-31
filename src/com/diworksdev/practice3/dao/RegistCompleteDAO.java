@@ -41,8 +41,8 @@ public class RegistCompleteDAO {
 
 	//①小川講師から教えてもらったこと、下記みたいに１個ずつ試してみる！上記の完成形はコメントアウト！
 	private String sql = "INSERT INTO login_user_transaction(family_name, last_name, family_name_kana, "
-			+ "last_name_kana, mail, password, gender, postal_code, prefecture, address_1, address_2, authority, registered_time) "
-			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			+ "last_name_kana, mail, password, gender, postal_code, prefecture, address_1, address_2, authority, delete_flag, registered_time) "
+			+ "VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	//DBから購入履歴を取得するためのメソッド
 	//クラス、メソッドの定義
@@ -74,7 +74,7 @@ public class RegistCompleteDAO {
 		System.out.println(userAddress1);
 		System.out.println(userAddress2);
 		System.out.println(userAuthority);
-//		System.out.println(delete_flag);
+		System.out.println(0);
 
 		//try.catchはjavaの例外処理のための構文
 		try {
@@ -101,7 +101,7 @@ public class RegistCompleteDAO {
 			preparedStatement.setString(10, userAddress1);
 			preparedStatement.setString(11, userAddress2);
 			preparedStatement.setString(12, userAuthority);
-//			preparedStatement.setString(13, delete_flag);
+			preparedStatement.setInt(13, 0);
 			preparedStatement.setString(13, dateUtil.getDate());
 			preparedStatement.execute();
 

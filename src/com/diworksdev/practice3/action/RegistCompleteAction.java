@@ -40,7 +40,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	private String userAddress1;
 	private String userAddress2;
 	private String userAuthority;
-//	private int delete_flag;
+	private int delete_flag;
 //	private String delete_flag0;// 文字列表示用プロパティ
 
 	// Map<String, Object>=キーを値にマッピングするオブジェクト。
@@ -311,7 +311,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		this.userAuthority = userAuthority;
 
 	}
-/*
+
 	// フィールド変数に対応したgetterとsetterを定義
 	// userCreateconfirm.jspの値として受け取った、userAuthorityフィールドの値をregistComplete.jspに渡している
 	public int getDelete_flag() {
@@ -326,7 +326,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		this.delete_flag = delete_flag;
 
 	}
-
+/*
 	// フィールド変数に対応したgetterとsetterを定義
 	// userCreateconfirm.jspの値として受け取った、userAuthorityフィールドの値をregistComplete.jspに渡している
 	public String getDelete_flag0() {
