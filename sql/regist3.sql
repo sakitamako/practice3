@@ -26,7 +26,7 @@ prefecture varchar(100),
 address_1 varchar(100),
 address_2 varchar(255),
 authority int(1),
-delete_flag int(1) DEFAULT 0,
+delete_flag int(1),
 registered_time datetime,
 update_time datetime);
 
