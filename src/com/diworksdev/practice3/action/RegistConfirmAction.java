@@ -45,6 +45,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userAuthority0;// 文字列表示用プロパティ
 	private int userAuthority;
 
+	private RegistAction registAction;
+
 	// Map<String, Object>=キーを値にマッピングするオブジェクト。
 	// マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
 	// このインタフェースは、インタフェースというよりむしろ完全に抽象クラスであったDictionaryクラスに代わるものです
@@ -259,6 +261,15 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		return result;
 
 	}
+
+    // Getter and Setter for registAction
+    public RegistAction getRegistAction() {
+        return registAction;
+    }
+
+    public void setRegistAction(RegistAction registAction) {
+        this.registAction = registAction;
+    }
 
 //    // 修正ボタンが押されたときに入力画面に戻る
 //    public String backToInput() {
