@@ -58,7 +58,7 @@ public class RegistCompleteDAO {
 	//これ元々記述してたやつ、上は小川講師に追加してもらったやつ！
 	public void regist(String userFamilyName, String userLastName, String userFamilyNameKana,
 			String userLastNameKana, String userMail, String userPassword,
-			String userGender, String userPrefecture, String userPostalCode,
+			String userGender, String userPostalCode, String userPrefecture,
 			String userAddress1, String userAddress2, String userAuthority) throws SQLException {
 
 		//③小川講師から教えてもらったこと、上記の確認したい項目を入力！
