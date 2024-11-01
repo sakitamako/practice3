@@ -148,11 +148,21 @@ table {
 					</tr>
 					<tr>
                         <td>
-                            <input type="hidden" name="userFamilyName" value="<s:property value='userFamilyName'/>" />
-                            <input type="submit" value="戻って修正する" formaction="RegistAction" />
-                            <input type="submit" value="登録する" formaction="RegistCompleteAction" />
+                        <form action = "RegistAction" method = "post">
+                            <input type = "hidden" value ="userFamilyName" name="userFamilyName">
+                            <input type = "submit" value = "戻って修正する">
+                        </form>
+                        <form action = "RegistCompleteAction" method = "post">
+                            <input type = "submit" value = "登録する">
+                            <input type = "hidden" value = "userFamilyName" name = "userFamilyName">
+                        </form>
                         </td>
                     </tr>
+					<tr>
+						<td>
+						    <s:submit value="完了" />
+						</td>
+					</tr>
 				</s:form>
 			</table>
 		</div>
