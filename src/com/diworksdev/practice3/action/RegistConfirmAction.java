@@ -45,7 +45,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userAuthority0;// 文字列表示用プロパティ
 	private int userAuthority;
 
-//	private RegistAction registAction;
+	private RegistAction registAction;
 
 	// Map<String, Object>=キーを値にマッピングするオブジェクト。
 	// マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
@@ -261,13 +261,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		return result;
 
 	}
-
-    public String backToInput() {
-        userFamilyName = (String) session.get("userFamilyName");
-        userLastName = (String) session.get("userLastName");
-        // 同様に他のフィールドも取得
-        return INPUT; // 入力画面に戻る
-    }
 
 //    // Getter and Setter for registAction
 //    public RegistAction getRegistAction() {
