@@ -154,13 +154,13 @@ table {
                             <input type = "hidden" value ="<s:property value='userFamilyNameKana'/>" name="userFamilyNameKana">
                             <input type = "hidden" value ="<s:property value='userLastNameKana'/>" name="userLastNameKana">
                             <input type = "hidden" value ="<s:property value='userMail'/>" name="userMail">
-                            <input type = "hidden" value ="<s:property value='maskedPassword'/>" name="maskedPassword">
-                            <input type = "hidden" value ="<s:property value='userGender0'/>" name="userGender0">
+                            <input type = "hidden" value ="<s:property value='maskedPassword'/>" name="userPassword">
+                            <input type = "hidden" value ="<s:property value='userGender0'/>" name="userGender">
                             <input type = "hidden" value ="<s:property value='userPostalCode'/>" name="userPostalCode">
                             <input type = "hidden" value ="<s:property value='userPrefecture'/>" name="userPrefecture">
                             <input type = "hidden" value ="<s:property value='userAddress1'/>" name="userAddress1">
                             <input type = "hidden" value ="<s:property value='userAddress2'/>" name="userAddress2">
-                            <input type = "hidden" value ="<s:property value='userAuthority0'/>" name="userAuthority0">
+                            <input type = "hidden" value ="<s:property value='userAuthority0'/>" name="userAuthority">
                             <input type = "submit" value = "戻って修正する">
                         </form>
                         <form action = "RegistCompleteAction" method = "post">
