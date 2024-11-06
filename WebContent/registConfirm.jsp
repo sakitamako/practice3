@@ -154,7 +154,7 @@ table {
                             <input type = "hidden" value ="<s:property value='userFamilyNameKana'/>" name="userFamilyNameKana">
                             <input type = "hidden" value ="<s:property value='userLastNameKana'/>" name="userLastNameKana">
                             <input type = "hidden" value ="<s:property value='userMail'/>" name="userMail">
-                            <input type = "hidden" value ="<s:property value='maskedPassword'/>" name="userPassword">
+                            <input type = "hidden" value ="<s:property value='userPassword'/>" name="userPassword">
                             <input type = "hidden" value ="<s:property value='userGender0'/>" name="userGender">
                             <input type = "hidden" value ="<s:property value='userPostalCode'/>" name="userPostalCode">
                             <input type = "hidden" value ="<s:property value='userPrefecture'/>" name="userPrefecture">
