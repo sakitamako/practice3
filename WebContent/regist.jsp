@@ -132,8 +132,8 @@ body .fielderror {
                     <tr>
                         <td><label>性別</label></td>
                         <td>
-                            <input type="radio" name="userGender" value="0" <s:property value='userGender'/> checked="checked">男性
-                            <input type="radio" name="userGender" value="1" <s:property value='userGender'/>>女性
+                            <input type="radio" name="userGender" value="0" value="<s:property value='userGender'/>" checked="checked" >男性
+                            <input type="radio" name="userGender" value="1" value="<s:property value='userGender'/>" >女性
                         </td>
                     </tr>
                     <tr>
@@ -208,7 +208,7 @@ body .fielderror {
                     <tr>
                         <td><label>アカウント権限</label></td>
                         <td><input type="radio" name="userAuthority" value="0" value="<s:property value='userAuthority'/>" checked="checked">一般
-                            <input type="radio" name="userAuthority" value="1" value="<s:property value='userAuthority'/>">管理者
+                            <input type="radio" name="userAuthority" value="1" value="<s:property value='userAuthority'/>" >管理者
                         </td>
                     </tr>
                     <tr>
