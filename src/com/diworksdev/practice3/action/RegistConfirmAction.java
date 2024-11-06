@@ -45,7 +45,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userAuthority0;// 文字列表示用プロパティ
 	private int userAuthority;
 
-	private RegistAction registAction;
+//	private RegistAction registAction;
 
 	// Map<String, Object>=キーを値にマッピングするオブジェクト。
 	// マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
@@ -62,9 +62,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
   @Override
 	public void validate() {
 
-		System.out.println(userFamilyName);
-		System.out.println(userFamilyName.equals(""));
-		System.out.println(userFamilyName.trim().isEmpty());
+//		System.out.println(userFamilyName);
+//		System.out.println(userFamilyName.equals(""));
+//		System.out.println(userFamilyName.trim().isEmpty());
 
 		//isEmptyメソッドを利用することで、文字列が空であるかどうかを判定できる || userFamilyName.isEmpty()
 		//userFamilyNameと空文字が等しいかつ,userFamilyNameの文字列が空の時
@@ -261,6 +261,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		return result;
 
 	}
+
+
 
 //    // Getter and Setter for registAction
 //    public RegistAction getRegistAction() {
