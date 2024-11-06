@@ -149,7 +149,7 @@ table {
 					<tr>
                         <td>
                         <form action = "RegistAction" method = "post">
-                            <input type = "hidden" value ="userFamilyName" name="userFamilyName">
+                            <input type = "hidden" value ="<s:property value='userFamilyName'/>" name="userFamilyName">
                             <input type = "submit" value = "戻って修正する">
                         </form>
                         <form action = "RegistCompleteAction" method = "post">
