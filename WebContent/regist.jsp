@@ -106,45 +106,45 @@ body .fielderror {
 					</tr>
 					<tr>
 						<td><label>名前（名）</label></td>
-						<td><input type="text" name="userLastName" maxlength="10" value="" />
+						<td><input type="text" name="userLastName" maxlength="10" value="<s:property value='userLastName'/>" />
 						<br><s:fielderror fieldName="userLastName" style="color: red; font-weight: bold;" /></td>
 					</tr>
 					<tr>
 						<td><label>カナ（姓）</label></td>
-						<td><input type="text" name="userFamilyNameKana" maxlength="10" value="" />
+						<td><input type="text" name="userFamilyNameKana" maxlength="10" value="<s:property value='userFamilyNameKana'/>" />
 						<br><s:fielderror fieldName="userFamilyNameKana" style="color: red; font-weight: bold;" /></td>
 					</tr>
 					<tr>
                         <td><label>カナ（名）</label></td>
-                        <td><input type="text" name="userLastNameKana" maxlength="10" value="" />
+                        <td><input type="text" name="userLastNameKana" maxlength="10" value="<s:property value='userLastNameKana'/>" />
                         <br><s:fielderror fieldName="userLastNameKana" style="color: red; font-weight: bold;" /></td>
                     </tr>
 					<tr>
                         <td><label>メールアドレス</label></td>
-                        <td><input type="text" name="userMail" maxlength="100" value="" />
+                        <td><input type="text" name="userMail" maxlength="100" value="<s:property value='userMail'/>" />
                         <br><s:fielderror fieldName="userMail" style="color: red; font-weight: bold;" /></td>
                     </tr>
                     <tr>
                         <td><label>パスワード</label></td>
-                        <td><input type="text" name="userPassword" maxlength="10" value="" />
+                        <td><input type="text" name="userPassword" maxlength="10" value="<s:property value='userPassword'/>" />
                         <br><s:fielderror fieldName="userPassword" style="color: red; font-weight: bold;" /></td>
                     </tr>
                     <tr>
                         <td><label>性別</label></td>
                         <td>
-                            <input type="radio" name="userGender" value="0" checked="checked">男性
-                            <input type="radio" name="userGender" value="1">女性
+                            <input type="radio" name="userGender" value="0" value="<s:property value='userGender'/>" checked="checked">男性
+                            <input type="radio" name="userGender" value="1" value="<s:property value='userGender'/>">女性
                         </td>
                     </tr>
                     <tr>
                         <td><label>郵便番号</label></td>
-                        <td><input type="text" name="userPostalCode" maxlength="7" value="" />
+                        <td><input type="text" name="userPostalCode" maxlength="7" value="<s:property value='userPostalCode'/>" />
                         <br><s:fielderror fieldName="userPostalCode" style="color: red; font-weight: bold;" /></td>
                     </tr>
                     <tr>
                         <td><label>住所（都道府県）</label></td>
                         <td><select name="userPrefecture">
-                                <option value=""></option>
+                                <option value="<s:property value='userPrefecture'/>"></option>
                                 <option value="北海道">北海道</option>
                                 <option value="青森県">青森県</option>
                                 <option value="岩手県">岩手県</option>
@@ -197,18 +197,18 @@ body .fielderror {
                     </tr>
                     <tr>
                         <td><label>住所（市区町村）</label></td>
-                        <td><input type="text" name="userAddress1" maxlength="10" value="" />
+                        <td><input type="text" name="userAddress1" maxlength="10" value="<s:property value='userAddress1'/>" />
                         <br><s:fielderror fieldName="userAddress1" style="color: red; font-weight: bold;" /></td>
                     </tr>
                     <tr>
                         <td><label>住所（番地）</label></td>
-                        <td><input type="text" name="userAddress2" maxlength="100" value="" />
+                        <td><input type="text" name="userAddress2" maxlength="100" value="<s:property value='userAddress2'/>" />
                         <br><s:fielderror fieldName="userAddress2" style="color: red; font-weight: bold;" /></td>
                     </tr>
                     <tr>
                         <td><label>アカウント権限</label></td>
-                        <td><input type="radio" name="userAuthority" value="0" checked="checked">一般
-                            <input type="radio" name="userAuthority" value="1">管理者
+                        <td><input type="radio" name="userAuthority" value="0" value="<s:property value='userAuthority'/>" checked="checked">一般
+                            <input type="radio" name="userAuthority" value="1" value="<s:property value='userAuthority'/>">管理者
                         </td>
                     </tr>
                     <tr>
