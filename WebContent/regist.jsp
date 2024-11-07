@@ -207,8 +207,8 @@ body .fielderror {
                     </tr>
                     <tr>
                         <td><label>アカウント権限</label></td>
-                        <td><input type="radio" name="userAuthority" value="0" value="<s:property value='userAuthority'/>" checked="checked">一般
-                            <input type="radio" name="userAuthority" value="1" value="<s:property value='userAuthority'/>" >管理者
+                        <td><input type="radio" name="userAuthority" value="0" <s:if test="%{userAuthority == 0}">checked="checked"</s:if>>一般
+                            <input type="radio" name="userAuthority" value="1" <s:if test="%{userAuthority == 1}">checked="checked"</s:if>>管理者
                         </td>
                     </tr>
                     <tr>

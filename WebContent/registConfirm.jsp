@@ -160,7 +160,7 @@ table {
                             <input type = "hidden" value ="<s:property value='userPrefecture'/>" name="userPrefecture">
                             <input type = "hidden" value ="<s:property value='userAddress1'/>" name="userAddress1">
                             <input type = "hidden" value ="<s:property value='userAddress2'/>" name="userAddress2">
-                            <input type = "hidden" value ="<s:property value='userAuthority0'/>" name="userAuthority">
+                            <input type = "hidden" value ="<s:property value='userAuthority'/>" name="userAuthority">
                             <input type = "submit" value = "戻って修正する">
                         </form>
                         <form action = "RegistCompleteAction" method = "post">
