@@ -132,8 +132,8 @@ body .fielderror {
                     <tr>
                         <td><label>性別</label></td>
                         <td>
-                            <input type="radio" name="userGender" value="0" value="<s:property value='userGender'/>" checked="checked" >男性
-                            <input type="radio" name="userGender" value="1" value="<s:property value='userGender'/>" >女性
+                            <input type="radio" name="userGender" value="0" <s:if test="%{userGender == 0 || userGender == null}">checked="checked"</s:if> >男性
+                            <input type="radio" name="userGender" value="1" <s:if test="%{userGender == 1}">checked="checked"</s:if>>女性
                         </td>
                     </tr>
                     <tr>
