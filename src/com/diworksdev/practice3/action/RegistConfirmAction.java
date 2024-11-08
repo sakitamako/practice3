@@ -34,7 +34,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userMail;
 	private String userPassword;
 	private String maskedPassword;
-	// private String userGender;
 	private int userGender;
 	private String userGender0;// 文字列表示用プロパティ
 	private String userPostalCode;
@@ -42,8 +41,9 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userPrefecture;
 	private String userAddress1;
 	private String userAddress2;
-	private String userAuthority0;// 文字列表示用プロパティ
 	private int userAuthority;
+	private String userAuthority0;// 文字列表示用プロパティ
+
 
 //	private RegistAction registAction;
 
@@ -146,8 +146,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		String result = SUCCESS;
 
 		System.out.println(userFamilyName);
-		System.out.println(userGender);
-		System.out.println(userAuthority);
 		System.out.println(userLastName);
 		System.out.println(userFamilyNameKana);
 		System.out.println(userLastNameKana);
@@ -195,18 +193,18 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		userGender0 = Integer.toString(userGender);// 0or1
 		session.put("userGender", userGender0);// 0or1
 
-		if (userGender0.equals("0")) {
+		if (userGender0.equals("0")) {// 0or1
 			//
-			// //男性代入
+			// //一般代入
 			userGender0 = "男性";
 			//
 			// //sessionに記憶
-			// session.put("userGender", userGender);//0->男性
+			// session.put("userAuthority", userAuthority);//一般
 			//
 			// //そうでない場合
-		} else if (userGender0.equals("1")) {
+		} else if (userGender0.equals("1")) {// 0or1
 			//
-			// //女性代入
+			// //管理者代入
 			userGender0 = "女性";
 			//
 			// //sessionに記憶
@@ -451,8 +449,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
-	public String getUserAuthority0() {
-		return userAuthority0;
+	public int getUserAuthority() {
+		return userAuthority;
 
 	}
 
@@ -465,8 +463,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
-	public int getUserAuthority() {
-		return userAuthority;
+	public String getUserAuthority0() {
+		return userAuthority0;
 
 	}
 

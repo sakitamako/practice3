@@ -9,7 +9,7 @@
 
     <!-- このプロジェクトで使うActionファイルが保存されているパッケージを宣言 -->
     <!-- 1, Struts2の挙動を制御する設定、name:設定名、value:設定値、をそれぞれ記述！※この研修では毎回同じ値を使う -->
-    <constant name="struts.devMode" value="true" />
+    <constant name="struts.devMode" value="false" />
 
     <!-- 2, 対象のpackageを設定-->
     <package name="com.diworksdev.practice3.action" extends="struts-default">

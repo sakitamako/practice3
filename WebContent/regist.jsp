@@ -1,7 +1,6 @@
 <!-- このファイルが通常のHTMLファイルではなく、JSPであることを示している -->
 <!-- strutsタグ（下の補足参照）を使用する際に記述します。ここでは”s”としてタグを使用 -->
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <!-- ユーザー登録機能 -->
@@ -144,8 +143,8 @@ body .fielderror {
                     <tr>
                         <td><label>住所（都道府県）</label></td>
                         <td><select name="userPrefecture">
-                                <option value="" <s:if test="%{userPrefecture == null}">selected="selected"</s:if>></option>
-                                <option value="北海道" <s:if test="%{userPrefecture == '北海道'}">selected="selected"</s:if>>北海道</option>
+                                <option value="<s:property value='userPrefecture'/>"></option>
+                                <option value="北海道">北海道</option>
                                 <option value="青森県">青森県</option>
                                 <option value="岩手県">岩手県</option>
                                 <option value="宮城県">宮城県</option>
