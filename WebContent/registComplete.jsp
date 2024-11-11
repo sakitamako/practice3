@@ -102,7 +102,7 @@ table {
                 <h3>アカウント登録完了画面</h3>
             </div>
             <div>
-                <h4>登録完了しました</h4>
+                z
                 <div>
                     <br>
                     <a href='<s:url action="HomeAction" />'>TOPページへ戻る</a>

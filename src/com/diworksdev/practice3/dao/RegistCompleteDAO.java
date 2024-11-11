@@ -1,8 +1,15 @@
 package com.diworksdev.practice3.dao;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import com.diworksdev.practice3.util.DBConnector;
 import com.diworksdev.practice3.util.DateUtil;
@@ -12,8 +19,20 @@ import com.diworksdev.practice3.util.DateUtil;
 
 //DAOクラスでは、Actionから送られてきた情報を使ってDBへ問い合わせを行うファイル
 //問い合わせて取得した値をDTOクラスに格納するファイル
+public class RegistCompleteDAO extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-public class RegistCompleteDAO {
+    	if (connection == null) {
+		    System.out.println("データベースへの接続に失敗しました。再試行してください。");
+		    // ここで、フロントエンドにエラーメッセージを渡す処理を追加できます
+		} else {
+		    System.out.println("データベースに接続しました。");
+		}
+
+		// JSPにフォワード
+        RequestDispatcher dispatcher = request.getRequestDispatcher("registComplete.jsp");
+        dispatcher.forward(request, response);
+    }
 
 	//DBConnectorのインスタンス化
 	//DBへの接続準備、DBと会話するためのコード、これでログインできる

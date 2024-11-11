@@ -35,18 +35,17 @@ public class DBConnector {
 		//tryの中でエラーが発生した場合、catchが受け取り
 		//例外がスローされる原因となったエラーまたは動作の説明を返します
 		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
+            // ドライバが見つからない場合のエラーメッセージ
+            System.out.println("エラー：JDBCドライバが見つかりません。");
+            e.printStackTrace();
 
-		//tryの中でエラーが発生した場合、catchが受け取り
-		//例外がスローされる原因となったエラーまたは動作の説明を返します
-		} catch (SQLException e) {
-			e.printStackTrace();
+        } catch (SQLException e) {
+            // 接続エラー時のオリジナルエラーメッセージ
+            System.out.println("エラーが発生したため、データベースに接続できませんでした。");
+            e.printStackTrace();
+        }
 
-		}
-
-		//Mysqlに接続できたか情報を渡す
-		return con ;
-
-	}
+        return con;
+    }
 
 }
