@@ -103,13 +103,10 @@ table {
                 <h3>アカウント登録エラー画面</h3>
             </div>
             <div>
-                <s:actionerror cssClass="error-message" />
-                <h4>エラーが発生したためアカウント登録できません。</h4>
-                <div>
-                    <br>
-                    <a href='<s:url action="HomeAction" />'>TOPページへ戻る</a>
-                    <br>
-                </div>
+                <s:actionerror />
+                <br>
+                <a href='<s:url action="HomeAction" />'>TOPページへ戻る</a>
+                <br>
             </div>
             <p>フッター</p>
         </div>
