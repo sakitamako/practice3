@@ -63,7 +63,7 @@ public class RegistCompleteAction extends ActionSupport {
 
         if (con == null) {
             // 接続失敗の場合はエラーを返す
-            addActionError("データベースへの接続に失敗しました。再試行してください。");
+            addActionError("エラーが発生したためアカウント登録できません。");
             return ERROR;
 
         } else {
