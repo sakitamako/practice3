@@ -43,6 +43,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userAddress2;
 	private int userAuthority;
 	private String userAuthority0;// 文字列表示用プロパティ
+	private int delete_flag;
+	private String delete_flag0;// 文字列表示用プロパティ
 
 
 //	private RegistAction registAction;
@@ -245,6 +247,19 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			// } else {
 
 			// result = ERROR;
+		}
+
+        delete_flag0 = Integer.toString(delete_flag);// 0or1
+		session.put("delete_flag", delete_flag0);// 0or1
+
+		if (delete_flag0.equals("0")) {
+
+			delete_flag0 = "有効";
+
+		} else if (delete_flag0.equals("1")) {
+
+			delete_flag0 = "無効";
+
 		}
 
         // パスワードを黒丸でマスクする
@@ -486,6 +501,36 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
     public String getMaskedPassword() {
         return maskedPassword;
     }
+
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userAuthorityフィールドの値をregistComplete.jspに渡している
+	public int getDelete_flag() {
+		return delete_flag;
+
+	}
+
+	// 外部のSETをここに代入して元々の値を外部から持ってきた値に変えて格納する
+	// フィールド変数に対応したgetterとsetterを定義
+	// 受け取ったテーブルの値を自身のdeleteFlgフィールドに格納
+	public void setDelete_flag(int delete_flag) {
+		this.delete_flag = delete_flag;
+
+	}
+
+	// フィールド変数に対応したgetterとsetterを定義
+	// userCreateconfirm.jspの値として受け取った、userAuthorityフィールドの値をregistComplete.jspに渡している
+	public String getDelete_flag0() {
+		return delete_flag0;
+
+	}
+
+	// 外部のSETをここに代入して元々の値を外部から持ってきた値に変えて格納する
+	// フィールド変数に対応したgetterとsetterを定義
+	// 受け取ったテーブルの値を自身のdeleteFlgフィールドに格納
+	public void setDelete_flag0(String delete_flag0) {
+		this.delete_flag0 = delete_flag0;
+
+	}
 /*
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、errorMessageフィールドの値をActionに渡す
