@@ -127,7 +127,7 @@ public class RegistCompleteAction extends ActionSupport {
 	     	// 元々SUCCESSだったけどERRORに変えた
 //	        String result = SUCCESS;
 
-	        if (con == null) {
+	        if (!(con == null)) {
 	            // 接続失敗の場合はエラーを返す
 	            addActionError("エラーが発生したためアカウント登録できません。");
 
