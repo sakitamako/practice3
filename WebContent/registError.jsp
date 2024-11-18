@@ -105,9 +105,8 @@ table {
 			<p>ナビゲーションバー</p>
 			<h3>アカウント登録エラー画面</h3>
 		</div>
-		<div class="error-message">
-			<s:actionerror />
-		</div>
+		  <!-- エラーメッセージをフィールドエラーとして表示 -->
+            <s:fielderror fieldName="fieldName" cssClass="error-message" />
 		<div>
 			<br> <a href='<s:url action="HomeAction" />'>TOPページへ戻る</a> <br>
 		</div>
