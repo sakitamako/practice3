@@ -46,7 +46,7 @@ public class RegistCompleteAction extends ActionSupport {
 	private String userAddress1;
 	private String userAddress2;
 	private String userAuthority;
-	private int delete_flag;
+	private String delete_flag;
 //	private String delete_flag0;// 文字列表示用プロパティ
 	private String errorMessage;
 
@@ -86,6 +86,33 @@ public class RegistCompleteAction extends ActionSupport {
 
 
 //			String result = SUCCESS;
+
+//			System.out.println(session.get("userFamilyName"));
+//			System.out.println(session.get("userLastName"));
+//			System.out.println(session.get("userFamilyNameKana"));
+//			System.out.println(session.get("userLastNameKana"));
+//			System.out.println(session.get("userMail"));
+//			System.out.println(session.get("userPassword"));
+//			System.out.println(session.get("userGender"));
+//			System.out.println(session.get("userPostalCode"));
+//			System.out.println(session.get("userPrefecture"));
+//			System.out.println(session.get("userAddress1"));
+//			System.out.println(session.get("userAddress2"));
+//			System.out.println(session.get("userAuthority"));
+//			System.out.println(session.get("delete_flag"));
+//			String userFamilyName = session.get("userFamilyName").toString();
+//			String userLastName = session.get("userLastName").toString();
+//			String userFamilyNameKana = session.get("userFamilyNameKana").toString();
+//			String userLastNameKana = session.get("userLastNameKana").toString();
+//			String userMail = session.get("userMail").toString();
+//			String userPassword = session.get("userPassword").toString();
+//			String userGender = session.get("userGender").toString();
+//			String userPostalCode = session.get("userPostalCode").toString();
+//			String userPrefecture = session.get("userPrefecture").toString();
+//			String userAddress1 = session.get("userAddress1").toString();
+//			String userAddress2 = session.get("userAddress2").toString();
+//			String userAuthority = session.get("userAuthority").toString();
+//			String delete_flag = session.get("delete_flag").toString();
 
 			System.out.println(session.get("userFamilyName"));
 			System.out.println(session.get("userLastName"));
@@ -166,6 +193,8 @@ public class RegistCompleteAction extends ActionSupport {
 
     	addActionError("アカウント登録中にエラーが発生しました。もう一度お試しください。");
         e.printStackTrace(); // エラー内容をログに出力
+
+        result = ERROR;
 
     }
 
@@ -352,7 +381,7 @@ public class RegistCompleteAction extends ActionSupport {
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// userCreateconfirm.jspの値として受け取った、userAuthorityフィールドの値をregistComplete.jspに渡している
-	public int getDelete_flag() {
+	public String getDelete_flag() {
 		return delete_flag;
 
 	}
@@ -360,7 +389,7 @@ public class RegistCompleteAction extends ActionSupport {
 	// 外部のSETをここに代入して元々の値を外部から持ってきた値に変えて格納する
 	// フィールド変数に対応したgetterとsetterを定義
 	// 受け取ったテーブルの値を自身のdeleteFlgフィールドに格納
-	public void setDelete_flag(int delete_flag) {
+	public void setDelete_flag(String delete_flag) {
 		this.delete_flag = delete_flag;
 
 	}
