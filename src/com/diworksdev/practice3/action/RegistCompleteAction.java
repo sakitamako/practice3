@@ -1,11 +1,13 @@
 package com.diworksdev.practice3.action;
 
-import java.sql.Connection;
+//import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
 
+import org.apache.struts2.interceptor.SessionAware;
+
 import com.diworksdev.practice3.dao.RegistCompleteDAO;
-import com.diworksdev.practice3.util.DBConnector;
+//import com.diworksdev.practice3.util.DBConnector;
 import com.opensymphony.xwork2.ActionSupport;
 
 //ユーザー登録機能
@@ -23,8 +25,11 @@ import com.opensymphony.xwork2.ActionSupport;
 実装メソッドである setSession(Map session)にて、ActionのフィールドへHttpSessionのオブジェクトを格納する処理を実装する。this.session = session; でほぼ十分。
 上記の手順で実装したフィールドを用意する
 これにより、このActionクラスのsessionフィールドへ、Struts2が自動的にHttpSessionの内容をMapの型で格納します。*/
-public class RegistCompleteAction extends ActionSupport {
-    private static final long serialVersionUID = 1L;
+
+public class RegistCompleteAction extends ActionSupport implements SessionAware {
+
+//public class RegistCompleteAction extends ActionSupport {
+//    private static final long serialVersionUID = 1L;
 
 	// フィールド変数
 	// JSPから受け取る値
@@ -42,7 +47,7 @@ public class RegistCompleteAction extends ActionSupport {
 	private String userAddress2;
 	private String userAuthority;
 	private int delete_flag;
-	private String delete_flag0;// 文字列表示用プロパティ
+//	private String delete_flag0;// 文字列表示用プロパティ
 
 	// Map<String, Object>=キーを値にマッピングするオブジェクト。
 	// マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
@@ -58,26 +63,88 @@ public class RegistCompleteAction extends ActionSupport {
 	public String execute() throws SQLException  {
 
 		// DBConnectorを使って接続試行
-        DBConnector dbConnector = new DBConnector();
-        Connection con = dbConnector.getConnection();
+//        DBConnector dbConnector = new DBConnector();
+//        Connection con = dbConnector.getConnection();
 
-        if (con == null) {
-            // 接続失敗の場合はエラーを返す
-            addActionError("エラーが発生したためアカウント登録できません。");
-            return ERROR;
-
-        } else {
-            // 接続成功の場合は成功を返す
-            return SUCCESS;
-        }
+//        if (con == null) {
+//            // 接続失敗の場合はエラーを返す
+//            addActionError("エラーが発生したためアカウント登録できません。");
+//            return ERROR;
+//
+//        } else {
+//            // 接続成功の場合は成功を返す
+//            return SUCCESS;
+//        }
 
 		// error画面表示させてもサーバー上で１の表示にならない
 
 
-//			String result = SUCCESS;
+			String result = SUCCESS;
 
+			System.out.println(session.get("userFamilyName"));
+			System.out.println(session.get("userLastName"));
+			System.out.println(session.get("userFamilyNameKana"));
+			System.out.println(session.get("userLastNameKana"));
+			System.out.println(session.get("userMail"));
+			System.out.println(session.get("userPassword"));
+			System.out.println(session.get("userGender"));
+			System.out.println(session.get("userPostalCode"));
+			System.out.println(session.get("userPrefecture"));
+			System.out.println(session.get("userAddress1"));
+			System.out.println(session.get("userAddress2"));
+			System.out.println(session.get("userAuthority"));
+			System.out.println(session.get("delete_flag"));
+			System.out.println(session.get("userFamilyName").toString());
+			System.out.println(session.get("userLastName").toString());
+			System.out.println(session.get("userFamilyNameKana").toString());
+			System.out.println(session.get("userLastNameKana").toString());
+			System.out.println(session.get("userMail").toString());
+			System.out.println(session.get("userPassword").toString());
+			System.out.println(session.get("userGender").toString());
+			System.out.println(session.get("userPostalCode").toString());
+			System.out.println(session.get("userPrefecture").toString());
+			System.out.println(session.get("userAddress1").toString());
+			System.out.println(session.get("userAddress2").toString());
+			System.out.println(session.get("userAuthority").toString());
+			System.out.println(session.get("delete_flag").toString());
+			// 小川講師に追記してもらったとこ！１項目ずつデータが渡っているかチェックする！
+			registCompleteDAO.regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(),
+					session.get("userFamilyNameKana").toString(), session.get("userLastNameKana").toString(),
+					session.get("userMail").toString(), session.get("userPassword").toString(),
+					session.get("userGender").toString(), session.get("userPostalCode").toString(),
+					session.get("userPrefecture").toString(), session.get("userAddress1").toString(),
+					session.get("userAddress2").toString(), session.get("userAuthority").toString(),
+					session.get("delete_flag").toString());
+			//session.get("delete_flag").toString()
+			//session.get("userPostalCode").toString(),
+			// SUCCESS返す
+			// これコメントアウトして実行するとregistError.jsp画面に遷移する
+			// result = SUCCESS;
+			// registCompleteDAO.regist(session.get("userFamilyName").toString(),
+			// session.get("userLastName").toString(),
+			// session.get("userFamilyNameKana").toString(),
+			// session.get("userLastNameKana").toString(),
+			// session.get("userMail").toString(),
+			// session.get("userPassword").toString(),
+			// session.get("userGender").toString(),
+			// session.get("userPostalCode").toString(),
+			// session.get("userPrefecture").toString(),
+			// session.get("userAddress1").toString(),
+			// session.get("userAddress2").toString(),
+			// session.get("userAuthority").toString());
+//		} else if (delete_flag0.equals("1")) {
+//			result = ERROR;
+//		}
+//
+////			String result = SUCCESS;
+//
+//		// 戻り値
+//		// retに入った値を呼び出し元であるActionクラスに渡す
+		return result;
 
 	}
+
+
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// userCreateconfirm.jspの値として受け取った、userFamilyNameフィールドの値をregistComplete.jspに渡している
@@ -261,7 +328,7 @@ public class RegistCompleteAction extends ActionSupport {
 		this.delete_flag = delete_flag;
 
 	}
-
+/*
 	// フィールド変数に対応したgetterとsetterを定義
 	// userCreateconfirm.jspの値として受け取った、userAuthorityフィールドの値をregistComplete.jspに渡している
 	public String getDelete_flag0() {
@@ -276,6 +343,7 @@ public class RegistCompleteAction extends ActionSupport {
 		this.delete_flag0 = delete_flag0;
 
 	}
+*/
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// 全てのクラスのsetの値を自身のsessionフィールドに代入して格納
