@@ -1,13 +1,13 @@
 package com.diworksdev.practice3.action;
 
-//import java.sql.Connection;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
 
 import org.apache.struts2.interceptor.SessionAware;
 
 import com.diworksdev.practice3.dao.RegistCompleteDAO;
-//import com.diworksdev.practice3.util.DBConnector;
+import com.diworksdev.practice3.util.DBConnector;
 import com.opensymphony.xwork2.ActionSupport;
 
 //ユーザー登録機能
@@ -60,26 +60,34 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 	// 全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
 	@Override
-	public String execute() throws SQLException  {
+	public String execute() {
+
+		String result = ERROR; // 初期値をERRORに設定
+
+		try {
 
 		// DBConnectorを使って接続試行
-//        DBConnector dbConnector = new DBConnector();
-//        Connection con = dbConnector.getConnection();
+        DBConnector dbConnector = new DBConnector();
+        Connection con = dbConnector.getConnection();
 
-//        if (con == null) {
-//            // 接続失敗の場合はエラーを返す
-//            addActionError("エラーが発生したためアカウント登録できません。");
-//            return ERROR;
-//
-//        } else {
-//            // 接続成功の場合は成功を返す
-//            return SUCCESS;
-//        }
+        if (con == null) {
+
+            // 接続失敗の場合はエラーを返す
+            addActionError("エラーが発生したためアカウント登録できません。");
+
+//            String result = ERROR;
+
+        } else {
+
+            // 接続成功の場合は成功を返す
+        	result = SUCCESS;
+
+        }
 
 		// error画面表示させてもサーバー上で１の表示にならない
 
 
-			String result = SUCCESS;
+//			String result = SUCCESS;
 
 			System.out.println(session.get("userFamilyName"));
 			System.out.println(session.get("userLastName"));
@@ -136,13 +144,37 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 //			result = ERROR;
 //		}
 //
+//			String result = SUCCESS;
+
+//	    } catch (SQLException e) {
+//	        // エラーメッセージをセッションに格納してエラー画面に遷移
+//	        addActionError("アカウント登録中にエラーが発生しました。もう一度お試しください。");
+//	        e.printStackTrace();
+//
+//	        String result = ERROR;
+
+		} catch (SQLException e) {
+
+			addActionError("アカウント登録中にエラーが発生しました。もう一度お試しください。");
+
+			e.printStackTrace();
+
+		}
+
+		return result;
+
+		}
+
+
+
+
+
+
 ////			String result = SUCCESS;
 //
 //		// 戻り値
 //		// retに入った値を呼び出し元であるActionクラスに渡す
-		return result;
 
-	}
 
 
 
