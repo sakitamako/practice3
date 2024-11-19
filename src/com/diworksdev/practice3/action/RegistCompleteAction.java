@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
 
-import org.apache.struts2.interceptor.SessionAware;
+//import org.apache.struts2.interceptor.SessionAware;
 
 import com.diworksdev.practice3.dao.RegistCompleteDAO;
 import com.diworksdev.practice3.util.DBConnector;
@@ -26,10 +26,10 @@ import com.opensymphony.xwork2.ActionSupport;
 上記の手順で実装したフィールドを用意する
 これにより、このActionクラスのsessionフィールドへ、Struts2が自動的にHttpSessionの内容をMapの型で格納します。*/
 
-public class RegistCompleteAction extends ActionSupport implements SessionAware {
+//public class RegistCompleteAction extends ActionSupport implements SessionAware {
 
-//public class RegistCompleteAction extends ActionSupport {
-//    private static final long serialVersionUID = 1L;
+public class RegistCompleteAction extends ActionSupport {
+    private static final long serialVersionUID = 1L;
 
 	// フィールド変数
 	// JSPから受け取る値
@@ -48,6 +48,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	private String userAuthority;
 	private int delete_flag;
 //	private String delete_flag0;// 文字列表示用プロパティ
+	private String errorMessage;
 
 	// Map<String, Object>=キーを値にマッピングするオブジェクト。
 	// マップには、同一のキーを複数登録できない。各キーは1つの値にしかマッピングできません。
@@ -62,7 +63,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	@Override
 	public String execute() {
 
-		String result = ERROR; // 初期値をERRORに設定
+		String result = SUCCESS; // 初期値をERRORに設定
 
 		try {
 
@@ -73,16 +74,13 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
         if (con == null) {
 
             // 接続失敗の場合はエラーを返す
-            addActionError("エラーが発生したためアカウント登録できません。");
+//            addActionError("エラーが発生したためアカウント登録できません。");
 
-//            String result = ERROR;
+        	errorMessage = "エラーが発生したためアカウント登録できません。";
+
+            result = ERROR;
 
         } else {
-
-            // 接続成功の場合は成功を返す
-        	result = SUCCESS;
-
-        }
 
 		// error画面表示させてもサーバー上で１の表示にならない
 
@@ -153,21 +151,27 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 //
 //	        String result = ERROR;
 
-		} catch (SQLException e) {
+//		} catch (SQLException e) {
 
-			addActionError("アカウント登録中にエラーが発生しました。もう一度お試しください。");
+//			addActionError("アカウント登録中にエラーが発生しました。もう一度お試しください。");
 
-			e.printStackTrace();
+//			e.printStackTrace();
 
-		}
+//		}
+
+			result = SUCCESS;
+        }
+
+    } catch (SQLException e) {
+
+    	addActionError("アカウント登録中にエラーが発生しました。もう一度お試しください。");
+        e.printStackTrace(); // エラー内容をログに出力
+
+    }
 
 		return result;
 
 		}
-
-
-
-
 
 
 ////			String result = SUCCESS;
@@ -360,22 +364,21 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 		this.delete_flag = delete_flag;
 
 	}
-/*
+
 	// フィールド変数に対応したgetterとsetterを定義
 	// userCreateconfirm.jspの値として受け取った、userAuthorityフィールドの値をregistComplete.jspに渡している
-	public String getDelete_flag0() {
-		return delete_flag0;
+	public String getErrorMessage() {
+		return errorMessage;
 
 	}
 
-	// 外部のSETをここに代入して元々の値を外部から持ってきた値に変えて格納する
+	// 外部のSETをここEに代入して元々の値を外部から持ってきた値に変えて格納する
 	// フィールド変数に対応したgetterとsetterを定義
 	// 受け取ったテーブルの値を自身のdeleteFlgフィールドに格納
-	public void setDelete_flag0(String delete_flag0) {
-		this.delete_flag0 = delete_flag0;
+	public void setErrorMessage(String errorMessage) {
+		this.errorMessage = errorMessage;
 
 	}
-*/
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// 全てのクラスのsetの値を自身のsessionフィールドに代入して格納
