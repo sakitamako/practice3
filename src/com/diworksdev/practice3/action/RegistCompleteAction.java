@@ -194,7 +194,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
     	addActionError("アカウント登録中にエラーが発生しました。もう一度お試しください。");
         e.printStackTrace(); // エラー内容をログに出力
 
-//        result = ERROR;
+        //この下記不要だった
+        //result = ERROR;
 
     }
 
