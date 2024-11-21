@@ -155,7 +155,7 @@ table {
                             <input type = "hidden" value ="<s:property value='userLastNameKana'/>" name="userLastNameKana">
                             <input type = "hidden" value ="<s:property value='userMail'/>" name="userMail">
                             <input type = "hidden" value ="<s:property value='userPassword'/>" name="userPassword">
-                            <input type = "hidden" value ="<s:property value='userGender0'/>" name="userGender">
+                            <input type = "hidden" value ="<s:property value='userGender'/>" name="userGender">
                             <input type = "hidden" value ="<s:property value='userPostalCode'/>" name="userPostalCode">
                             <input type = "hidden" value ="<s:property value='userPrefecture'/>" name="userPrefecture">
                             <input type = "hidden" value ="<s:property value='userAddress1'/>" name="userAddress1">
@@ -165,7 +165,6 @@ table {
                         </form>
                         <form action = "RegistCompleteAction" method = "post">
                             <input type = "submit" value = "登録する">
-                            <input type = "hidden" value = "userFamilyName" name = "userFamilyName">
                         </form>
                         </td>
                     </tr>

@@ -197,16 +197,13 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		if (userGender0.equals("0")) {// 0or1
 			//
-			// //一般代入
+			// //男性代入
 			userGender0 = "男性";
-			//
-			// //sessionに記憶
-			// session.put("userAuthority", userAuthority);//一般
-			//
+
 			// //そうでない場合
 		} else if (userGender0.equals("1")) {// 0or1
 			//
-			// //管理者代入
+			// //女性代入
 			userGender0 = "女性";
 			//
 			// //sessionに記憶
@@ -388,7 +385,10 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
 	public void setUserGender(int userGender) {
+		System.out.println("start: setUserGender()");
+		System.out.println(userGender);
 		this.userGender = userGender;
+		System.out.println("end: setUserGender()");
 
 	}
 
@@ -399,7 +399,10 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	}
 
 	public void setUserGender0(String userGender0) {
+		System.out.println("start: setUserGender0()");
+		System.out.println(userGender0);
 		this.userGender0 = userGender0;
+		System.out.println("end: setUserGender0()");
 
 	}
 
@@ -472,7 +475,10 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
 	public void setUserAuthority(int userAuthority) {
+		System.out.println("start: setUserAuthority()");
+		System.out.println(userAuthority);
 		this.userAuthority = userAuthority;
+		System.out.println("end: setUserAuthority()");
 
 	}
 
@@ -486,7 +492,10 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
 	public void setUserAuthority0(String userAuthority0) {
+		System.out.println("start: setUserAuthority0()");
+		System.out.println(userAuthority0);
 		this.userAuthority0 = userAuthority0;
+		System.out.println("end: setUserAuthority0()");
 
 	}
 
@@ -531,6 +540,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		this.delete_flag0 = delete_flag0;
 
 	}
+
+}
 /*
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、errorMessageフィールドの値をActionに渡す
@@ -546,4 +557,3 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	}
 */
-}
