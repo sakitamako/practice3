@@ -3,6 +3,7 @@ package com.diworksdev.practice3.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+//import java.sql.ResultSet;
 
 import com.diworksdev.practice3.util.DBConnector;
 import com.diworksdev.practice3.util.DateUtil;
@@ -104,11 +105,13 @@ public class RegistCompleteDAO {
 			preparedStatement.setString(14, dateUtil.getDate());
 			preparedStatement.execute();
 
+
+
 		//処理中にSQL関連のエラーが発生した際に実行する処理
 		//tryの中でエラーが発生した場合、catchが受け取り
 		//例外がスローされる原因となったエラーまたは動作の説明を返す
 		//例外発生時に実行される文
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 
 			//tryの中でエラーが発生した場合、catchが受け取り

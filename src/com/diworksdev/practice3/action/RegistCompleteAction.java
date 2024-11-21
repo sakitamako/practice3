@@ -61,9 +61,9 @@ public class RegistCompleteAction extends ActionSupport {
 
 	// 全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
 	@Override
-	public String execute() {
+	public String execute() throws SQLException {
 
-		String result = SUCCESS; // 初期値をERRORに設定
+		String result = ERROR; // 初期値をERRORに設定
 
 		try {
 
