@@ -124,7 +124,7 @@ table {
 					</tr>
 					<tr id="box">
 						<td><label>性別</label></td>
-						<td><s:property value="userGender0" /></td>
+						<td><s:property value="userGender0" escape="false" /></td>
 					</tr>
 					<tr id="box">
 						<td><label>郵便番号</label></td>
@@ -144,7 +144,7 @@ table {
 					</tr>
 					<tr id="box">
 						<td><label>アカウント権限</label></td>
-						<td><s:property value="userAuthority0" /></td>
+						<td><s:property value="userAuthority0" escape="false" /></td>
 					</tr>
 					<tr>
                         <td>
@@ -155,7 +155,7 @@ table {
                             <input type = "hidden" value ="<s:property value='userLastNameKana'/>" name="userLastNameKana">
                             <input type = "hidden" value ="<s:property value='userMail'/>" name="userMail">
                             <input type = "hidden" value ="<s:property value='userPassword'/>" name="userPassword">
-                            <input type = "hidden" value ="<s:property value='userGender'/>" name="userGender">
+                            <input type = "hidden" value ="<s:property value='userGender0'/>" name="userGender">
                             <input type = "hidden" value ="<s:property value='userPostalCode'/>" name="userPostalCode">
                             <input type = "hidden" value ="<s:property value='userPrefecture'/>" name="userPrefecture">
                             <input type = "hidden" value ="<s:property value='userAddress1'/>" name="userAddress1">

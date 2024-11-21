@@ -194,6 +194,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		// 下記は元々自分で作ってたコード！何が表示される想定なのかコメントアウトしている！
 		userGender0 = Integer.toString(userGender);// 0or1
 		session.put("userGender", userGender0);// 0or1
+		System.out.println(userGender);
 
 		if (userGender0.equals("0")) {// 0or1
 			//
