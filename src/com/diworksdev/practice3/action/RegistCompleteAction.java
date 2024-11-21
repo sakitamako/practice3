@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
 
-//import org.apache.struts2.interceptor.SessionAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 import com.diworksdev.practice3.dao.RegistCompleteDAO;
 import com.diworksdev.practice3.util.DBConnector;
@@ -28,7 +28,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 //public class RegistCompleteAction extends ActionSupport implements SessionAware {
 
-public class RegistCompleteAction extends ActionSupport {
+public class RegistCompleteAction extends ActionSupport implements SessionAware {
     private static final long serialVersionUID = 1L;
 
 	// フィールド変数
@@ -194,7 +194,7 @@ public class RegistCompleteAction extends ActionSupport {
     	addActionError("アカウント登録中にエラーが発生しました。もう一度お試しください。");
         e.printStackTrace(); // エラー内容をログに出力
 
-        result = ERROR;
+//        result = ERROR;
 
     }
 
