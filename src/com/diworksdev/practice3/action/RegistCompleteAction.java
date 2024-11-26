@@ -1,5 +1,7 @@
 package com.diworksdev.practice3.action;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Map;
@@ -29,7 +31,7 @@ import com.opensymphony.xwork2.ActionSupport;
 //public class RegistCompleteAction extends ActionSupport implements SessionAware {
 
 public class RegistCompleteAction extends ActionSupport implements SessionAware {
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
 	// フィールド変数
 	// JSPから受け取る値
@@ -47,7 +49,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	private String userAddress2;
 	private String userAuthority;
 	private String delete_flag;
-//	private String delete_flag0;// 文字列表示用プロパティ
+	// private String delete_flag0;// 文字列表示用プロパティ
 	private String errorMessage;
 
 	// Map<String, Object>=キーを値にマッピングするオブジェクト。
@@ -67,150 +69,174 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 		try {
 
-		// DBConnectorを使って接続試行
-        DBConnector dbConnector = new DBConnector();
-        Connection con = dbConnector.getConnection();
+			String hashedPassword = hashPassword(session.get("userPassword").toString());
 
-        if (con == null) {
+			// DBConnectorを使って接続試行
+			DBConnector dbConnector = new DBConnector();
+			Connection con = dbConnector.getConnection();
 
-            // 接続失敗の場合はエラーを返す
-//            addActionError("エラーが発生したためアカウント登録できません。");
+			if (con == null) {
 
-        	errorMessage = "エラーが発生したためアカウント登録できません。";
+				// 接続失敗の場合はエラーを返す
+				// addActionError("エラーが発生したためアカウント登録できません。");
 
-            result = ERROR;
+				errorMessage = "エラーが発生したためアカウント登録できません。";
 
-        } else {
+				result = ERROR;
 
-		// error画面表示させてもサーバー上で１の表示にならない
+			} else {
 
+				// error画面表示させてもサーバー上で１の表示にならない
 
-//			String result = SUCCESS;
+				// String result = SUCCESS;
 
-//			System.out.println(session.get("userFamilyName"));
-//			System.out.println(session.get("userLastName"));
-//			System.out.println(session.get("userFamilyNameKana"));
-//			System.out.println(session.get("userLastNameKana"));
-//			System.out.println(session.get("userMail"));
-//			System.out.println(session.get("userPassword"));
-//			System.out.println(session.get("userGender"));
-//			System.out.println(session.get("userPostalCode"));
-//			System.out.println(session.get("userPrefecture"));
-//			System.out.println(session.get("userAddress1"));
-//			System.out.println(session.get("userAddress2"));
-//			System.out.println(session.get("userAuthority"));
-//			System.out.println(session.get("delete_flag"));
-//			String userFamilyName = session.get("userFamilyName").toString();
-//			String userLastName = session.get("userLastName").toString();
-//			String userFamilyNameKana = session.get("userFamilyNameKana").toString();
-//			String userLastNameKana = session.get("userLastNameKana").toString();
-//			String userMail = session.get("userMail").toString();
-//			String userPassword = session.get("userPassword").toString();
-//			String userGender = session.get("userGender").toString();
-//			String userPostalCode = session.get("userPostalCode").toString();
-//			String userPrefecture = session.get("userPrefecture").toString();
-//			String userAddress1 = session.get("userAddress1").toString();
-//			String userAddress2 = session.get("userAddress2").toString();
-//			String userAuthority = session.get("userAuthority").toString();
-//			String delete_flag = session.get("delete_flag").toString();
+				// System.out.println(session.get("userFamilyName"));
+				// System.out.println(session.get("userLastName"));
+				// System.out.println(session.get("userFamilyNameKana"));
+				// System.out.println(session.get("userLastNameKana"));
+				// System.out.println(session.get("userMail"));
+				// System.out.println(session.get("userPassword"));
+				// System.out.println(session.get("userGender"));
+				// System.out.println(session.get("userPostalCode"));
+				// System.out.println(session.get("userPrefecture"));
+				// System.out.println(session.get("userAddress1"));
+				// System.out.println(session.get("userAddress2"));
+				// System.out.println(session.get("userAuthority"));
+				// System.out.println(session.get("delete_flag"));
+				// String userFamilyName =
+				// session.get("userFamilyName").toString();
+				// String userLastName = session.get("userLastName").toString();
+				// String userFamilyNameKana =
+				// session.get("userFamilyNameKana").toString();
+				// String userLastNameKana =
+				// session.get("userLastNameKana").toString();
+				// String userMail = session.get("userMail").toString();
+				// String userPassword = session.get("userPassword").toString();
+				// String userGender = session.get("userGender").toString();
+				// String userPostalCode =
+				// session.get("userPostalCode").toString();
+				// String userPrefecture =
+				// session.get("userPrefecture").toString();
+				// String userAddress1 = session.get("userAddress1").toString();
+				// String userAddress2 = session.get("userAddress2").toString();
+				// String userAuthority =
+				// session.get("userAuthority").toString();
+				// String delete_flag = session.get("delete_flag").toString();
 
-			System.out.println(session.get("userFamilyName"));
-			System.out.println(session.get("userLastName"));
-			System.out.println(session.get("userFamilyNameKana"));
-			System.out.println(session.get("userLastNameKana"));
-			System.out.println(session.get("userMail"));
-			System.out.println(session.get("userPassword"));
-			System.out.println(session.get("userGender"));
-			System.out.println(session.get("userPostalCode"));
-			System.out.println(session.get("userPrefecture"));
-			System.out.println(session.get("userAddress1"));
-			System.out.println(session.get("userAddress2"));
-			System.out.println(session.get("userAuthority"));
-			System.out.println(session.get("delete_flag"));
-			System.out.println(session.get("userFamilyName").toString());
-			System.out.println(session.get("userLastName").toString());
-			System.out.println(session.get("userFamilyNameKana").toString());
-			System.out.println(session.get("userLastNameKana").toString());
-			System.out.println(session.get("userMail").toString());
-			System.out.println(session.get("userPassword").toString());
-			System.out.println(session.get("userGender").toString());
-			System.out.println(session.get("userPostalCode").toString());
-			System.out.println(session.get("userPrefecture").toString());
-			System.out.println(session.get("userAddress1").toString());
-			System.out.println(session.get("userAddress2").toString());
-			System.out.println(session.get("userAuthority").toString());
-			System.out.println(session.get("delete_flag").toString());
-			// 小川講師に追記してもらったとこ！１項目ずつデータが渡っているかチェックする！
-			registCompleteDAO.regist(session.get("userFamilyName").toString(), session.get("userLastName").toString(),
-					session.get("userFamilyNameKana").toString(), session.get("userLastNameKana").toString(),
-					session.get("userMail").toString(), session.get("userPassword").toString(),
-					session.get("userGender").toString(), session.get("userPostalCode").toString(),
-					session.get("userPrefecture").toString(), session.get("userAddress1").toString(),
-					session.get("userAddress2").toString(), session.get("userAuthority").toString(),
-					session.get("delete_flag").toString());
-			//session.get("delete_flag").toString()
-			//session.get("userPostalCode").toString(),
-			// SUCCESS返す
-			// これコメントアウトして実行するとregistError.jsp画面に遷移する
-			// result = SUCCESS;
-			// registCompleteDAO.regist(session.get("userFamilyName").toString(),
-			// session.get("userLastName").toString(),
-			// session.get("userFamilyNameKana").toString(),
-			// session.get("userLastNameKana").toString(),
-			// session.get("userMail").toString(),
-			// session.get("userPassword").toString(),
-			// session.get("userGender").toString(),
-			// session.get("userPostalCode").toString(),
-			// session.get("userPrefecture").toString(),
-			// session.get("userAddress1").toString(),
-			// session.get("userAddress2").toString(),
-			// session.get("userAuthority").toString());
-//		} else if (delete_flag0.equals("1")) {
-//			result = ERROR;
-//		}
-//
-//			String result = SUCCESS;
+				System.out.println(session.get("userFamilyName"));
+				System.out.println(session.get("userLastName"));
+				System.out.println(session.get("userFamilyNameKana"));
+				System.out.println(session.get("userLastNameKana"));
+				System.out.println(session.get("userMail"));
+				System.out.println(session.get("userPassword"));
+				System.out.println(session.get("userGender"));
+				System.out.println(session.get("userPostalCode"));
+				System.out.println(session.get("userPrefecture"));
+				System.out.println(session.get("userAddress1"));
+				System.out.println(session.get("userAddress2"));
+				System.out.println(session.get("userAuthority"));
+				System.out.println(session.get("delete_flag"));
+				System.out.println(session.get("userFamilyName").toString());
+				System.out.println(session.get("userLastName").toString());
+				System.out.println(session.get("userFamilyNameKana").toString());
+				System.out.println(session.get("userLastNameKana").toString());
+				System.out.println(session.get("userMail").toString());
+				System.out.println(session.get("userPassword").toString());
+				System.out.println(session.get("userGender").toString());
+				System.out.println(session.get("userPostalCode").toString());
+				System.out.println(session.get("userPrefecture").toString());
+				System.out.println(session.get("userAddress1").toString());
+				System.out.println(session.get("userAddress2").toString());
+				System.out.println(session.get("userAuthority").toString());
+				System.out.println(session.get("delete_flag").toString());
+				// 小川講師に追記してもらったとこ！１項目ずつデータが渡っているかチェックする！
+				registCompleteDAO.regist(session.get("userFamilyName").toString(),
+						session.get("userLastName").toString(), session.get("userFamilyNameKana").toString(),
+						session.get("userLastNameKana").toString(), session.get("userMail").toString(),
+						hashedPassword, session.get("userGender").toString(),
+						session.get("userPostalCode").toString(), session.get("userPrefecture").toString(),
+						session.get("userAddress1").toString(), session.get("userAddress2").toString(),
+						session.get("userAuthority").toString(), session.get("delete_flag").toString());
+				// session.get("delete_flag").toString()
+				// session.get("userPostalCode").toString(),
+				// SUCCESS返す
+				// これコメントアウトして実行するとregistError.jsp画面に遷移する
+				// result = SUCCESS;
+				// registCompleteDAO.regist(session.get("userFamilyName").toString(),
+				// session.get("userLastName").toString(),
+				// session.get("userFamilyNameKana").toString(),
+				// session.get("userLastNameKana").toString(),
+				// session.get("userMail").toString(),
+				// session.get("userPassword").toString(),
+				// session.get("userGender").toString(),
+				// session.get("userPostalCode").toString(),
+				// session.get("userPrefecture").toString(),
+				// session.get("userAddress1").toString(),
+				// session.get("userAddress2").toString(),
+				// session.get("userAuthority").toString());
+				// } else if (delete_flag0.equals("1")) {
+				// result = ERROR;
+				// }
+				//
+				// String result = SUCCESS;
 
-//	    } catch (SQLException e) {
-//	        // エラーメッセージをセッションに格納してエラー画面に遷移
-//	        addActionError("アカウント登録中にエラーが発生しました。もう一度お試しください。");
-//	        e.printStackTrace();
-//
-//	        String result = ERROR;
+				// } catch (SQLException e) {
+				// // エラーメッセージをセッションに格納してエラー画面に遷移
+				// addActionError("アカウント登録中にエラーが発生しました。もう一度お試しください。");
+				// e.printStackTrace();
+				//
+				// String result = ERROR;
 
-//		} catch (SQLException e) {
+				// } catch (SQLException e) {
 
-//			addActionError("アカウント登録中にエラーが発生しました。もう一度お試しください。");
+				// addActionError("アカウント登録中にエラーが発生しました。もう一度お試しください。");
 
-//			e.printStackTrace();
+				// e.printStackTrace();
 
-//		}
+				// }
 
-			result = SUCCESS;
-        }
+				result = SUCCESS;
+			}
 
-    } catch (SQLException e) {
+		} catch (SQLException e) {
 
-    	addActionError("アカウント登録中にエラーが発生しました。もう一度お試しください。");
-        e.printStackTrace(); // エラー内容をログに出力
+			addActionError("アカウント登録中にエラーが発生しました。もう一度お試しください。");
+			e.printStackTrace(); // エラー内容をログに出力
 
-        //この下記不要だった
-        //result = ERROR;
+			// この下記不要だった
+			// result = ERROR;
 
-    }
-
-		return result;
+		} catch (NoSuchAlgorithmException e) {
+			addActionError("セキュリティエラーが発生しました。");
+			e.printStackTrace();
 
 		}
 
+		return result;
 
-////			String result = SUCCESS;
-//
-//		// 戻り値
-//		// retに入った値を呼び出し元であるActionクラスに渡す
+	}
 
+	/**
+     * パスワードをSHA-256でハッシュ化するメソッド
+     * @param password 平文のパスワード
+     * @return ハッシュ化された文字列
+     * @throws NoSuchAlgorithmException
+     */
+    private String hashPassword(String userPassword) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] hashedBytes = md.digest(userPassword.getBytes());
+        // ハッシュ値を16進数文字列に変換
+        StringBuilder sb = new StringBuilder();
+        for (byte b : hashedBytes) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
 
-
+	//// String result = SUCCESS;
+	//
+	// // 戻り値
+	// // retに入った値を呼び出し元であるActionクラスに渡す
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// userCreateconfirm.jspの値として受け取った、userFamilyNameフィールドの値をregistComplete.jspに渡している
