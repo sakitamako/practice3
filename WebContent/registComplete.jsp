@@ -86,6 +86,7 @@ table {
 	color: #333;
 	padding: 10px;
 }
+
 </style>
 </head>
 <body>

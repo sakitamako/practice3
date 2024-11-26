@@ -72,13 +72,6 @@ table {
     padding-bottom: 10px;
 }
 
-#main a {
-    width: 1000px;
-    border: 1px solid #333;
-    color: #333;
-    padding: 10px;
-}
-
 </style>
 </head>
 <body>
@@ -161,21 +154,20 @@ table {
                             <input type = "hidden" value ="<s:property value='userAddress1'/>" name="userAddress1">
                             <input type = "hidden" value ="<s:property value='userAddress2'/>" name="userAddress2">
                             <input type = "hidden" value ="<s:property value='userAuthority'/>" name="userAuthority">
-                            <input type = "submit" value = "戻って修正する">
+                            <input type = "submit" value = "前に戻る">
                         </form>
+                        </td>
+                        <td>
                         <form action = "RegistCompleteAction" method = "post">
                             <input type = "submit" value = "登録する">
                         </form>
+                        <td>
                         </td>
                     </tr>
-					<tr>
-						<td>
-						    <s:submit value="完了" />
-						</td>
-					</tr>
 				</s:form>
 			</table>
 		</div>
+		<p>フッター</p>
 	</div>
 	<div id="footer">
 		<div id="pr"></div>

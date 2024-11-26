@@ -20,63 +20,66 @@
 
 /*  TAG LAYOUT  */
 body {
-	margin: 0;
-	padding: 200px;
-	line-height: 1.6;
-	letter-spacing: 1px;
-	font-family: Verdana, Helvetica, sans-serif;
-	font-size: 20px;
-	color: #333;
-	background: #fff;
+    text-align: center;
+    margin: 0;
+    padding: 200px;
+    line-height: 1.6;
+    letter-spacing: 1px;
+    font-family: Verdana, Helvetica, sans-serif;
+    font-size: 20px;
+    color: #333;
+    background: #fff;
 }
 
+
+
 body input {
-	border: 1px solid #333;
+    border: 1px solid #333;
 }
 
 table {
-	text-align: center;
-	margin: 0 auto;
+    margin: 0 auto;
 }
 
 /*  ID LAYOUT  */
 #top {
-	width: 100%;
-	margin-left: 0px;
+    width: 100%;
+    margin-left: 0px;
 }
 
 #header {
-	width: 100%;
+    width: 100%;
 }
 
 #main {
-	width: 100%;
-	text-align: center;
-	border-right: 1px solid #333;
-	border-left: 1px solid #333;
+    width: 100%;
+    text-align: center;
+    border-right: 1px solid #333;
+    border-left: 1px solid #333;
 }
 
 #main h3 {
-	width: 100%;
-	text-align: left;
-	margin-left: 50px;
+    width: 100%;
+    text-align: left;
+    margin-left: 50px;
+}
+
+#main h4 {
+    width: 100%;
+    text-align: center;
+    padding-top: 200px;
+    padding-bottom: 200px;
 }
 
 #main p {
-	width: 100%;
-	font-size: 20px;
-	text-align: center;
-	border-top: 1px solid #333;
-	border-bottom: 1px solid #333;
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
+    width: 100%;
+    font-size: 20px;
+    text-align: center;
+    border-top: 1px solid #333;
+    border-bottom: 1px solid #333;
+    padding-top: 10px;
+    padding-bottom: 10px;
 
-#main a {
-	width: 1000px;
-	border: 1px solid #333;
-	color: #333;
-	padding: 10px;
 }
 
 body .fielderror {
@@ -210,7 +213,9 @@ body .fielderror {
                         </td>
                     </tr>
                     <tr>
-                        <td><s:submit value="登録" /></td>
+                        <td>
+                            <s:submit value="確認する" />
+                        </td>
                     </tr>
 				</s:form>
 				<s:if test="hasActionErrors()">
@@ -219,10 +224,8 @@ body .fielderror {
                     </div>
                 </s:if>
 			</table>
-			<div>
-				<span>前画面に戻る場合は</span> <a href='<s:url action="HomeAction" />'>こちら</a>
-			</div>
 		</div>
+		<p>フッター</p>
 	</div>
 	<div id="footer">
 		<div id="pr"></div>
