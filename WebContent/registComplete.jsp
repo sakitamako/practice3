@@ -1,7 +1,6 @@
 <!-- このファイルが通常のHTMLファイルではなく、JSPであることを示している -->
 <!-- strutsタグ（下の補足参照）を使用する際に記述します。ここでは”s”としてタグを使用 -->
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <!-- ログイン認証機能 -->
@@ -60,10 +59,10 @@ table {
 #main h3 {
 	width: 100%;
 	text-align: left;
-	margin-left: 50px;
+	margin-left: 20px;
 }
 
-#main h4 {
+#main h2 {
 	width: 100%;
 	text-align: center;
 	padding-top: 200px;
@@ -87,6 +86,13 @@ table {
 	padding: 10px;
 }
 
+#main input[type="submit"] {
+    background-color: #fff; /* ボタンの背景色 */
+    padding: 5px 20px; /* 内側の余白 */
+    text-align: center;
+    font-size: 20px; /* 文字サイズ */
+}
+
 </style>
 </head>
 <body>
@@ -100,10 +106,12 @@ table {
 			<h3>アカウント登録完了画面</h3>
 		</div>
 		<div>
-			<h4>登録完了しました</h4>
+			<h2>登録完了しました</h2>
 			<div>
-				<br> <a href='<s:url action="HomeAction" />'>TOPページへ戻る</a> <br>
-			</div>
+                <form action="HomeAction" method="post">
+                    <input type="submit" value="  TOPページへ戻る  ">
+                </form>
+            </div>
 		</div>
 		<p>フッター</p>
 	</div>

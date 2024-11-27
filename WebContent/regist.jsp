@@ -1,7 +1,6 @@
 <!-- このファイルが通常のHTMLファイルではなく、JSPであることを示している -->
 <!-- strutsタグ（下の補足参照）を使用する際に記述します。ここでは”s”としてタグを使用 -->
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <!-- ユーザー登録機能 -->
@@ -21,7 +20,6 @@
 
 /*  TAG LAYOUT  */
 body {
-	text-align: center;
 	margin: 0;
 	padding: 200px;
 	line-height: 1.6;
@@ -60,7 +58,7 @@ table {
 #main h3 {
 	width: 100%;
 	text-align: left;
-	margin-left: 50px;
+	margin-left: 20px;
 }
 
 #main h4 {
@@ -83,11 +81,15 @@ table {
 .submit-center {
 	display: block;
 	margin: 0 auto;
+	background: #fff;
+	font-size: 20px;
+	padding: 5px 20px;
 }
 
 body .fielderror {
 	color: #ff0000; /* ここで希望の色コードに変更 */
 }
+
 </style>
 </head>
 <body>
@@ -106,45 +108,44 @@ body .fielderror {
 					<tr>
 						<td><label>名前（姓）</label></td>
 						<td><input type="text" maxlength="10" name="userFamilyName"
-							value="<s:property value='userFamilyName'/>" /> <br>
-						<s:fielderror fieldName="userFamilyName"
-								style="color: red; font-weight: bold;" /></td>
+							value="<s:property value='userFamilyName'/>" /><br>
+							<s:fielderror fieldName="userFamilyName" style="color: red; font-weight: bold;" />
+						</td>
 					</tr>
 					<tr>
 						<td><label>名前（名）</label></td>
 						<td><input type="text" name="userLastName" maxlength="10"
-							value="<s:property value='userLastName'/>" /> <br>
-						<s:fielderror fieldName="userLastName"
-								style="color: red; font-weight: bold;" /></td>
+							value="<s:property value='userLastName'/>" /><br>
+							<s:fielderror fieldName="userLastName" style="color: red; font-weight: bold;" />
+						</td>
 					</tr>
 					<tr>
 						<td><label>カナ（姓）</label></td>
-						<td><input type="text" name="userFamilyNameKana"
-							maxlength="10" value="<s:property value='userFamilyNameKana'/>" />
-							<br>
-						<s:fielderror fieldName="userFamilyNameKana"
-								style="color: red; font-weight: bold;" /></td>
+						<td><input type="text" name="userFamilyNameKana" maxlength="10"
+						    value="<s:property value='userFamilyNameKana'/>" /><br>
+						    <s:fielderror fieldName="userFamilyNameKana" style="color: red; font-weight: bold;" />
+					    </td>
 					</tr>
 					<tr>
 						<td><label>カナ（名）</label></td>
 						<td><input type="text" name="userLastNameKana" maxlength="10"
-							value="<s:property value='userLastNameKana'/>" /> <br>
-						<s:fielderror fieldName="userLastNameKana"
-								style="color: red; font-weight: bold;" /></td>
+							value="<s:property value='userLastNameKana'/>" /><br>
+							<s:fielderror fieldName="userLastNameKana" style="color: red; font-weight: bold;" />
+						</td>
 					</tr>
 					<tr>
 						<td><label>メールアドレス</label></td>
 						<td><input type="text" name="userMail" maxlength="100"
-							value="<s:property value='userMail'/>" /> <br>
-						<s:fielderror fieldName="userMail"
-								style="color: red; font-weight: bold;" /></td>
+							value="<s:property value='userMail'/>" /><br>
+							<s:fielderror fieldName="userMail" style="color: red; font-weight: bold;" />
+						</td>
 					</tr>
 					<tr>
 						<td><label>パスワード</label></td>
 						<td><input type="text" name="userPassword" maxlength="10"
-							value="<s:property value='userPassword'/>" /> <br>
-						<s:fielderror fieldName="userPassword"
-								style="color: red; font-weight: bold;" /></td>
+							value="<s:property value='userPassword'/>" /><br>
+							<s:fielderror fieldName="userPassword" style="color: red; font-weight: bold;" />
+						</td>
 					</tr>
 					<tr>
 						<td><label>性別</label></td>
@@ -157,15 +158,15 @@ body .fielderror {
 					<tr>
 						<td><label>郵便番号</label></td>
 						<td><input type="text" name="userPostalCode" maxlength="7"
-							value="<s:property value='userPostalCode'/>" /> <br>
-						<s:fielderror fieldName="userPostalCode"
-								style="color: red; font-weight: bold;" /></td>
+							value="<s:property value='userPostalCode'/>" /><br>
+							<s:fielderror fieldName="userPostalCode" style="color: red; font-weight: bold;" />
+						</td>
 					</tr>
 					<tr>
 						<td><label>住所（都道府県）</label></td>
 						<td><select name="userPrefecture">
-								<option value="<s:property value='userPrefecture'/>" selected><s:property
-										value='userPrefecture' /></option>
+								<option value="<s:property value='userPrefecture'/>" selected>
+								<s:property value='userPrefecture' /></option>
 								<option value="北海道">北海道</option>
 								<option value="青森県">青森県</option>
 								<option value="岩手県">岩手県</option>
@@ -213,23 +214,23 @@ body .fielderror {
 								<option value="宮崎県">宮崎県</option>
 								<option value="鹿児島県">鹿児島県</option>
 								<option value="沖縄県">沖縄県</option>
-						</select> <br>
-						<s:fielderror fieldName="userPrefecture"
-								style="color: red; font-weight: bold;" /></td>
+						    </select><br>
+						    <s:fielderror fieldName="userPrefecture" style="color: red; font-weight: bold;" />
+						</td>
 					</tr>
 					<tr>
 						<td><label>住所（市区町村）</label></td>
 						<td><input type="text" name="userAddress1" maxlength="10"
-							value="<s:property value='userAddress1'/>" /> <br>
-						<s:fielderror fieldName="userAddress1"
-								style="color: red; font-weight: bold;" /></td>
+							value="<s:property value='userAddress1'/>" /><br>
+							<s:fielderror fieldName="userAddress1" style="color: red; font-weight: bold;" />
+						</td>
 					</tr>
 					<tr>
 						<td><label>住所（番地）</label></td>
 						<td><input type="text" name="userAddress2" maxlength="100"
-							value="<s:property value='userAddress2'/>" /> <br>
-						<s:fielderror fieldName="userAddress2"
-								style="color: red; font-weight: bold;" /></td>
+							value="<s:property value='userAddress2'/>" /><br>
+							<s:fielderror fieldName="userAddress2" style="color: red; font-weight: bold;" />
+						</td>
 					</tr>
 					<tr>
 						<td><label>アカウント権限</label></td>
@@ -240,8 +241,7 @@ body .fielderror {
 						</td>
 					</tr>
 					<tr>
-						<td colspan="2"><s:submit value="確認する"
-								cssClass="submit-center" /></td>
+						<td colspan="2"><s:submit value="  確認する  " cssClass="submit-center" /></td>
 					</tr>
 				</s:form>
 				<s:if test="hasActionErrors()">

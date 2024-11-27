@@ -20,56 +20,78 @@
 
 /*  TAG LAYOUT  */
 body {
-    margin: 0;
-    padding: 200px;
-    line-height: 1.6;
-    letter-spacing: 1px;
-    font-family: Verdana, Helvetica, sans-serif;
-    font-size: 20px;
-    color: #333;
-    background: #fff;
+	margin: 0;
+	padding: 200px;
+	line-height: 1.6;
+	letter-spacing: 1px;
+	font-family: Verdana, Helvetica, sans-serif;
+	font-size: 20px;
+	color: #333;
+	background: #fff;
 }
 
 body input {
-    border: 1px solid #333;
+	border: 1px solid #333;
 }
 
 table {
-    text-align: center;
-    margin: 0 auto;
+	margin: 0 auto;
 }
 
 /*  ID LAYOUT  */
 #top {
-    width: 100%;
-    margin-left: 0px;
+	width: 100%;
+	margin-left: 0px;
 }
 
 #header {
-    width: 100%;
+	width: 100%;
 }
 
 #main {
-    width: 100%;
-    text-align: center;
-    border-right: 1px solid #333;
-    border-left: 1px solid #333;
+	width: 100%;
+	text-align: center;
+	border-right: 1px solid #333;
+	border-left: 1px solid #333;
 }
 
 #main h3 {
-    width: 100%;
-    text-align: left;
-    margin-left: 50px;
+	width: 100%;
+	text-align: left;
+	margin-left: 20px;
+}
+
+#main h4 {
+	width: 100%;
+	text-align: center;
+	padding-top: 200px;
+	padding-bottom: 200px;
 }
 
 #main p {
-    width: 100%;
-    font-size: 20px;
-    text-align: center;
-    border-top: 1px solid #333;
-    border-bottom: 1px solid #333;
-    padding-top: 10px;
-    padding-bottom: 10px;
+	width: 100%;
+	font-size: 20px;
+	text-align: center;
+	border-top: 1px solid #333;
+	border-bottom: 1px solid #333;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.center-buttons {
+	text-align: center;
+}
+
+.center-buttons form {
+	display: inline;
+}
+
+/* ボタン共通スタイル */
+input[type="submit"] {
+	background-color: #fff; /* ボタンの背景色 */
+	padding: 5px 20px; /* 内側の余白 */
+	text-align: center;
+	font-size: 20px; /* 文字サイズ */
 }
 
 </style>
@@ -89,7 +111,7 @@ table {
 				<s:form>
 					<tr id="box">
 						<td><label>名前（姓）</label></td>
-						<td><s:property value="userFamilyName"  escape="false" /></td>
+						<td><s:property value="userFamilyName" escape="false" /></td>
 					</tr>
 					<tr id="box">
 						<td><label>名前（名）</label></td>
@@ -111,9 +133,8 @@ table {
 					<tr id="box">
 						<td><label>パスワード</label></td>
 						<td><s:if test="maskedPassword != null">
-                                <s:property value="maskedPassword" />
-                            </s:if>
-                        </td>
+								<s:property value="maskedPassword" />
+							</s:if></td>
 					</tr>
 					<tr id="box">
 						<td><label>性別</label></td>
@@ -139,31 +160,38 @@ table {
 						<td><label>アカウント権限</label></td>
 						<td><s:property value="userAuthority0" escape="false" /></td>
 					</tr>
-					<tr>
-                        <td>
-                        <form action = "RegistAction" method = "post">
-                            <input type = "hidden" value ="<s:property value='userFamilyName'/>" name="userFamilyName">
-                            <input type = "hidden" value ="<s:property value='userLastName'/>" name="userLastName">
-                            <input type = "hidden" value ="<s:property value='userFamilyNameKana'/>" name="userFamilyNameKana">
-                            <input type = "hidden" value ="<s:property value='userLastNameKana'/>" name="userLastNameKana">
-                            <input type = "hidden" value ="<s:property value='userMail'/>" name="userMail">
-                            <input type = "hidden" value ="<s:property value='userPassword'/>" name="userPassword">
-                            <input type = "hidden" value ="<s:property value='userGender0'/>" name="userGender">
-                            <input type = "hidden" value ="<s:property value='userPostalCode'/>" name="userPostalCode">
-                            <input type = "hidden" value ="<s:property value='userPrefecture'/>" name="userPrefecture">
-                            <input type = "hidden" value ="<s:property value='userAddress1'/>" name="userAddress1">
-                            <input type = "hidden" value ="<s:property value='userAddress2'/>" name="userAddress2">
-                            <input type = "hidden" value ="<s:property value='userAuthority'/>" name="userAuthority">
-                            <input type = "submit" value = "前に戻る">
-                        </form>
-                        </td>
-                        <td>
-                        <form action = "RegistCompleteAction" method = "post">
-                            <input type = "submit" value = "登録する">
-                        </form>
-                        <td>
-                        </td>
-                    </tr>
+					<tr class="center-buttons">
+						<td colspan="2">
+							<form action="RegistAction" method="post">
+								<input type="hidden"
+									value="<s:property value='userFamilyName'/>"
+									name="userFamilyName"> <input type="hidden"
+									value="<s:property value='userLastName'/>" name="userLastName">
+								<input type="hidden"
+									value="<s:property value='userFamilyNameKana'/>"
+									name="userFamilyNameKana"> <input type="hidden"
+									value="<s:property value='userLastNameKana'/>"
+									name="userLastNameKana"> <input type="hidden"
+									value="<s:property value='userMail'/>" name="userMail">
+								<input type="hidden" value="<s:property value='userPassword'/>"
+									name="userPassword"> <input type="hidden"
+									value="<s:property value='userGender0'/>" name="userGender">
+								<input type="hidden"
+									value="<s:property value='userPostalCode'/>"
+									name="userPostalCode"> <input type="hidden"
+									value="<s:property value='userPrefecture'/>"
+									name="userPrefecture"> <input type="hidden"
+									value="<s:property value='userAddress1'/>" name="userAddress1">
+								<input type="hidden" value="<s:property value='userAddress2'/>"
+									name="userAddress2"> <input type="hidden"
+									value="<s:property value='userAuthority'/>"
+									name="userAuthority"> <input type="submit" value="前に戻る">
+							</form>
+							<form action="RegistCompleteAction" method="post">
+								<input type="submit" value="登録する">
+							</form>
+						</td>
+					</tr>
 				</s:form>
 			</table>
 		</div>
