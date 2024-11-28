@@ -134,11 +134,16 @@ input[type="submit"] {
 						<td><label>パスワード</label></td>
 						<td><s:if test="maskedPassword != null">
 								<s:property value="maskedPassword" />
-							</s:if></td>
+							</s:if>
+						</td>
 					</tr>
 					<tr id="box">
-						<td><label>性別</label></td>
-						<td><s:property value="userGender0" escape="false" /></td>
+					    <td><label>性別</label></td>
+						<td>
+                            <s:if test="%{userGender == 0}">男性</s:if>
+                            <s:else>女性</s:else>
+                            <p>現在の性別: <s:property value="userGender" />
+                        </td>
 					</tr>
 					<tr id="box">
 						<td><label>郵便番号</label></td>
@@ -158,38 +163,29 @@ input[type="submit"] {
 					</tr>
 					<tr id="box">
 						<td><label>アカウント権限</label></td>
-						<td><s:property value="userAuthority0" escape="false" /></td>
+						<td><s:property value="userAuthority0" escape="false" />
+						<p>現在の性別: <s:property value="userAuthority" /></p></td>
 					</tr>
 					<tr class="center-buttons">
 						<td colspan="2">
-							<form action="RegistAction" method="post">
-								<input type="hidden"
-									value="<s:property value='userFamilyName'/>"
-									name="userFamilyName"> <input type="hidden"
-									value="<s:property value='userLastName'/>" name="userLastName">
-								<input type="hidden"
-									value="<s:property value='userFamilyNameKana'/>"
-									name="userFamilyNameKana"> <input type="hidden"
-									value="<s:property value='userLastNameKana'/>"
-									name="userLastNameKana"> <input type="hidden"
-									value="<s:property value='userMail'/>" name="userMail">
-								<input type="hidden" value="<s:property value='userPassword'/>"
-									name="userPassword"> <input type="hidden"
-									value="<s:property value='userGender0'/>" name="userGender">
-								<input type="hidden"
-									value="<s:property value='userPostalCode'/>"
-									name="userPostalCode"> <input type="hidden"
-									value="<s:property value='userPrefecture'/>"
-									name="userPrefecture"> <input type="hidden"
-									value="<s:property value='userAddress1'/>" name="userAddress1">
-								<input type="hidden" value="<s:property value='userAddress2'/>"
-									name="userAddress2"> <input type="hidden"
-									value="<s:property value='userAuthority'/>"
-									name="userAuthority"> <input type="submit" value="前に戻る">
-							</form>
-							<form action="RegistCompleteAction" method="post">
-								<input type="submit" value="登録する">
-							</form>
+							<s:form action="RegistAction" method="post">
+                                <s:hidden name="userFamilyName" value="%{userFamilyName}" />
+                                <s:hidden name="userLastName" value="%{userLastName}" />
+                                <s:hidden name="userFamilyNameKana" value="%{userFamilyNameKana}" />
+                                <s:hidden name="userLastNameKana" value="%{userLastNameKana}" />
+                                <s:hidden name="userMail" value="%{userMail}" />
+                                <s:hidden name="userPassword" value="%{userPassword}" />
+                                <s:hidden name="userGender" value="%{userGender}" />
+                                <s:hidden name="userPostalCode" value="%{userPostalCode}" />
+                                <s:hidden name="userPrefecture" value="%{userPrefecture}" />
+                                <s:hidden name="userAddress1" value="%{userAddress1}" />
+                                <s:hidden name="userAddress2" value="%{userAddress2}" />
+                                <s:hidden name="userAuthority" value="%{userAuthority}" />
+                                <input type="submit" value="前に戻る">
+                            </s:form>
+                            <s:form action="RegistCompleteAction" method="post">
+                                <input type="submit" value="登録する">
+                            </s:form>
 						</td>
 					</tr>
 				</s:form>

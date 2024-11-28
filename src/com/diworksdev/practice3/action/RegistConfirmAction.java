@@ -34,7 +34,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userMail;
 	private String userPassword;
 	private String maskedPassword;
-	private int userGender;
+	private Integer userGender = null;
 	private String userGender0;// 文字列表示用プロパティ
 	private String userPostalCode;
 	//private String userPostalCode;// 文字列表示用プロパティ
@@ -189,7 +189,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			// session.put("userAuthority", userAuthority); //原因？一旦外してみる
 
 		}
-
+/*
 		// 小川講師からintバージョンで作った場合の処理方法教えてもらった！
 		// 下記は元々自分で作ってたコード！何が表示される想定なのかコメントアウトしている！
 		userGender0 = Integer.toString(userGender);// 0or1
@@ -259,6 +259,54 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			delete_flag0 = "無効";
 
 		}
+*/
+
+		// userGender の値がセットされた後に性別の表示名を設定
+	    if (userGender == 0) {
+
+	        userGender0 = "男性";
+
+	    } else if (userGender == 1) {
+
+	        userGender0 = "女性";
+
+	    }
+
+	    // セッションに保存する
+	    session.put("userGender", userGender0);
+	    System.out.println("Gender: " + userGender0);  // デバッグ用
+
+	 // userGender の値がセットされた後に性別の表示名を設定
+	    if (userAuthority == 0) {
+
+	    	userAuthority0 = "一般";
+
+	    } else if (userAuthority == 1) {
+
+	    	userAuthority0 = "管理者";
+
+	    }
+
+	    // セッションに保存する
+	    session.put("userAuthority", userAuthority0);
+	    System.out.println("Authority: " + userAuthority0);  // デバッグ用
+
+	 // userGender の値がセットされた後に性別の表示名を設定
+	    if (delete_flag == 0) {
+
+	    	delete_flag0 = "有効";
+
+	    } else if (delete_flag == 1) {
+
+	    	delete_flag0 = "無効";
+
+	    }
+
+	    // セッションに保存する
+	    session.put("delete_flag", delete_flag0);
+	    System.out.println("delete_flag: " + delete_flag0);  // デバッグ用
+
+	    // 他の処理...
 
         // パスワードを黒丸でマスクする
         StringBuilder masked = new StringBuilder();
@@ -378,14 +426,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
-	public int getUserGender() {
+	public Integer getUserGender() {
 		return userGender;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
-	public void setUserGender(int userGender) {
+	public void setUserGender(Integer userGender) {
 		System.out.println("start: setUserGender()");
 		System.out.println(userGender);
 		this.userGender = userGender;
@@ -400,10 +448,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	}
 
 	public void setUserGender0(String userGender0) {
-		System.out.println("start: setUserGender0()");
-		System.out.println(userGender0);
 		this.userGender0 = userGender0;
-		System.out.println("end: setUserGender0()");
 
 	}
 
@@ -493,10 +538,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
 	public void setUserAuthority0(String userAuthority0) {
-		System.out.println("start: setUserAuthority0()");
-		System.out.println(userAuthority0);
 		this.userAuthority0 = userAuthority0;
-		System.out.println("end: setUserAuthority0()");
 
 	}
 
