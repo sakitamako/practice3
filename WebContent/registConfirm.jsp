@@ -140,7 +140,7 @@ input[type="submit"] {
 					<tr id="box">
 					    <td><label>性別</label></td>
 						<td>
-                            <s:if test="%{userGender == 0}">男性</s:if>
+                            <s:if test="%{userGender0 == 0}">男性</s:if>
                             <s:else>女性</s:else>
                             <p>現在の性別: <s:property value="userGender" />
                         </td>
@@ -175,7 +175,7 @@ input[type="submit"] {
                                 <s:hidden name="userLastNameKana" value="%{userLastNameKana}" />
                                 <s:hidden name="userMail" value="%{userMail}" />
                                 <s:hidden name="userPassword" value="%{userPassword}" />
-                                <s:hidden name="userGender" value="%{userGender}" />
+                                <s:hidden name="userGender" value="%{userGender0}" />
                                 <s:hidden name="userPostalCode" value="%{userPostalCode}" />
                                 <s:hidden name="userPrefecture" value="%{userPrefecture}" />
                                 <s:hidden name="userAddress1" value="%{userAddress1}" />
