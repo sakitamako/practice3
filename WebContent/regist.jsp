@@ -107,66 +107,57 @@ body .fielderror {
 				<s:form action="RegistConfirmAction" method="post">
 					<tr>
 						<td><label>名前（姓）</label></td>
-						<td><input type="text" maxlength="10" name="userFamilyName"
-							value="<s:property value='userFamilyName'/>" /><br>
+						<td><input type="text" name="userFamilyName" value="<s:property value="%{userFamilyName}" />" maxlength="10" /><br>
 							<s:fielderror fieldName="userFamilyName" style="color: red; font-weight: bold;" />
 						</td>
 					</tr>
 					<tr>
 						<td><label>名前（名）</label></td>
-						<td><input type="text" name="userLastName" maxlength="10"
-							value="<s:property value='userLastName'/>" /><br>
+						<td><input type="text" name="userLastName" value="<s:property value="%{userLastName}" />" maxlength="10" /><br>
 							<s:fielderror fieldName="userLastName" style="color: red; font-weight: bold;" />
 						</td>
 					</tr>
 					<tr>
 						<td><label>カナ（姓）</label></td>
-						<td><input type="text" name="userFamilyNameKana" maxlength="10"
-						    value="<s:property value='userFamilyNameKana'/>" /><br>
+						<td><input type="text" name="userFamilyNameKana" value="<s:property value="%{userFamilyNameKana}" />" maxlength="10" /><br>
 						    <s:fielderror fieldName="userFamilyNameKana" style="color: red; font-weight: bold;" />
 					    </td>
 					</tr>
 					<tr>
 						<td><label>カナ（名）</label></td>
-						<td><input type="text" name="userLastNameKana" maxlength="10"
-							value="<s:property value='userLastNameKana'/>" /><br>
+						<td><input type="text" name="userLastNameKana" value="<s:property value="%{userLastNameKana}" />" maxlength="10" /><br>
 							<s:fielderror fieldName="userLastNameKana" style="color: red; font-weight: bold;" />
 						</td>
 					</tr>
 					<tr>
 						<td><label>メールアドレス</label></td>
-						<td><input type="text" name="userMail" maxlength="100"
-							value="<s:property value='userMail'/>" /><br>
+						<td><input type="text" name="userMail" value="<s:property value="%{userMail}" />" maxlength="100" /><br>
 							<s:fielderror fieldName="userMail" style="color: red; font-weight: bold;" />
 						</td>
 					</tr>
 					<tr>
 						<td><label>パスワード</label></td>
-						<td><input type="text" name="userPassword" maxlength="10"
-							value="<s:property value='userPassword'/>" /><br>
+						<td><input type="text" name="userPassword" value="<s:property value="%{userPassword}" />" maxlength="10" /><br>
 							<s:fielderror fieldName="userPassword" style="color: red; font-weight: bold;" />
 						</td>
 					</tr>
 					<tr>
 						<td><label>性別</label></td>
-						<td><input type="radio" name="userGender" value="0"
-                            <s:if test="%{userGender == 0 || userGender == null}">checked="checked"</s:if>>男性
-                            <input type="radio" name="userGender" value="1"
-                            <s:if test="%{userGender == 1}">checked="checked"</s:if>>女性
+						<td><input type="radio" name="userGender" value="%{userGender}" <s:if test="userGender == 0 || userGender == null">checked="checked"</s:if>> 男性
+                            <input type="radio" name="userGender" value="%{userGender}" <s:if test="userGender == 1">checked="checked"</s:if>> 女性
 							<p>現在の性別: <s:property value="userGender" /></p>
 						</td>
 					</tr>
 					<tr>
 						<td><label>郵便番号</label></td>
-						<td><input type="text" name="userPostalCode" maxlength="7"
-							value="<s:property value='userPostalCode'/>" /><br>
+						<td><input type="text" name="userPostalCode" value="<s:property value="%{userPostalCode}" />" maxlength="7" /><br>
 							<s:fielderror fieldName="userPostalCode" style="color: red; font-weight: bold;" />
 						</td>
 					</tr>
 					<tr>
 						<td><label>住所（都道府県）</label></td>
 						<td><select name="userPrefecture">
-								<option value="<s:property value='userPrefecture'/>" selected>
+								<option value="<s:property value="%{userPrefecture}"/>" selected>
 								<s:property value='userPrefecture' /></option>
 								<option value="北海道">北海道</option>
 								<option value="青森県">青森県</option>
@@ -221,24 +212,20 @@ body .fielderror {
 					</tr>
 					<tr>
 						<td><label>住所（市区町村）</label></td>
-						<td><input type="text" name="userAddress1" maxlength="10"
-							value="<s:property value='userAddress1'/>" /><br>
+						<td><input type="text" name="userAddress1" value="<s:property value="%{userAddress1}" />" maxlength="100" /><br>
 							<s:fielderror fieldName="userAddress1" style="color: red; font-weight: bold;" />
 						</td>
 					</tr>
 					<tr>
 						<td><label>住所（番地）</label></td>
-						<td><input type="text" name="userAddress2" maxlength="100"
-							value="<s:property value='userAddress2'/>" /><br>
+						<td><input type="text" name="userAddress2" value="<s:property value="%{userAddress2}" />" maxlength="10" /><br>
 							<s:fielderror fieldName="userAddress2" style="color: red; font-weight: bold;" />
 						</td>
 					</tr>
 					<tr>
 						<td><label>アカウント権限</label></td>
-						<td><input type="radio" name="userAuthority" value="0"
-							<s:if test="%{userAuthority == 0 || userAuthority == null}">checked="checked"</s:if>>一般
-							<input type="radio" name="userAuthority" value="1"
-							<s:if test="%{userAuthority == 1}">checked="checked"</s:if>>管理者
+						<td><input type="radio" name="userAuthority" value="%{userAuthority}" <s:if test="userAuthority == 0 || userAuthority == null">checked="checked"</s:if>> 一般
+                            <input type="radio" name="userAuthority" value="%{userAuthority}" <s:if test="userAuthority == 1">checked="checked"</s:if>> 管理者
 							<p>現在の性別: <s:property value="userAuthority" /></p>
 						</td>
 					</tr>

@@ -34,7 +34,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userMail;
 	private String userPassword;
 	private String maskedPassword;
-	private Integer userGender = null;
+	private int userGender;
 	private String userGender0;// 文字列表示用プロパティ
 	private String userPostalCode;
 	//private String userPostalCode;// 文字列表示用プロパティ
@@ -61,7 +61,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// エラーチェック（検証用）
 	//入力値が正しい形式や範囲に合致しているかどうかを検証すること=validate()
     // バリデーション用のメソッド
-  @Override
+    @Override
 	public void validate() {
 
 //		System.out.println(userFamilyName);
@@ -142,10 +142,10 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	// 新規ユーザー登録はボタンを押したらサクセスが返される、registConfirm.jsp画面に遷移する
 	// struts.xmlで指定しているから！
-    @Override
+//    @Override
 	public String execute() {
 
-		String result = SUCCESS;
+//		String result = SUCCESS;
 
 		System.out.println(userFamilyName);
 		System.out.println(userLastName);
@@ -273,8 +273,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	    }
 
 	    // セッションに保存する
-	    session.put("userGender", userGender0);
-	    System.out.println("Gender: " + userGender0);  // デバッグ用
+	    session.put("userGender0", userGender);
+	    System.out.println("Gender: " + userGender);  // デバッグ用
 
 	 // userGender の値がセットされた後に性別の表示名を設定
 	    if (userAuthority == 0) {
@@ -306,6 +306,8 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	    session.put("delete_flag", delete_flag0);
 	    System.out.println("delete_flag: " + delete_flag0);  // デバッグ用
 
+//	    String result = SUCCESS;
+
 	    // 他の処理...
 
         // パスワードを黒丸でマスクする
@@ -315,7 +317,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
         }
         maskedPassword = masked.toString();
 
-//        String result = SUCCESS;
+        String result = SUCCESS;
 
 		return result;
 
@@ -426,14 +428,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
-	public Integer getUserGender() {
+	public int getUserGender() {
 		return userGender;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
-	public void setUserGender(Integer userGender) {
+	public void setUserGender(int userGender) {
 		System.out.println("start: setUserGender()");
 		System.out.println(userGender);
 		this.userGender = userGender;
@@ -447,7 +449,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	}
 
-	public void setUserGender0(String userGender0) {
+	public void setUserGender(String userGender0) {
 		this.userGender0 = userGender0;
 
 	}
