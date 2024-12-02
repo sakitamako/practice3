@@ -108,7 +108,7 @@ input[type="submit"] {
 		</div>
 		<div>
 			<table>
-
+				<s:form>
 					<tr id="box">
 						<td><label>名前（姓）</label></td>
 						<td><s:property value="userFamilyName" escape="false" /></td>
@@ -139,8 +139,11 @@ input[type="submit"] {
 					</tr>
 					<tr id="box">
 					    <td><label>性別</label></td>
-						<td><s:property value="userGender0" escape="false" />
-                        <p>現在の性別: <s:property value="userGender" /></p></td>
+						<td>
+                            <s:if test="%{userGender0 == 0}">男性</s:if>
+                            <s:else>女性</s:else>
+                            <p>現在の性別: <s:property value="userGender" />
+                        </td>
 					</tr>
 					<tr id="box">
 						<td><label>郵便番号</label></td>
@@ -172,7 +175,7 @@ input[type="submit"] {
                                 <s:hidden name="userLastNameKana" value="%{userLastNameKana}" />
                                 <s:hidden name="userMail" value="%{userMail}" />
                                 <s:hidden name="userPassword" value="%{userPassword}" />
-                                <s:hidden name="userGender" value="%{userGender}" />
+                                <s:hidden name="userGender" value="%{userGender0}" />
                                 <s:hidden name="userPostalCode" value="%{userPostalCode}" />
                                 <s:hidden name="userPrefecture" value="%{userPrefecture}" />
                                 <s:hidden name="userAddress1" value="%{userAddress1}" />
@@ -185,7 +188,7 @@ input[type="submit"] {
                             </s:form>
 						</td>
 					</tr>
-
+				</s:form>
 			</table>
 		</div>
 		<p>フッター</p>
