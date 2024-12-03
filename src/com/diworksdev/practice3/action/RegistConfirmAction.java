@@ -1,6 +1,5 @@
 package com.diworksdev.practice3.action;
 
-import java.util.LinkedHashMap;
 //import java.sql.SQLException;
 import java.util.Map;
 
@@ -35,7 +34,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userMail;
 	private String userPassword;
 	private String maskedPassword;
-	private int userGender;
+	private Integer userGender;
 	private String userGender0;// 文字列表示用プロパティ
 	private String userPostalCode;
 	// private String userPostalCode;// 文字列表示用プロパティ
@@ -54,16 +53,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// このインタフェースは、インタフェースというよりむしろ完全に抽象クラスであったDictionaryクラスに代わるものです
 	// 全てのクラス 変数 変数名
 	public Map<String, Object> session;
-	public void setSession1(Map<String, Object> session) {
-        this.session = session;
-	}
-
-	private Map<String, String> genderMap;
-    public RegistConfirmAction() {
-        genderMap = new LinkedHashMap<>();
-        genderMap.put("0", "男性");
-        genderMap.put("1", "女性");
-    }
 
 	// このクラスのみ 変数 変数名
 	// private String errorMessage;
@@ -154,6 +143,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// struts.xmlで指定しているから！
 	@Override
 	public String execute() {
+		String result = SUCCESS;
 
 		System.out.println(userFamilyName);
 		System.out.println(userLastName);
@@ -297,35 +287,10 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		maskedPassword = masked.toString();
 
-		String result = SUCCESS;
+		// String result = SUCCESS;
+		return result;
 
-
-/*
-		if (session.get("initialized") == null) {
-		    session.clear();
-		    session.put("initialized", true);
-		}
-
-		if (userFamilyName == null) {
-            userFamilyName = "";
-            userLastName = "";
-            userMail = "";
-            userPassword = "";
-        	maskedPassword = "";
-        	userGender0 = "";// 文字列表示用プロパティ
-        	userPostalCode = "";
-        	userPrefecture = "";
-        	userAddress1 = "";
-        	userAddress2 = "";
-        	userAuthority0 = "";// 文字列表示用プロパティ
-
-        return INPUT;
-
-		}
-*/
-        return result;
-
-    }
+	}
 
 	// // Getter and Setter for registAction
 	// public RegistAction getRegistAction() {
@@ -343,10 +308,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	//
 	// return INPUT; // 入力画面に戻る
 	// }
-
-	public Map<String, String> getGenderMap() {
-        return genderMap;
-    }
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
@@ -434,14 +395,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
-	public int getUserGender() {
+	public Integer getUserGender() {
 		return userGender;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
-	public void setUserGender(int userGender) {
+	public void setUserGender(Integer userGender) {
 		System.out.println("start: setUserGender()");
 		System.out.println(userGender);
 		this.userGender = userGender;
