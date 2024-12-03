@@ -1,40 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Strutsの詳細設定-->
+<!-- Strutsの詳細設定 -->
 <!DOCTYPE struts PUBLIC
 "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
 "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
 
-    <!-- このプロジェクトで使うActionファイルが保存されているパッケージを宣言 -->
-    <!-- 1, Struts2の挙動を制御する設定、name:設定名、value:設定値、をそれぞれ記述！※この研修では毎回同じ値を使う -->
-    <constant name="struts.devMode" value="false" />
+	<!-- このプロジェクトで使うActionファイルが保存されているパッケージを宣言 -->
+	<!-- 1, Struts2の挙動を制御する設定、name:設定名、value:設定値、をそれぞれ記述！※この研修では毎回同じ値を使う -->
+	<constant name="struts.devMode" value="false" />
 
-    <!-- 2, 対象のpackageを設定-->
-    <package name="com.diworksdev.practice3.action" extends="struts-default">
+	<!-- 2, 対象のpackageを設定 -->
+	<package name="com.diworksdev.practice3.action" extends="struts-default">
 
-        <!-- 呼び出されるJavaクラスファイルと実行するメソッドを宣言 -->
-        <!-- 3, プロジェクト内で使うActionファイルを記述 -->
-        <!-- 4, パッケージ名、Actionクラス名の順で記述 -->
-        <!-- 5, 普通はexecuteメソッドを記述 呼び出されたActionクラスのどのメソッドが呼ばれるかを記述 -->
-        <action name="HomeAction" class="com.diworksdev.practice3.action.HomeAction" method="execute">
-            <result name="success">home.jsp</result>
-        </action>
+		<!-- 呼び出されるJavaクラスファイルと実行するメソッドを宣言 -->
+		<!-- 3, プロジェクト内で使うActionファイルを記述 -->
+		<!-- 4, パッケージ名、Actionクラス名の順で記述 -->
+		<!-- 5, 普通はexecuteメソッドを記述 呼び出されたActionクラスのどのメソッドが呼ばれるかを記述 -->
+		<action name="HomeAction" class="com.diworksdev.practice3.action.HomeAction" method="execute">
+			<result name="success">home.jsp</result>
+		</action>
 
-        <action name="RegistAction" class="com.diworksdev.practice3.action.RegistAction" method="execute">
-            <result name="success">regist.jsp</result>
-        </action>
+		<action name="RegistAction" class="com.diworksdev.practice3.action.RegistAction" method="execute">
+			<result name="success">regist.jsp</result>
+		</action>
 
-        <action name="RegistConfirmAction" class="com.diworksdev.practice3.action.RegistConfirmAction" method="execute">
-            <result name="success">registConfirm.jsp</result>
-            <result name="input">regist.jsp</result>
-        </action>
+		<action name="RegistConfirmAction" class="com.diworksdev.practice3.action.RegistConfirmAction" method="execute">
+			<result name="success">registConfirm.jsp</result>
+			<result name="input">regist.jsp</result>
+		</action>
 
-        <action name="RegistCompleteAction" class="com.diworksdev.practice3.action.RegistCompleteAction" method="execute">
-            <result name="success">registComplete.jsp</result>
-            <result name="error">registError.jsp</result>
-        </action>
+		<action name="RegistCompleteAction" class="com.diworksdev.practice3.action.RegistCompleteAction" method="execute">
+			<result name="success">registComplete.jsp</result>
+			<result name="error">registError.jsp</result>
+		</action>
 
-    </package>
+	</package>
 </struts>

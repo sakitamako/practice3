@@ -1,6 +1,7 @@
 <!-- このファイルが通常のHTMLファイルではなく、JSPであることを示している -->
 <!-- strutsタグ（下の補足参照）を使用する際に記述します。ここでは”s”としてタグを使用 -->
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 
 <!-- ユーザー登録機能 -->
@@ -93,13 +94,9 @@ input[type="submit"] {
 	text-align: center;
 	font-size: 20px; /* 文字サイズ */
 }
-
 </style>
 </head>
 <body>
-	<div id="header">
-		<div id="pr"></div>
-	</div>
 	<h1>アカウント登録確認画面</h1>
 	<div id="main">
 		<div id="top">
@@ -108,88 +105,80 @@ input[type="submit"] {
 		</div>
 		<div>
 			<table>
-				<s:form>
-					<tr id="box">
-						<td><label>名前（姓）</label></td>
-						<td><s:property value="userFamilyName" escape="false" /></td>
-					</tr>
-					<tr id="box">
-						<td><label>名前（名）</label></td>
-						<td><s:property value="userLastName" escape="false" /></td>
-					</tr>
-					<tr id="box">
-						<td><label>カナ（姓）</label></td>
-						<td><s:property value="userFamilyNameKana" escape="false" />
-						</td>
-					</tr>
-					<tr id="box">
-						<td><label>カナ（名）</label></td>
-						<td><s:property value="userLastNameKana" escape="false" /></td>
-					</tr>
-					<tr id="box">
-						<td><label>メールアドレス</label></td>
-						<td><s:property value="userMail" escape="false" /></td>
-					</tr>
-					<tr id="box">
-						<td><label>パスワード</label></td>
-						<td><s:if test="maskedPassword != null">
-								<s:property value="maskedPassword" />
-							</s:if>
-						</td>
-					</tr>
-					<tr id="box">
-					    <td><label>性別</label></td>
-						<td>
-                            <s:if test="%{userGender0 == 0}">男性</s:if>
-                            <s:else>女性</s:else>
-                            <p>現在の性別: <s:property value="userGender" />
-                        </td>
-					</tr>
-					<tr id="box">
-						<td><label>郵便番号</label></td>
-						<td><s:property value="userPostalCode" escape="false" /></td>
-					</tr>
-					<tr id="box">
-						<td><label>住所（都道府県）</label></td>
-						<td><s:property value="userPrefecture" escape="false" /></td>
-					</tr>
-					<tr id="box">
-						<td><label>住所（市区町村）</label></td>
-						<td><s:property value="userAddress1" escape="false" /></td>
-					</tr>
-					<tr id="box">
-						<td><label>住所（番地）</label></td>
-						<td><s:property value="userAddress2" escape="false" /></td>
-					</tr>
-					<tr id="box">
-						<td><label>アカウント権限</label></td>
-						<td><s:property value="userAuthority0" escape="false" />
-						<p>現在の性別: <s:property value="userAuthority" /></p></td>
-					</tr>
-					<tr class="center-buttons">
-						<td colspan="2">
-							<s:form action="RegistAction" method="post">
-                                <s:hidden name="userFamilyName" value="%{userFamilyName}" />
-                                <s:hidden name="userLastName" value="%{userLastName}" />
-                                <s:hidden name="userFamilyNameKana" value="%{userFamilyNameKana}" />
-                                <s:hidden name="userLastNameKana" value="%{userLastNameKana}" />
-                                <s:hidden name="userMail" value="%{userMail}" />
-                                <s:hidden name="userPassword" value="%{userPassword}" />
-                                <s:hidden name="userGender" value="%{userGender0}" />
-                                <s:hidden name="userPostalCode" value="%{userPostalCode}" />
-                                <s:hidden name="userPrefecture" value="%{userPrefecture}" />
-                                <s:hidden name="userAddress1" value="%{userAddress1}" />
-                                <s:hidden name="userAddress2" value="%{userAddress2}" />
-                                <s:hidden name="userAuthority" value="%{userAuthority}" />
-                                <input type="submit" value="前に戻る">
-                            </s:form>
-                            <s:form action="RegistCompleteAction" method="post">
-                                <input type="submit" value="登録する">
-                            </s:form>
-						</td>
-					</tr>
-				</s:form>
+				<tr>
+					<td><label>名前（姓）</label></td>
+					<td><s:property value="userFamilyName" escape="false" /></td>
+				</tr>
+				<tr>
+					<td><label>名前（名）</label></td>
+					<td><s:property value="userLastName" escape="false" /></td>
+				</tr>
+				<tr>
+					<td><label>カナ（姓）</label></td>
+					<td><s:property value="userFamilyNameKana" escape="false" /></td>
+				</tr>
+				<tr>
+					<td><label>カナ（名）</label></td>
+					<td><s:property value="userLastNameKana" escape="false" /></td>
+				</tr>
+				<tr>
+					<td><label>メールアドレス</label></td>
+					<td><s:property value="userMail" escape="false" /></td>
+				</tr>
+				<tr>
+					<td><label>パスワード</label></td>
+					<td><s:if test="maskedPassword != null">
+							<s:property value="maskedPassword" />
+						</s:if></td>
+				</tr>
+				<tr>
+					<td><label>性別</label></td>
+					<td><s:property value="userGender" escape="false" /></td>
+				</tr>
+				<tr>
+					<td><label>郵便番号</label></td>
+					<td><s:property value="userPostalCode" escape="false" /></td>
+				</tr>
+				<tr>
+					<td><label>住所（都道府県）</label></td>
+					<td><s:property value="userPrefecture" escape="false" /></td>
+				</tr>
+				<tr>
+					<td><label>住所（市区町村）</label></td>
+					<td><s:property value="userAddress1" escape="false" /></td>
+				</tr>
+				<tr>
+					<td><label>住所（番地）</label></td>
+					<td><s:property value="userAddress2" escape="false" /></td>
+				</tr>
+				<tr>
+					<td><label>アカウント権限</label></td>
+					<td><s:property value="userAuthority" escape="false" /></td>
+				</tr>
 			</table>
+
+			<!-- 統合されたフォーム -->
+			<s:form action="RegistAction" method="post">
+				<!-- 隠しフィールドで値を保持 -->
+				<s:hidden name="userFamilyName" value="%{userFamilyName}" />
+				<s:hidden name="userLastName" value="%{userLastName}" />
+				<s:hidden name="userFamilyNameKana" value="%{userFamilyNameKana}" />
+				<s:hidden name="userLastNameKana" value="%{userLastNameKana}" />
+				<s:hidden name="userMail" value="%{userMail}" />
+				<s:hidden name="userPassword" value="%{userPassword}" />
+				<s:hidden name="userGender" value="%{userGender}" />
+				<s:hidden name="userPostalCode" value="%{userPostalCode}" />
+				<s:hidden name="userPrefecture" value="%{userPrefecture}" />
+				<s:hidden name="userAddress1" value="%{userAddress1}" />
+				<s:hidden name="userAddress2" value="%{userAddress2}" />
+				<s:hidden name="userAuthority" value="%{userAuthority}" />
+
+				<!-- ボタン -->
+				<div class="center-buttons">
+					<input type="submit" name="action" value=" 前に戻る " /> <input
+						type="submit" name="action" value=" 登録する " />
+				</div>
+			</s:form>
 		</div>
 		<p>フッター</p>
 	</div>

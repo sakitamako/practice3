@@ -2,7 +2,6 @@ package com.diworksdev.practice3.action;
 
 import com.opensymphony.xwork2.ActionSupport;
 
-
 //ログイン認証機能
 
 //Actionクラスでは、画面から送られてきたリクエストを取得する
@@ -12,7 +11,7 @@ import com.opensymphony.xwork2.ActionSupport;
 //LoginAciton（子クラス） extends（継承） ActionSupport（親クラス）
 public class HomeAction extends ActionSupport {
 
-	//「excecute」メソッドを実行した後は"success"文字列を返す
+	// 「excecute」メソッドを実行した後は"success"文字列を返す
 	public String execute() {
 		return SUCCESS;
 

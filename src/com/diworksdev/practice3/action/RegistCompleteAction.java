@@ -64,22 +64,17 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	// 全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
 	@Override
 	public String execute() throws SQLException {
-
 		String result = ERROR; // 初期値をERRORに設定
 
 		try {
-
 			String hashedPassword = hashPassword(session.get("userPassword").toString());
-
 			// DBConnectorを使って接続試行
 			DBConnector dbConnector = new DBConnector();
 			Connection con = dbConnector.getConnection();
 
 			if (con == null) {
-
 				// 接続失敗の場合はエラーを返す
 				// addActionError("エラーが発生したためアカウント登録できません。");
-
 				errorMessage = "エラーが発生したためアカウント登録できません。";
 
 				result = ERROR;
@@ -152,11 +147,11 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 				// 小川講師に追記してもらったとこ！１項目ずつデータが渡っているかチェックする！
 				registCompleteDAO.regist(session.get("userFamilyName").toString(),
 						session.get("userLastName").toString(), session.get("userFamilyNameKana").toString(),
-						session.get("userLastNameKana").toString(), session.get("userMail").toString(),
-						hashedPassword, session.get("userGender").toString(),
-						session.get("userPostalCode").toString(), session.get("userPrefecture").toString(),
-						session.get("userAddress1").toString(), session.get("userAddress2").toString(),
-						session.get("userAuthority").toString(), session.get("delete_flag").toString());
+						session.get("userLastNameKana").toString(), session.get("userMail").toString(), hashedPassword,
+						session.get("userGender").toString(), session.get("userPostalCode").toString(),
+						session.get("userPrefecture").toString(), session.get("userAddress1").toString(),
+						session.get("userAddress2").toString(), session.get("userAuthority").toString(),
+						session.get("delete_flag").toString());
 				// session.get("delete_flag").toString()
 				// session.get("userPostalCode").toString(),
 				// SUCCESS返す
@@ -196,6 +191,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 				// }
 
 				result = SUCCESS;
+
 			}
 
 		} catch (SQLException e) {
@@ -217,21 +213,26 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	}
 
 	/**
-     * パスワードをSHA-256でハッシュ化するメソッド
-     * @param password 平文のパスワード
-     * @return ハッシュ化された文字列
-     * @throws NoSuchAlgorithmException
-     */
-    private String hashPassword(String userPassword) throws NoSuchAlgorithmException {
-        MessageDigest md = MessageDigest.getInstance("SHA-256");
-        byte[] hashedBytes = md.digest(userPassword.getBytes());
-        // ハッシュ値を16進数文字列に変換
-        StringBuilder sb = new StringBuilder();
-        for (byte b : hashedBytes) {
-            sb.append(String.format("%02x", b));
-        }
-        return sb.toString();
-    }
+	 * パスワードをSHA-256でハッシュ化するメソッド
+	 *
+	 * @param password
+	 *            平文のパスワード
+	 * @return ハッシュ化された文字列
+	 * @throws NoSuchAlgorithmException
+	 */
+	private String hashPassword(String userPassword) throws NoSuchAlgorithmException {
+		MessageDigest md = MessageDigest.getInstance("SHA-256");
+		byte[] hashedBytes = md.digest(userPassword.getBytes());
+		// ハッシュ値を16進数文字列に変換
+		StringBuilder sb = new StringBuilder();
+		for (byte b : hashedBytes) {
+			sb.append(String.format("%02x", b));
+
+		}
+
+		return sb.toString();
+
+	}
 
 	//// String result = SUCCESS;
 	//
