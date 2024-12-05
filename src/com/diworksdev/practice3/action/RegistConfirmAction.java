@@ -34,7 +34,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userMail;
 	private String userPassword;
 	private String maskedPassword;
-	private int userGender;
+	private Integer userGender;
 	private String userGender0;// 文字列表示用プロパティ
 	private String userPostalCode;
 	// private String userPostalCode;// 文字列表示用プロパティ
@@ -45,7 +45,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	private String userAuthority0;// 文字列表示用プロパティ
 	private int delete_flag;
 	private String delete_flag0;// 文字列表示用プロパティ
-	private String submitAction; // ボタンの値を受け取るフィールド
 
 	// private RegistAction registAction;
 
@@ -64,33 +63,88 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	@Override
 	public void validate() {
 
-		validateField(userFamilyName, "userFamilyName", "名前（姓）が未入力です。", "^[\\p{IsHan}\\p{IsHiragana}]+$", "名前（姓）は平仮名と漢字のみ使用できます。");
-        validateField(userLastName, "userLastName", "名前（名）が未入力です。", "^[\\p{IsHan}\\p{IsHiragana}]+$", "名前（名）は平仮名と漢字のみ使用できます。");
-        validateField(userFamilyNameKana, "userFamilyNameKana", "カナ（姓）が未入力です。", "^[\\p{IsKatakana}ー]+$", "カナ（姓）はカタカナのみ使用できます。");
-        validateField(userLastNameKana, "userLastNameKana", "カナ（名）が未入力です。", "^[\\p{IsKatakana}ー]+$", "カナ（名）はカタカナのみ使用できます。");
-        validateField(userMail, "userMail", "メールアドレスが未入力です。", "^[a-zA-Z0-9-@.]+$", "メールアドレスは半角英数字と記号のみ使用できます。");
-        validateField(userPassword, "userPassword", "パスワードが未入力です。", "^[a-zA-Z0-9]+$", "パスワードは半角英数字のみ使用できます。");
-        validateField(userPostalCode, "userPostalCode", "郵便番号が未入力です。", "^[0-9]+$", "郵便番号は半角数字のみ使用できます。");
-        validateField(userPrefecture, "userPrefecture", "住所（都道府県）が未入力です。", null, null);
-        validateField(userAddress1, "userAddress1", "住所（市区町村）が未入力です。", "^[\\p{IsHiragana}\\p{IsHan}\\p{IsKatakana}0-9\\s-]+$", "市区町村はひらがな、漢字、カタカナ、数字、ハイフン、スペースのみ使用できます。");
-        validateField(userAddress2, "userAddress2", "住所（番地）が未入力です。", "^[\\p{IsHiragana}\\p{IsHan}\\p{IsKatakana}0-9\\s-]+$", "番地はひらがな、漢字、カタカナ、数字、ハイフン、スペースのみ使用できます。");
-    }
+		// System.out.println(userFamilyName);
+		// System.out.println(userFamilyName.equals(""));
+		// System.out.println(userFamilyName.trim().isEmpty());
 
-	private void validateField(String field, String fieldName, String emptyMessage, String regex, String invalidMessage) {
-        if (field == null || field.isEmpty()) {
-            addFieldError(fieldName, emptyMessage);
-        } else if (regex != null && !field.matches(regex)) {
-            addFieldError(fieldName, invalidMessage);
-        }
-    }
+		// isEmptyメソッドを利用することで、文字列が空であるかどうかを判定できる || userFamilyName.isEmpty()
+		// userFamilyNameと空文字が等しいかつ,userFamilyNameの文字列が空の時
+		if (userFamilyName == null || userFamilyName.isEmpty()) {
+			addFieldError("userFamilyName", "名前（姓）が未入力です。");
+
+		} else if (!(userFamilyName.matches("^[\\p{IsHan}\\p{IsHiragana}]+$"))) {
+			addFieldError("userFamilyName", "名前（姓）は平仮名と漢字のみ使用できます。");
+		}
+
+		if (userLastName == null || userLastName.isEmpty()) {
+			addFieldError("userLastName", "名前（名）が未入力です。");
+
+		} else if (!(userLastName.matches("^[\\p{IsHan}\\p{IsHiragana}]+$"))) {
+			addFieldError("userLastName", "名前（名）は平仮名と漢字のみ使用できます。");
+		}
+
+		if (userFamilyNameKana == null || userFamilyNameKana.isEmpty()) {
+			addFieldError("userFamilyNameKana", "カナ（姓）が未入力です。");
+
+		} else if (!(userFamilyNameKana.matches("^[\\p{IsKatakana}ー]+$"))) {
+			addFieldError("userFamilyNameKana", "カナ（姓）はカタカナのみ使用できます。");
+		}
+
+		if (userLastNameKana == null || userLastNameKana.isEmpty()) {
+			addFieldError("userLastNameKana", "カナ（名）が未入力です。");
+
+		} else if (!(userLastNameKana.matches("^[\\p{IsKatakana}ー]+$"))) {
+			addFieldError("userLastNameKana", "カナ（名）はカタカナのみ使用できます。");
+		}
+
+		if (userMail == null || userMail.isEmpty()) {
+			addFieldError("userMail", "メールアドレスが未入力です。");
+
+		} else if (!(userMail.matches("^[a-zA-Z0-9-@.]+$"))) {
+			addFieldError("userMail", "メールアドレスは半角英数字、半角ハイフン、半角記号（ハイフンとアットマークとドット）のみ使用できます。");
+		}
+
+		if (userPassword == null || userPassword.isEmpty()) {
+			addFieldError("userPassword", "パスワードが未入力です。");
+
+		} else if (!(userPassword.matches("^[a-zA-Z0-9]+$"))) {
+			addFieldError("userPassword", "パスワードは半角英数字のみ使用できます。");
+		}
+
+		if (userPostalCode == null || userPostalCode.isEmpty()) {
+			addFieldError("userPostalCode", "郵便番号が未入力です。");
+
+		} else if (!(userPostalCode.matches("^[0-9]+$"))) {
+			addFieldError("userPostalCode", "郵便番号は半角数字のみ使用できます。");
+		}
+
+		if (userPrefecture == null || userPrefecture.isEmpty()) {
+			addFieldError("userPrefecture", "住所（都道府県）が未入力です。");
+
+		}
+
+		if (userAddress1 == null || userAddress1.isEmpty()) {
+			addFieldError("userAddress1", "住所（市区町村）が未入力です。");
+
+		} else if (!(userAddress1.matches("^[\\p{IsHiragana}\\p{IsHan}\\p{IsKatakana}0-9\\s-]+$"))) {
+			addFieldError("userAddress1", "住所（市区町村）はひらがな、漢字、カタカナ、半角数字、ハイフン、スペースのみ使用できます。");
+		}
+
+		if (userAddress2 == null || userAddress2.isEmpty()) {
+			addFieldError("userAddress2", "住所（番地）が未入力です。");
+
+		} else if (!(userAddress2.matches("^[\\p{IsHiragana}\\p{IsHan}\\p{IsKatakana}0-9\\s-]+$"))) {
+			addFieldError("userAddress2", "住所（番地）はひらがな、漢字、カタカナ、半角数字、ハイフン、スペースのみ使用できます。");
+		}
+
+	}
 
 	// 新規ユーザー登録はボタンを押したらサクセスが返される、registConfirm.jsp画面に遷移する
 	// struts.xmlで指定しているから！
 	@Override
 	public String execute() {
-
 		String result = SUCCESS;
-/*
+
 		System.out.println(userFamilyName);
 		System.out.println(userLastName);
 		System.out.println(userFamilyNameKana);
@@ -110,48 +164,30 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		// && aとbとcが共にtrueの時に処理を実行する
 		// 同じ意味 if (loginUserId.equals("") == false && loginPassword.equals("")
 		// == false && userName.equals("") == false) {
-		 *
-
 		if (!(userFamilyName.equals("")) && !(userLastName.equals("")) && !(userFamilyNameKana.equals(""))
 				&& !(userLastNameKana.equals("")) && !(userMail.equals("")) && !(userPassword.equals(""))
 				&& !(userPostalCode.equals("")) && !(userPrefecture.equals("")) && !(userAddress1.equals(""))
 				&& !(userAddress2.equals(""))) {
-				*/
+
 			// !(userPostalCode.equals("")) && これも数値、intだったから一旦外す！
 			// && !(userPassword.equals(""))外す
 
 			// //sessionのなかに記憶する保存する
-			//System.out.println(userFamilyName);
+			System.out.println(userFamilyName);
 			session.put("userFamilyName", userFamilyName);
 			session.put("userLastName", userLastName);
 			session.put("userFamilyNameKana", userFamilyNameKana);
 			session.put("userLastNameKana", userLastNameKana);
 			session.put("userMail", userMail);
-			session.put("userPassword", maskPassword(userPassword));
+			session.put("userPassword", userPassword);
 			// session.put("userGender", userGender); //原因？一旦外してみる
 			session.put("userPostalCode", userPostalCode);// 原因？
 			session.put("userPrefecture", userPrefecture);
 			session.put("userAddress1", userAddress1);
 			session.put("userAddress2", userAddress2);
-
-			userGender0 = (userGender == 0) ? "男性" : "女性";
-			userAuthority0 = (userAuthority == 0) ? "一般" : "管理者";
-			delete_flag0 = (delete_flag == 0) ? "有効" : "無効";
-
-	        session.put("userGender", userGender0);
-	        session.put("userAuthority", userAuthority0);
-	        session.put("deleteFlag", delete_flag0);
-	        // session.put("userAuthority", userAuthority); //原因？一旦外してみる
-
-
-	        if ("戻って修正する".equals(submitAction)) {
-	            result = "back";
-	        }
-
-	        return result;
+			// session.put("userAuthority", userAuthority); //原因？一旦外してみる
 
 		}
-
 		/*
 		 * // 小川講師からintバージョンで作った場合の処理方法教えてもらった！ //
 		 * 下記は元々自分で作ってたコード！何が表示される想定なのかコメントアウトしている！ userGender0 =
@@ -201,7 +237,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		 *
 		 * }
 		 */
-/*
+
 		// userGender の値がセットされた後に性別の表示名を設定
 		if (userGender == 0) {
 			userGender0 = "男性";
@@ -251,17 +287,11 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 		maskedPassword = masked.toString();
 
-		if ("戻って修正する".equals(submitAction)) {
-            // 入力画面に戻る処理
-            result = "input";
-
-		}
-
 		// String result = SUCCESS;
 		return result;
 
 	}
-*/
+
 	// // Getter and Setter for registAction
 	// public RegistAction getRegistAction() {
 	// return registAction;
@@ -349,10 +379,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	}
 
-	private String maskPassword(String password) {
-        return password.replaceAll(".", "●");
-    }
-
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
 	public String getUserPassword() {
@@ -369,14 +395,14 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
-	public int getUserGender() {
+	public Integer getUserGender() {
 		return userGender;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
 	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
-	public void setUserGender(int userGender) {
+	public void setUserGender(Integer userGender) {
 		System.out.println("start: setUserGender()");
 		System.out.println(userGender);
 		this.userGender = userGender;
@@ -526,16 +552,6 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		this.delete_flag0 = delete_flag0;
 
 	}
-
-	public String getSubmitAction() {
-		return submitAction;
-
-	}
-
-    public void setSubmitAction(String submitAction) {
-    	this.submitAction = submitAction;
-
-    }
 
 }
 /*
