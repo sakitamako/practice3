@@ -65,7 +65,7 @@ public class RegistCompleteDAO {
 	public void regist(String userFamilyName, String userLastName, String userFamilyNameKana, String userLastNameKana,
 			String userMail, String hashedPassword, String userGender, String userPostalCode, String userPrefecture,
 			String userAddress1, String userAddress2, String userAuthority, String delete_flag) throws SQLException {
-
+/*
 		// ③小川講師から教えてもらったこと、上記の確認したい項目を入力！
 		System.out.println(userFamilyName);
 		System.out.println(userLastName);
@@ -80,7 +80,7 @@ public class RegistCompleteDAO {
 		System.out.println(userAddress2);
 		System.out.println(userAuthority);
 		System.out.println(delete_flag);
-
+*/
 		// try.catchはjavaの例外処理のための構文
 		try {
 			// tryの中にはエラーが発生しそうな処理を書く

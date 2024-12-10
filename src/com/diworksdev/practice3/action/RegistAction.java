@@ -17,11 +17,8 @@ public class RegistAction extends ActionSupport {
 	private String userLastNameKana;
 	private String userMail;
 	private String userPassword;
-
 	private int userGender;
-
 	private String userPostalCode;
-	// private String userPostalCode;// 文字列表示用プロパティ
 	private String userPrefecture;
 	private String userAddress1;
 	private String userAddress2;

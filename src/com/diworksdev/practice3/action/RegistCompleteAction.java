@@ -117,7 +117,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 				// String userAuthority =
 				// session.get("userAuthority").toString();
 				// String delete_flag = session.get("delete_flag").toString();
-
+/*
 				System.out.println(session.get("userFamilyName"));
 				System.out.println(session.get("userLastName"));
 				System.out.println(session.get("userFamilyNameKana"));
@@ -145,6 +145,8 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 				System.out.println(session.get("userAuthority").toString());
 				System.out.println(session.get("delete_flag").toString());
 				// 小川講師に追記してもらったとこ！１項目ずつデータが渡っているかチェックする！
+				 *
+				 */
 				registCompleteDAO.regist(session.get("userFamilyName").toString(),
 						session.get("userLastName").toString(), session.get("userFamilyNameKana").toString(),
 						session.get("userLastNameKana").toString(), session.get("userMail").toString(), hashedPassword,

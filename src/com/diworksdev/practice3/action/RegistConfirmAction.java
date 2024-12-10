@@ -180,7 +180,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 			// !(userPostalCode.equals("")) && これも数値、intだったから一旦外す！
 			// && !(userPassword.equals(""))外す
-
+/*
 			// //sessionのなかに記憶する保存する
 			System.out.println(userFamilyName);
 			session.put("userFamilyName", userFamilyName);
@@ -195,7 +195,7 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 			session.put("userAddress1", userAddress1);
 			session.put("userAddress2", userAddress2);
 			// session.put("userAuthority", userAuthority); //原因？一旦外してみる
-
+*/
 		}
 		/*
 		 * // 小川講師からintバージョンで作った場合の処理方法教えてもらった！ //
