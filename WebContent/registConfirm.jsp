@@ -95,6 +95,7 @@ input[type="submit"] {
 	font-size: 20px; /* 文字サイズ */
 }
 </style>
+
 </head>
 <body>
 	<h1>アカウント登録確認画面</h1>
@@ -105,6 +106,7 @@ input[type="submit"] {
 		</div>
 		<div>
 			<table>
+
 				<tr>
 					<td><label>名前（姓）</label></td>
 					<td><s:property value="userFamilyName" escape="false" /></td>
@@ -133,7 +135,7 @@ input[type="submit"] {
 				</tr>
 				<tr>
 					<td><label>性別</label></td>
-					<td><s:property value="userGender" escape="false" /></td>
+					<td><s:property value="userGender0" escape="false" /></td>
 				</tr>
 				<tr>
 					<td><label>郵便番号</label></td>
@@ -153,13 +155,12 @@ input[type="submit"] {
 				</tr>
 				<tr>
 					<td><label>アカウント権限</label></td>
-					<td><s:property value="userAuthority" escape="false" /></td>
+					<td><s:property value="userAuthority0" escape="false" /></td>
 				</tr>
 			</table>
 
-			<!-- 統合されたフォーム -->
+			<!-- "前に戻る" ボタン用フォーム -->
 			<s:form action="RegistAction" method="post">
-				<!-- 隠しフィールドで値を保持 -->
 				<s:hidden name="userFamilyName" value="%{userFamilyName}" />
 				<s:hidden name="userLastName" value="%{userLastName}" />
 				<s:hidden name="userFamilyNameKana" value="%{userFamilyNameKana}" />
@@ -172,13 +173,26 @@ input[type="submit"] {
 				<s:hidden name="userAddress1" value="%{userAddress1}" />
 				<s:hidden name="userAddress2" value="%{userAddress2}" />
 				<s:hidden name="userAuthority" value="%{userAuthority}" />
-
-				<!-- ボタン -->
-				<div class="center-buttons">
-					<input type="submit" name="action" value=" 前に戻る " /> <input
-						type="submit" name="action" value=" 登録する " />
-				</div>
+				<input type="submit" value=" 前に戻る ">
 			</s:form>
+
+			<!-- "登録する" ボタン用フォーム -->
+			<s:form action="RegistCompleteAction" method="post">
+				<s:hidden name="userFamilyName" value="%{userFamilyName}" />
+                <s:hidden name="userLastName" value="%{userLastName}" />
+                <s:hidden name="userFamilyNameKana" value="%{userFamilyNameKana}" />
+                <s:hidden name="userLastNameKana" value="%{userLastNameKana}" />
+                <s:hidden name="userMail" value="%{userMail}" />
+                <s:hidden name="userPassword" value="%{userPassword}" />
+                <s:hidden name="userGender" value="%{userGender}" />
+                <s:hidden name="userPostalCode" value="%{userPostalCode}" />
+                <s:hidden name="userPrefecture" value="%{userPrefecture}" />
+                <s:hidden name="userAddress1" value="%{userAddress1}" />
+                <s:hidden name="userAddress2" value="%{userAddress2}" />
+                <s:hidden name="userAuthority" value="%{userAuthority}" />
+				<input type="submit" value=" 登録する ">
+			</s:form>
+
 		</div>
 		<p>フッター</p>
 	</div>
