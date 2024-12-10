@@ -143,6 +143,15 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 	// struts.xmlで指定しているから！
 	@Override
 	public String execute() {
+/*
+		if (userFamilyName == null) {
+			userFamilyName = ""; // 空文字列で初期化
+		}
+
+		if (userLastName == null) {
+	        userLastName = ""; // 空文字列で初期化
+	    }
+*/
 		String result = SUCCESS;
 
 		System.out.println(userFamilyName);
