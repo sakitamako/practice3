@@ -401,16 +401,15 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 		this.userPassword = userPassword;
 
 	}
-
 	// フィールド変数に対応したgetterとsetterを定義
-	// Actionクラスから呼び出され、loginUserIdフィールドの値をActionに渡す
+	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
 	public int getUserGender() {
 		return userGender;
 
 	}
 
 	// フィールド変数に対応したgetterとsetterを定義
-	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のloginUserIdフィールドに格納
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
 	public void setUserGender(int userGender) {
 		System.out.println("start: setUserGender()");
 		System.out.println(userGender);
@@ -419,12 +418,15 @@ public class RegistConfirmAction extends ActionSupport implements SessionAware {
 
 	}
 
-	// userGender0、intバージョンのフィールド変数のgetset追加
+	// フィールド変数に対応したgetterとsetterを定義
+	// Actionクラスから呼び出され、userNameフィールドの値をActionに渡す
 	public String getUserGender0() {
 		return userGender0;
 
 	}
 
+	// フィールド変数に対応したgetterとsetterを定義
+	// DAOクラスから呼び出され、引数として受け取ったテーブルの値を自身のuserNameフィールドに格納
 	public void setUserGender0(String userGender0) {
 		this.userGender0 = userGender0;
 

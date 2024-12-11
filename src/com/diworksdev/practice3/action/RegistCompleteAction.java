@@ -77,7 +77,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 				// addActionError("エラーが発生したためアカウント登録できません。");
 				errorMessage = "エラーが発生したためアカウント登録できません。";
 
-				result = ERROR;
+				//result = ERROR;
 
 			} else {
 
