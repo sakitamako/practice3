@@ -25,8 +25,6 @@ public class RegistAction extends ActionSupport {
 	private int userAuthority;
 
 
-
-
 	// 新規ユーザー登録はボタンを押したらサクセスが返される、userCreate.jsp画面に遷移する
 	// struts.xmlで指定しているから！
 	@Override

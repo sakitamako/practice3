@@ -64,6 +64,7 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 	// 全てのクラス 変数 変数名(struts) throws=例外を意図的に起こすことが出来る処理のこと。
 	@Override
 	public String execute() throws SQLException {
+
 		String result = ERROR; // 初期値をERRORに設定
 
 		try {
@@ -197,15 +198,12 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 			}
 
 		} catch (SQLException e) {
-
-			addActionError("アカウント登録中にエラーが発生しました。もう一度お試しください。");
 			e.printStackTrace(); // エラー内容をログに出力
 
 			// この下記不要だった
-			// result = ERROR;
+			 result = SUCCESS;
 
 		} catch (NoSuchAlgorithmException e) {
-			addActionError("セキュリティエラーが発生しました。");
 			e.printStackTrace();
 
 		}
