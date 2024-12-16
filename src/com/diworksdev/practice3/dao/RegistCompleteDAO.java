@@ -65,6 +65,11 @@ public class RegistCompleteDAO {
 	public void regist(String userFamilyName, String userLastName, String userFamilyNameKana, String userLastNameKana,
 			String userMail, String hashedPassword, String userGender, String userPostalCode, String userPrefecture,
 			String userAddress1, String userAddress2, String userAuthority, String delete_flag) throws SQLException {
+
+		if (connection == null) {
+		    System.out.println("Connection is null. Please check the DBConnector configuration.");
+
+		}
 /*
 		// ③小川講師から教えてもらったこと、上記の確認したい項目を入力！
 		System.out.println(userFamilyName);
@@ -109,16 +114,22 @@ public class RegistCompleteDAO {
 			preparedStatement.setString(14, dateUtil.getDate());
 			preparedStatement.execute();
 
-			// 処理中にSQL関連のエラーが発生した際に実行する処理
-			// tryの中でエラーが発生した場合、catchが受け取り
-			// 例外がスローされる原因となったエラーまたは動作の説明を返す
-			// 例外発生時に実行される文
-		} catch (SQLException e) {
-			e.printStackTrace();
+			int rows = preparedStatement.executeUpdate();
+			System.out.println(rows + " rows inserted.");
+			if (rows == 0) {
+			    System.out.println("No rows were inserted. Please check the input data and SQL query.");
+			}
 
-			// tryの中でエラーが発生した場合、catchが受け取り
-			// 例外がスローされる原因となったエラーまたは動作の説明を返します
-		} finally {
+			} catch (SQLException e) {
+	            // Handle SQL exceptions
+	            System.err.println("SQL Error: " + e.getMessage());
+	            e.printStackTrace();
+	        } finally {
+	            // Ensuring the connection is closed
+	            if (connection != null) {
+	                connection.close();
+	            }
+
 
 			// ⑨con.close()で接続を切る
 			// データベースとの接続をクローズ

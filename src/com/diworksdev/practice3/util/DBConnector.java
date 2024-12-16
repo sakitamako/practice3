@@ -16,7 +16,7 @@ public class DBConnector {
 	// データベース接続パスワード
 	private static String password = "root";
 	// 初期メッセージを設定
-	//private String errorMessage = "データベース接続で不明なエラーが発生しました"; // 初期メッセージを設定
+	// private String errorMessage = "データベース接続で不明なエラーが発生しました"; // 初期メッセージを設定
 
 	// 全てのクラス 変数 変数名
 	public Connection getConnection() {
@@ -33,30 +33,25 @@ public class DBConnector {
 			// ドライバーがロードされ使えるような状態にしている、覚える。
 			// 接続情報から自分のパソコンにインストールされているMySQLへ接続する準備が整う
 			con = (Connection) DriverManager.getConnection(url, user, password);
+
 			//setErrorMessage(null); // 接続成功した場合、エラーメッセージをクリア
 			System.out.println("データベース接続に成功しました。");
 
 			// tryの中でエラーが発生した場合、catchが受け取り
 			// 例外がスローされる原因となったエラーまたは動作の説明を返します
 		} catch (ClassNotFoundException e) {
-			// ドライバが見つからない場合のエラーメッセージ
-			//setErrorMessage("JDBCドライバが見つかりません。");
 			e.printStackTrace();
 
+			// tryの中でエラーが発生した場合、catchが受け取り
+			// 例外がスローされる原因となったエラーまたは動作の説明を返します
 		} catch (SQLException e) {
-			// 接続エラー時のオリジナルエラーメッセージ
-			//setErrorMessage("データベースに接続できませんでした。");
 			e.printStackTrace();
 
 		}
 
-		// 接続成功時は Connection オブジェクト、失敗時は null を返す
+		// Mysqlに接続できたか情報を渡す
 		return con;
+
 	}
 
 }
-	/*
-	 * // エラーメッセージを取得するメソッド public String getErrorMessage() { return
-	 * errorMessage; }
-	 */
-

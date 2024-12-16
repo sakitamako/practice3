@@ -67,20 +67,26 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 
 		String result = ERROR; // 初期値をERRORに設定
 
+		// DBConnectorを使って接続試行
+		DBConnector dbConnector = new DBConnector();
+		Connection con = dbConnector.getConnection();
+
 		try {
-			String hashedPassword = hashPassword(session.get("userPassword").toString());
-			// DBConnectorを使って接続試行
-			DBConnector dbConnector = new DBConnector();
-			Connection con = dbConnector.getConnection();
+            // セッションからパスワードを取得し、存在しない場合はエラー処理
+            if (session.get("userPassword") == null) {
+                System.err.println("Session data 'userPassword' is missing.");
+                throw new IllegalArgumentException("Session data 'userPassword' is required.");
+            }
 
-			if (con == null) {
-				// 接続失敗の場合はエラーを返す
-				// addActionError("エラーが発生したためアカウント登録できません。");
-				errorMessage = "エラーが発生したためアカウント登録できません。";
+            String userPassword = session.get("userPassword").toString();
+            String hashedPassword = hashPassword(userPassword); // ハッシュ化したパスワードを取得
 
-				//result = ERROR;
+            if (con == null) {
+                errorMessage = "データベース接続に失敗しました。";
 
-			} else {
+                result = ERROR;
+
+            } else {
 
 				// error画面表示させてもサーバー上で１の表示にならない
 
@@ -118,34 +124,35 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 				// String userAuthority =
 				// session.get("userAuthority").toString();
 				// String delete_flag = session.get("delete_flag").toString();
-/*
-				System.out.println(session.get("userFamilyName"));
-				System.out.println(session.get("userLastName"));
-				System.out.println(session.get("userFamilyNameKana"));
-				System.out.println(session.get("userLastNameKana"));
-				System.out.println(session.get("userMail"));
-				System.out.println(session.get("userPassword"));
-				System.out.println(session.get("userGender"));
-				System.out.println(session.get("userPostalCode"));
-				System.out.println(session.get("userPrefecture"));
-				System.out.println(session.get("userAddress1"));
-				System.out.println(session.get("userAddress2"));
-				System.out.println(session.get("userAuthority"));
-				System.out.println(session.get("delete_flag"));
-				System.out.println(session.get("userFamilyName").toString());
-				System.out.println(session.get("userLastName").toString());
-				System.out.println(session.get("userFamilyNameKana").toString());
-				System.out.println(session.get("userLastNameKana").toString());
-				System.out.println(session.get("userMail").toString());
-				System.out.println(session.get("userPassword").toString());
-				System.out.println(session.get("userGender").toString());
-				System.out.println(session.get("userPostalCode").toString());
-				System.out.println(session.get("userPrefecture").toString());
-				System.out.println(session.get("userAddress1").toString());
-				System.out.println(session.get("userAddress2").toString());
-				System.out.println(session.get("userAuthority").toString());
-				System.out.println(session.get("delete_flag").toString());
-				// 小川講師に追記してもらったとこ！１項目ずつデータが渡っているかチェックする！
+				/*
+				 * System.out.println(session.get("userFamilyName"));
+				 * System.out.println(session.get("userLastName"));
+				 * System.out.println(session.get("userFamilyNameKana"));
+				 * System.out.println(session.get("userLastNameKana"));
+				 * System.out.println(session.get("userMail"));
+				 * System.out.println(session.get("userPassword"));
+				 * System.out.println(session.get("userGender"));
+				 * System.out.println(session.get("userPostalCode"));
+				 * System.out.println(session.get("userPrefecture"));
+				 * System.out.println(session.get("userAddress1"));
+				 * System.out.println(session.get("userAddress2"));
+				 * System.out.println(session.get("userAuthority"));
+				 * System.out.println(session.get("delete_flag"));
+				 * System.out.println(session.get("userFamilyName").toString());
+				 * System.out.println(session.get("userLastName").toString());
+				 * System.out.println(session.get("userFamilyNameKana").toString
+				 * ());
+				 * System.out.println(session.get("userLastNameKana").toString()
+				 * ); System.out.println(session.get("userMail").toString());
+				 * System.out.println(session.get("userPassword").toString());
+				 * System.out.println(session.get("userGender").toString());
+				 * System.out.println(session.get("userPostalCode").toString());
+				 * System.out.println(session.get("userPrefecture").toString());
+				 * System.out.println(session.get("userAddress1").toString());
+				 * System.out.println(session.get("userAddress2").toString());
+				 * System.out.println(session.get("userAuthority").toString());
+				 * System.out.println(session.get("delete_flag").toString()); //
+				 * 小川講師に追記してもらったとこ！１項目ずつデータが渡っているかチェックする！
 				 *
 				 */
 				registCompleteDAO.regist(session.get("userFamilyName").toString(),
@@ -198,43 +205,42 @@ public class RegistCompleteAction extends ActionSupport implements SessionAware 
 			}
 
 		} catch (SQLException e) {
-			e.printStackTrace(); // エラー内容をログに出力
+            errorMessage = "アカウント登録中にエラーが発生しました。もう一度お試しください。";
+            e.printStackTrace();
+            result = ERROR;
+        } catch (NoSuchAlgorithmException e) {
+            errorMessage = "パスワードのハッシュ化に失敗しました。";
+            e.printStackTrace();
+            result = ERROR;
+        } catch (Exception e) {
+            errorMessage = "予期しないエラーが発生しました。";
+            e.printStackTrace();
+            result = ERROR;
+        }
 
-			// この下記不要だった
-			 result = SUCCESS;
-
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-
-		}
-
-		return result;
-
-	}
+        return result;
+    }
 
 	/**
-	 * パスワードをSHA-256でハッシュ化するメソッド
-	 *
-	 * @param password
-	 *            平文のパスワード
-	 * @return ハッシュ化された文字列
-	 * @throws NoSuchAlgorithmException
-	 */
-	private String hashPassword(String userPassword) throws NoSuchAlgorithmException {
-		MessageDigest md = MessageDigest.getInstance("SHA-256");
-		byte[] hashedBytes = md.digest(userPassword.getBytes());
-		// ハッシュ値を16進数文字列に変換
-		StringBuilder sb = new StringBuilder();
-		for (byte b : hashedBytes) {
-			sb.append(String.format("%02x", b));
+     * パスワードをSHA-256でハッシュ化するメソッド
+     *
+     * @param password 平文のパスワード
+     * @return ハッシュ化された文字列
+     * @throws NoSuchAlgorithmException
+     */
+    private String hashPassword(String userPassword) throws NoSuchAlgorithmException {
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+        byte[] hashedBytes = md.digest(userPassword.getBytes());
+        // ハッシュ値を16進数文字列に変換
+        StringBuilder sb = new StringBuilder();
+        for (byte b : hashedBytes) {
+            sb.append(String.format("%02x", b));
+        }
+        return sb.toString();
+    }
 
-		}
 
-		return sb.toString();
-
-	}
-
-	//// String result = SUCCESS;
+// String result = SUCCESS;
 	//
 	// // 戻り値
 	// // retに入った値を呼び出し元であるActionクラスに渡す
